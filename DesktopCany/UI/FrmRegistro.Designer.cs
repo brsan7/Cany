@@ -81,9 +81,12 @@
             // 
             // rtbSnippet
             // 
+            this.rtbSnippet.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.rtbSnippet.Location = new System.Drawing.Point(328, 12);
             this.rtbSnippet.Name = "rtbSnippet";
-            this.rtbSnippet.Size = new System.Drawing.Size(344, 437);
+            this.rtbSnippet.Size = new System.Drawing.Size(658, 437);
             this.rtbSnippet.TabIndex = 4;
             this.rtbSnippet.Text = "";
             // 
@@ -148,7 +151,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(684, 461);
+            this.ClientSize = new System.Drawing.Size(998, 461);
             this.Controls.Add(this.rtbDescricaoFcn);
             this.Controls.Add(this.btnRegMod);
             this.Controls.Add(this.chkBoxModEstavel);

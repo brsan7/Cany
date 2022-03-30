@@ -30,14 +30,14 @@ namespace DesktopCany.UI
         {
             biblitotecaEnt.FK_ID_FcnModData = new FuncaoEnt();
             lstLinguagens = new(LinguagensRep.SelecionarLinguagens());
-            //cmbLinguagens.Items.Clear();
-            int index = 0;
-            foreach (var linguagem in lstLinguagens)
-            {
-                cmbLinguagens.Items.Insert(index, linguagem);
-                index++;
-            }
-            //lstLinguagens.ForEach(linguagenslst => cmbLinguagens.Items.Add(linguagenslst));
+            cmbLinguagens.Items.Clear();
+            //int index = 0;
+            //foreach (var linguagem in lstLinguagens)
+            //{
+            //    cmbLinguagens.Items.Insert(index, linguagem);
+            //    index++;
+            //}
+            lstLinguagens.ForEach(linguagenslst => cmbLinguagens.Items.Add(linguagenslst));
             cmbLinguagens.SelectedIndex = 0;
             /*
             cmbLinguagens.DataSource = lstLinguagens;
@@ -68,7 +68,7 @@ namespace DesktopCany.UI
                 && !cmbBibliotecas.Text.Equals("Bibliotecas")
                 && btnRegMod.Text.Equals("RegMod"))
             {
-                cmbLinguagens.DropDownStyle = ComboBoxStyle.DropDownList;
+                //cmbLinguagens.DropDownStyle = ComboBoxStyle.DropDownList;
                 btnRegMod.Text = "RegNewLib";
                 btnRegMod.Enabled = true;
                 rtbDescricaoLib.Enabled = true;
@@ -84,8 +84,8 @@ namespace DesktopCany.UI
                 && !cmbFuncoes.Text.Equals("Funcoes")
                 && btnRegMod.Text.Equals("RegMod"))
             {
-                cmbLinguagens.DropDownStyle = ComboBoxStyle.DropDownList;
-                cmbBibliotecas.DropDownStyle = ComboBoxStyle.DropDownList;
+                //cmbLinguagens.DropDownStyle = ComboBoxStyle.DropDownList;
+                //cmbBibliotecas.DropDownStyle = ComboBoxStyle.DropDownList;
                 btnRegMod.Text = "RegNewFcn";
                 btnRegMod.Enabled = true;
                 rtbDescricaoFcn.Enabled = true;
@@ -102,13 +102,13 @@ namespace DesktopCany.UI
                 lstBibliotecas = new(BibliotecasRep.SelecionarBibliotecas(cmbLinguagens.Text));
                 //cmbBibliotecas.DataSource = lstBibliotecas;
                 cmbBibliotecas.Items.Clear();
-                int index = 0;
-                foreach (var biblioteca in lstBibliotecas)
-                {
-                    cmbBibliotecas.Items.Insert(index, biblioteca);
-                    index++;
-                }
-                //lstBibliotecas.ForEach(biblitotecaslst => cmbBibliotecas.Items.Add(biblitotecaslst));
+                //int index = 0;
+                //foreach (var biblioteca in lstBibliotecas)
+                //{
+                //    cmbBibliotecas.Items.Insert(index, biblioteca);
+                //    index++;
+                //}
+                lstBibliotecas.ForEach(biblitotecaslst => cmbBibliotecas.Items.Add(biblitotecaslst));
                 cmbBibliotecas.SelectedIndex = 0;
                 rtbDescricaoLang.Enabled = true;
                 cmbBibliotecas.Enabled = true;
@@ -124,15 +124,15 @@ namespace DesktopCany.UI
                 biblitotecaEnt.Biblioteca = cmbBibliotecas.Text;
 
                 lstFuncoes = new(FuncoesRep.SelecionarFuncoes(biblitotecaEnt));
-                //cmbFuncoes.DataSource = lstFuncoes;
+                ////cmbFuncoes.DataSource = lstFuncoes;
                 cmbFuncoes.Items.Clear();
-                int index = 0;
-                foreach (var funcao in lstFuncoes)
-                {
-                    cmbFuncoes.Items.Insert(index, funcao);
-                    index++;
-                }
-                //lstFuncoes.ForEach(funcoeslst => cmbFuncoes.Items.Insert(index, funcoeslst)) ;
+                //int index = 0;
+                //foreach (var funcao in lstFuncoes)
+                //{
+                //    cmbFuncoes.Items.Insert(index, funcao);
+                //    index++;
+                //}
+                lstFuncoes.ForEach(funcoeslst => cmbFuncoes.Items.Add(funcoeslst)) ;
                 cmbFuncoes.Items.Insert(0, lstFuncoes);
                 cmbFuncoes.SelectedIndex = 0;
 
@@ -156,27 +156,27 @@ namespace DesktopCany.UI
                 cmbModProgramadores.Enabled = true;
 
                 lstFcnModDatas = new(FuncoesRep.SelecionarModDatas(biblitotecaEnt));
-                //cmbFcnModDatas.DataSource = lstModData;
+                ////cmbFcnModDatas.DataSource = lstModData;
                 cmbFcnModDatas.Items.Clear();
-                int index = 0;
-                foreach (var fcnModData in lstFcnModDatas)
-                {
-                    cmbFcnModDatas.Items.Insert(index, fcnModData);
-                    index++;
-                }
-                //lstFcnModDatas.ForEach(fcnModDatalst => cmbFcnModDatas.Items.Add(fcnModDatalst));
+                //int index = 0;
+                //foreach (var fcnModData in lstFcnModDatas)
+                //{
+                //    cmbFcnModDatas.Items.Insert(index, fcnModData);
+                //    index++;
+                //}
+                lstFcnModDatas.ForEach(fcnModDatalst => cmbFcnModDatas.Items.Add(fcnModDatalst));
                 //cmbFcnModDatas.SelectedIndex = 0;
 
                 lstModProgramadores = new(FuncoesRep.SelecionarModProgramadores(biblitotecaEnt));
-                //cmbModProgramadores.DataSource = lstModProgramador;
+                ////cmbModProgramadores.DataSource = lstModProgramador;
                 cmbModProgramadores.Items.Clear();
-                index = 0;
-                foreach (var modProgramador in lstModProgramadores)
-                {
-                    cmbModProgramadores.Items.Insert(index, modProgramador);
-                    index++;
-                }
-                //lstModProgramadores.ForEach(modProgramadorlst => cmbModProgramadores.Items.Add(modProgramadorlst));
+                //index = 0;
+                //foreach (var modProgramador in lstModProgramadores)
+                //{
+                //    cmbModProgramadores.Items.Insert(index, modProgramador);
+                //    index++;
+                //}
+                lstModProgramadores.ForEach(modProgramadorlst => cmbModProgramadores.Items.Add(modProgramadorlst));
 
 
                 List<FuncaoEnt> modsFuncao = new();
@@ -186,7 +186,7 @@ namespace DesktopCany.UI
                 cmbFcnModDatas.SelectedIndex = cmbFcnModDatas.Items.Count - 1;
                 cmbModProgramadores.SelectedIndex = 0;
 
-                /*observar o comportamento*/
+                /*observar o comportamento*//*
                 cmbLinguagens.DropDownStyle = ComboBoxStyle.DropDownList;
                 cmbBibliotecas.DropDownStyle = ComboBoxStyle.DropDownList;
                 cmbFuncoes.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -277,7 +277,7 @@ namespace DesktopCany.UI
             {
                 rtbDescricaoLang.Text = "Descrição da Linguagem";
 
-                cmbBibliotecas.DropDownStyle = ComboBoxStyle.Simple;
+                //cmbBibliotecas.DropDownStyle = ComboBoxStyle.DropDown;
                 cmbBibliotecas.Enabled = true;
                 cmbBibliotecas.Text = "Biblioteca";
             }
@@ -287,7 +287,7 @@ namespace DesktopCany.UI
             {
                 rtbDescricaoLib.Text = "Descrição da Biblioteca";
 
-                cmbFuncoes.DropDownStyle = ComboBoxStyle.Simple;
+                //cmbFuncoes.DropDownStyle = ComboBoxStyle.DropDown;
                 cmbFuncoes.Enabled = true;
                 cmbFuncoes.Text = "Função";
             }
@@ -299,7 +299,7 @@ namespace DesktopCany.UI
                 rtbDescricaoFcn.Text = "Descrição da Função";
                 rtbSnippet.Text = "Snippet da Função";
 
-                cmbModProgramadores.DropDownStyle = ComboBoxStyle.Simple;
+                //cmbModProgramadores.DropDownStyle = ComboBoxStyle.DropDown;
                 cmbModProgramadores.Enabled = true;
                 cmbModProgramadores.Text = "Programador";
             }
@@ -309,18 +309,18 @@ namespace DesktopCany.UI
         {
             if (cmbLinguagens.SelectedIndex == 0)
             {
-                cmbLinguagens.DropDownStyle = ComboBoxStyle.DropDown;
+                //cmbLinguagens.DropDownStyle = ComboBoxStyle.DropDown;
 
                 lstLinguagens = new(LinguagensRep.SelecionarLinguagens());
-                //cmbLinguagens.DataSource = lstLinguagens;
+                ////cmbLinguagens.DataSource = lstLinguagens;
                 cmbLinguagens.Items.Clear();
-                int index = 0;
-                foreach (var linguagem in lstLinguagens)
-                {
-                    cmbLinguagens.Items.Insert(index, linguagem);
-                    index++;
-                }
-                //lstLinguagens.ForEach(linguagenslst => cmbLinguagens.Items.Add(linguagenslst));
+                //int index = 0;
+                //foreach (var linguagem in lstLinguagens)
+                //{
+                //    cmbLinguagens.Items.Insert(index, linguagem);
+                //    index++;
+                //}
+                lstLinguagens.ForEach(linguagenslst => cmbLinguagens.Items.Add(linguagenslst));
 
                 cmbBibliotecas.Enabled = false;
                 cmbFuncoes.Enabled = false;
@@ -332,8 +332,8 @@ namespace DesktopCany.UI
             if (cmbBibliotecas.SelectedIndex == 0
                 || cmbLinguagens.SelectedIndex == 0)
             {
-                cmbLinguagens.DropDownStyle = ComboBoxStyle.DropDown;
-                cmbBibliotecas.DropDownStyle = ComboBoxStyle.DropDown;
+                //cmbLinguagens.DropDownStyle = ComboBoxStyle.DropDown;
+                //cmbBibliotecas.DropDownStyle = ComboBoxStyle.DropDown;
 
                 cmbFuncoes.Enabled = false;
                 cmbFuncoes.Text = String.Empty;
@@ -347,7 +347,7 @@ namespace DesktopCany.UI
                 || cmbBibliotecas.SelectedIndex == 0
                 || cmbLinguagens.SelectedIndex == 0)
             {
-                cmbFuncoes.DropDownStyle = ComboBoxStyle.DropDown;
+                //cmbFuncoes.DropDownStyle = ComboBoxStyle.DropDown;
 
                 cmbFcnModDatas.Enabled = false;
                 cmbModProgramadores.Enabled = false;
