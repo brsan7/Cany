@@ -183,7 +183,7 @@ namespace DesktopCany.Repositorio
                                  where bibliotecas.Biblioteca == busca.Biblioteca
                                  //where funcoes.Funcao == busca.FK_ID_FcnModData.Funcao
                                  where funcoes.ID_FcnModData == busca.FK_ID_FcnModData.ID_FcnModData
-                                 where funcoes.ModProgramador == busca.FK_ID_FcnModData.ModProgramador
+                                 //where funcoes.ModProgramador == busca.FK_ID_FcnModData.ModProgramador
                                  select funcoes).OrderBy(tb=> tb.ID_FcnModData).Last();
                 }
                 catch (Exception ex)

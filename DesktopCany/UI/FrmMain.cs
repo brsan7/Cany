@@ -88,6 +88,11 @@
             //    }
 
             //}
+
+            FrmRegistro tela = new();
+            tela.MdiParent = this;
+            tela.WindowState = FormWindowState.Maximized;
+            tela.Show();
         }
 
         private void ConfiguracoesToolStripMenuItem_Click(object? sender, EventArgs? e)

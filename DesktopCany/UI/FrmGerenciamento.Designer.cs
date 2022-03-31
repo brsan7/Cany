@@ -44,6 +44,9 @@
             // 
             // dgvLinguagens
             // 
+            this.dgvLinguagens.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvLinguagens.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvLinguagens.Location = new System.Drawing.Point(12, 41);
             this.dgvLinguagens.Name = "dgvLinguagens";
@@ -53,6 +56,8 @@
             // 
             // cmbBuscaLinguagens
             // 
+            this.cmbBuscaLinguagens.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbBuscaLinguagens.FormattingEnabled = true;
             this.cmbBuscaLinguagens.Location = new System.Drawing.Point(12, 12);
             this.cmbBuscaLinguagens.Name = "cmbBuscaLinguagens";
@@ -61,6 +66,8 @@
             // 
             // cmbBuscaBibliotecas
             // 
+            this.cmbBuscaBibliotecas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbBuscaBibliotecas.FormattingEnabled = true;
             this.cmbBuscaBibliotecas.Location = new System.Drawing.Point(168, 12);
             this.cmbBuscaBibliotecas.Name = "cmbBuscaBibliotecas";
@@ -69,6 +76,8 @@
             // 
             // cmbBuscaFuncoes
             // 
+            this.cmbBuscaFuncoes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbBuscaFuncoes.FormattingEnabled = true;
             this.cmbBuscaFuncoes.Location = new System.Drawing.Point(324, 12);
             this.cmbBuscaFuncoes.Name = "cmbBuscaFuncoes";
@@ -77,6 +86,8 @@
             // 
             // cmbBuscaModDatas
             // 
+            this.cmbBuscaModDatas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbBuscaModDatas.FormattingEnabled = true;
             this.cmbBuscaModDatas.Location = new System.Drawing.Point(480, 12);
             this.cmbBuscaModDatas.Name = "cmbBuscaModDatas";
@@ -85,6 +96,8 @@
             // 
             // cmbBuscaModProgramadores
             // 
+            this.cmbBuscaModProgramadores.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbBuscaModProgramadores.FormattingEnabled = true;
             this.cmbBuscaModProgramadores.Location = new System.Drawing.Point(636, 12);
             this.cmbBuscaModProgramadores.Name = "cmbBuscaModProgramadores";
@@ -93,6 +106,8 @@
             // 
             // button1
             // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.Location = new System.Drawing.Point(324, 415);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(150, 23);
@@ -102,6 +117,9 @@
             // 
             // dgvBibliotecas
             // 
+            this.dgvBibliotecas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvBibliotecas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBibliotecas.Location = new System.Drawing.Point(12, 165);
             this.dgvBibliotecas.Name = "dgvBibliotecas";
@@ -111,6 +129,9 @@
             // 
             // dgvFuncoes
             // 
+            this.dgvFuncoes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvFuncoes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFuncoes.Location = new System.Drawing.Point(12, 290);
             this.dgvFuncoes.Name = "dgvFuncoes";
