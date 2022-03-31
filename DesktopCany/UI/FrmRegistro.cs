@@ -297,8 +297,6 @@ namespace DesktopCany.UI
                 cmbFuncoes.Text = String.Empty;
                 rtbDescricaoLib.Text = String.Empty;
                 rtbDescricaoLib.Enabled = false;
-
-
             }
 
             if (cmbFuncoes.SelectedIndex == 0
@@ -317,8 +315,6 @@ namespace DesktopCany.UI
                 rtbSnippet.Enabled = false;
                 btnRegMod.Text = "RegMod";
                 btnRegMod.Enabled = false;
-
-
             }
         }
     }

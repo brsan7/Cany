@@ -99,6 +99,7 @@ namespace DesktopCany.Repositorio
                     resultado.AddRange((from bibliotecas in db.TB_Bibliotecas
                                         join funcoes in db.TB_Funcoes
                                         on bibliotecas.ID_Linguagem equals busca.ID_Linguagem
+                                        where bibliotecas.Biblioteca == busca.Biblioteca
                                         where funcoes.ID_FcnModData == bibliotecas.ID_FcnModData
                                         select funcoes.Funcao).ToList().Distinct());
                 }
