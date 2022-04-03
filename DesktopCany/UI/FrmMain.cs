@@ -38,6 +38,7 @@
 
             //Prender dentro deste formulario (frmMenu)
             tela.MdiParent = this;
+            tela.WindowState = FormWindowState.Maximized;
 
             //Exibir a tela
             tela.Show();

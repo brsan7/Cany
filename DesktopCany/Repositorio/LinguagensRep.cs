@@ -22,7 +22,7 @@ namespace DesktopCany.Repositorio
                 {
                     Console.WriteLine("[class LinguagensRep]" + Environment.NewLine
                                     + "[public static List<string> SelecionarLinguagens()]" + Environment.NewLine
-                                    + "[Linha 19]" + Environment.NewLine
+                                    + "[Linha 12]" + Environment.NewLine
                                     + ex);
                 }
             }
@@ -44,7 +44,7 @@ namespace DesktopCany.Repositorio
                 {
                     Console.WriteLine("[class LinguagensRep]" + Environment.NewLine
                                     + "[public static string BuscarDescricao(string linguagem)]" + Environment.NewLine
-                                    + "[Linha 19]" + Environment.NewLine
+                                    + "[Linha 32]" + Environment.NewLine
                                     + ex);
                 }
             }
@@ -65,9 +65,56 @@ namespace DesktopCany.Repositorio
                     
                     Console.WriteLine("[class LinguagensRep]" + Environment.NewLine
                                     + "[public static List<LinguagemEnt> SelecionarTB_Linguagens()]" + Environment.NewLine
-                                    + "[Linha 19]" + Environment.NewLine
+                                    + "[Linha 54]" + Environment.NewLine
                                     + ex);
                     return new List<LinguagemEnt>();
+                }
+            }
+        }
+
+        public static List<LinguagemEnt> Buscar_Linguagem(string busca)
+        {
+            using (var db = new Cany_ContextSQLite())
+            {
+                List<LinguagemEnt> resultado = new();
+                try
+                {
+                    resultado = (from linguagem in db.TB_Linguagens
+                                 where linguagem.ID_Linguagem.Contains(busca)
+                                 select linguagem).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("[class LinguagensRep]"
+                                    + Environment.NewLine
+                                    + "[public static List<LinguagemEnt> Buscar_Linguagem(string busca)]"
+                                    + Environment.NewLine
+                                    + "[Linha 75]"
+                                    + Environment.NewLine
+                                    + ex);
+                }
+                return resultado;
+            }
+        }
+
+        public static void Remover(LinguagemEnt linguagemEnt)
+        {
+            using (var db = new Cany_ContextSQLite())
+            {
+                try
+                {
+                    db.TB_Linguagens.Remove(linguagemEnt);
+                    db.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("[class LinguagemRep]"
+                                    + Environment.NewLine
+                                    + "[public static void Remover(LinguagemEnt linguagemEnt)]"
+                                    + Environment.NewLine
+                                    + "[Linha 100]"
+                                    + Environment.NewLine
+                                    + ex);
                 }
             }
         }

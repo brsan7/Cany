@@ -1,36 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DesktopCany.Entidades;
-using Microsoft.EntityFrameworkCore;
+﻿using DesktopCany.Entidades;
 
 namespace DesktopCany.Repositorio
 {
     class BibliotecasRep
     {
-        public static List<string> Consultar()
-        {
-            List<string> resultado = new();
-            using (var db = new Cany_ContextSQLite())
-            {
-                try
-                {
-                    resultado = db.TB_Bibliotecas.Select(T => T.Biblioteca).ToList();
-
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("[class BibliotecasRep]" + Environment.NewLine
-                                    + "[public static List<string> Consultar()]" + Environment.NewLine
-                                    + "[Linha 20]" + Environment.NewLine
-                                    + ex);
-                }
-            }
-            return resultado;
-        }
-
         public static List<string> SelecionarBibliotecas(string linguagem)
         {
             List<string> resultado = new() { "Bibliotecas" };
@@ -48,7 +21,7 @@ namespace DesktopCany.Repositorio
                                     + Environment.NewLine
                                     + "[public static List<string> SelecionarBibliotecas(string linguagem)]" 
                                     + Environment.NewLine
-                                    + "[Linha 41]" 
+                                    + "[Linha 7]" 
                                     + Environment.NewLine
                                     + ex);
                 }
@@ -73,7 +46,7 @@ namespace DesktopCany.Repositorio
                                     + Environment.NewLine
                                     + "[public static List<string> BuscarDescricao(string linguagem)]"
                                     + Environment.NewLine
-                                    + "[Linha 57]"
+                                    + "[Linha 32]"
                                     + Environment.NewLine
                                     + ex);
                 }
@@ -98,7 +71,82 @@ namespace DesktopCany.Repositorio
                                     + Environment.NewLine
                                     + "[public static List<BibliotecaEnt> SelecionarTB_Bibliotecas()]"
                                     + Environment.NewLine
-                                    + "[Linha 91]"
+                                    + "[Linha 57]"
+                                    + Environment.NewLine
+                                    + ex);
+                }
+                return resultado;
+            }
+        }
+
+        public static List<BibliotecaEnt> Buscar_Biblioteca(string busca)
+        {
+            using (var db = new Cany_ContextSQLite())
+            {
+                List<BibliotecaEnt> resultado = new();
+                try
+                {
+                    resultado = (from biblioteca in db.TB_Bibliotecas
+                                 where biblioteca.Biblioteca.Contains(busca)
+                                 select biblioteca).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("[class BibliotecasRep]"
+                                    + Environment.NewLine
+                                    + "[public static List<BibliotecaEnt> Buscar_Bibliotecas(string busca)]"
+                                    + Environment.NewLine
+                                    + "[Linha 82]"
+                                    + Environment.NewLine
+                                    + ex);
+                }
+                return resultado;
+            }
+        }
+
+        public static List<BibliotecaEnt> Buscar_BibliotecasPorLinguagem(LinguagemEnt busca)
+        {
+            using (var db = new Cany_ContextSQLite())
+            {
+                List<BibliotecaEnt> resultado = new();
+                try
+                {
+                    resultado = (from biblioteca in db.TB_Bibliotecas
+                                 where biblioteca.ID_Linguagem.Equals(busca.ID_Linguagem)
+                                 select biblioteca).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("[class BibliotecasRep]"
+                                    + Environment.NewLine
+                                    + "[public static BibliotecaEnt Buscar_BibliotecasPorLinguagem(BibliotecaEnt busca)]"
+                                    + Environment.NewLine
+                                    + "[Linha 107]"
+                                    + Environment.NewLine
+                                    + ex);
+                }
+                return resultado;
+            }
+        }
+
+        public static List<BibliotecaEnt> Buscar_BibliotecasPorFuncao(BibliotecaEnt busca)
+        {
+            using (var db = new Cany_ContextSQLite())
+            {
+                List<BibliotecaEnt> resultado = new();
+                try
+                {
+                    resultado = (from biblioteca in db.TB_Bibliotecas
+                                 where biblioteca.ID_FcnModData.Equals(busca.ID_FcnModData)
+                                 select biblioteca).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("[class BibliotecasRep]"
+                                    + Environment.NewLine
+                                    + "[public static BibliotecaEnt Buscar_BibliotecasPorFuncao(BibliotecaEnt busca)]"
+                                    + Environment.NewLine
+                                    + "[Linha 132]"
                                     + Environment.NewLine
                                     + ex);
                 }
@@ -124,7 +172,7 @@ namespace DesktopCany.Repositorio
                                     + Environment.NewLine
                                     + "[public static bool Registrar(BibliotecaEnt RI)]"
                                     + Environment.NewLine
-                                    + "[Linha 117]"
+                                    + "[Linha 157]"
                                     + Environment.NewLine
                                     + ex);
                     return false;

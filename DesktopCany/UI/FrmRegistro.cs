@@ -202,13 +202,17 @@ namespace DesktopCany.UI
                     Biblioteca = inAgrupamentoEnt.Biblioteca,
                     DescricaoLib = inAgrupamentoEnt.DescricaoLib,
                     ID_Linguagem = inAgrupamentoEnt.ID_Linguagem,
-                    ID_FcnModData = FuncoesRep.Consultar("").Last().ID_FcnModData,
+                    ID_FcnModData = FuncoesRep.SelecionarTB_Funcoes().Last().ID_FcnModData,
                     FK_ID_Linguagem = null,
                     FK_ID_FcnModData = null
                 };
                 BibliotecasRep.Registrar(agrupamentoEnt);
             }
             MessageBox.Show("Registrado");
+            cmbLinguagens.SelectedIndex = 0;
+            if (cmbBibliotecas.Items.Count > 0) cmbBibliotecas.SelectedIndex = 0;
+            if (cmbFuncoes.Items.Count > 0) cmbFuncoes.SelectedIndex = 0;
+            resetFrmRegistro();
         }
         private BibliotecaEnt ComporRegistro()
         {
