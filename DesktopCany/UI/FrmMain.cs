@@ -26,6 +26,7 @@
 
             //Prender dentro deste formulario (frmMenu)
             tela.MdiParent = this;
+            tela.WindowState = FormWindowState.Maximized;
 
             //Exibir a tela
             tela.Show();
@@ -55,7 +56,7 @@
             }
         }
 
-        private void FrmMenu_Load(object sender, EventArgs e)
+        private void FrmMenu_Load(object? sender, EventArgs? e)
         {
             this.Text = Propriedades.Configuracoes.Default.AppTitulo;
             this.BackColor = Propriedades.Configuracoes.Default.CorDasTelas;
@@ -90,10 +91,25 @@
 
             //}
 
-            FrmRegistro tela = new();
+            //FrmRegistro tela = new();
+            FrmLogin tela = new();
             tela.MdiParent = this;
-            tela.WindowState = FormWindowState.Maximized;
+            //tela.WindowState = FormWindowState.Maximized;
             tela.Show();
+
+
+            loginLogoutToolStripMenuItem.Text = "Login";
+
+            //UI.frmLogin tela = new UI.frmLogin();
+            //tela.ShowDialog();
+
+            if (tela.RetornaLogin().Autenticado)
+            {
+                lblUsuario.Text = "Usuário logado: " + tela.RetornaLogin().Usuario;
+                backupToolStripMenuItem.Enabled = true;
+
+                loginLogoutToolStripMenuItem.Text = "Logout";
+            }
         }
 
         private void ConfiguracoesToolStripMenuItem_Click(object? sender, EventArgs? e)
@@ -108,6 +124,11 @@
             FrmBackup tela = new();
             tela.MdiParent = this;
             tela.Show();
+        }
+
+        private void loginLogoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmMenu_Load(null, null);
         }
     }
 }

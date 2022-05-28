@@ -34,6 +34,7 @@
             this.janelasAbertasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.backupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loginLogoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gerenciamentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblUsuario = new System.Windows.Forms.ToolStripStatusLabel();
@@ -44,6 +45,7 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.loginLogoutToolStripMenuItem,
             this.consultaModificacaoToolStripMenuItem,
             this.registroToolStripMenuItem,
             this.janelasAbertasToolStripMenuItem,
@@ -94,6 +96,13 @@
             this.backupToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
             this.backupToolStripMenuItem.Text = "Backup";
             this.backupToolStripMenuItem.Click += new System.EventHandler(this.BackupToolStripMenuItem_Click);
+            // 
+            // loginLogoutToolStripMenuItem
+            // 
+            this.loginLogoutToolStripMenuItem.Name = "loginLogoutToolStripMenuItem";
+            this.loginLogoutToolStripMenuItem.Size = new System.Drawing.Size(92, 20);
+            this.loginLogoutToolStripMenuItem.Text = "Login/Logout";
+            this.loginLogoutToolStripMenuItem.Click += new System.EventHandler(this.loginLogoutToolStripMenuItem_Click);
             // 
             // gerenciamentoToolStripMenuItem
             // 
@@ -151,6 +160,7 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel lblUsuario;
         private System.Windows.Forms.ToolStripMenuItem configuraçõesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loginLogoutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem backupToolStripMenuItem;
         private ToolStripMenuItem gerenciamentoToolStripMenuItem;
     }
