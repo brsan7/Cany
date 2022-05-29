@@ -12,7 +12,7 @@ namespace DesktopCany.Propriedades {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.1.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.2.0.0")]
     internal sealed partial class Configuracoes : global::System.Configuration.ApplicationSettingsBase {
         
         private static Configuracoes defaultInstance = ((Configuracoes)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Configuracoes())));
@@ -78,6 +78,18 @@ namespace DesktopCany.Propriedades {
         public string Cany_DB_ConnectionString {
             get {
                 return ((string)(this["Cany_DB_ConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Colaborador {
+            get {
+                return ((string)(this["Colaborador"]));
+            }
+            set {
+                this["Colaborador"] = value;
             }
         }
     }

@@ -137,18 +137,20 @@ namespace DesktopCany.UI
                 cmbFcnModDatas.Items.Clear();
                 lstFcnModDatas = new(FuncoesRep.SelecionarModDatas(biblitotecaEnt));
                 lstFcnModDatas.ForEach(fcnModDatalst => cmbFcnModDatas.Items.Add(fcnModDatalst));
-
+                
                 cmbModProgramadores.Items.Clear();
                 lstModProgramadores = new(FuncoesRep.SelecionarModProgramadores(biblitotecaEnt));
+                cmbModProgramadores.Items.Add(Propriedades.Configuracoes.Default.Colaborador);
                 lstModProgramadores.ForEach(modProgramadorlst => cmbModProgramadores.Items.Add(modProgramadorlst));
-
+                
+                cmbModProgramadores.Text = Propriedades.Configuracoes.Default.Colaborador;
 
                 List<FuncaoEnt> modsFuncao = new();
                 modsFuncao.AddRange(FuncoesRep.SelecionarModsFuncao(biblitotecaEnt).Distinct());
                 biblitotecaEnt.FK_ID_FcnModData = modsFuncao.Last();
 
                 cmbFcnModDatas.SelectedIndex = cmbFcnModDatas.Items.Count - 1;
-                cmbModProgramadores.SelectedIndex = 0;
+                //cmbModProgramadores.SelectedIndex = 0;
 
                 /*observar o comportamento*//*
                 cmbLinguagens.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -269,7 +271,7 @@ namespace DesktopCany.UI
 
                 //cmbModProgramadores.DropDownStyle = ComboBoxStyle.DropDown;
                 cmbModProgramadores.Enabled = true;
-                cmbModProgramadores.Text = "Programador";
+                cmbModProgramadores.Text = Propriedades.Configuracoes.Default.Colaborador;
             }
         }
 
@@ -312,7 +314,7 @@ namespace DesktopCany.UI
                 cmbFcnModDatas.Enabled = false;
                 cmbModProgramadores.Enabled = false;
                 cmbFcnModDatas.Text = String.Empty;
-                cmbModProgramadores.Text = String.Empty;
+                cmbModProgramadores.Text = Propriedades.Configuracoes.Default.Colaborador;//cmbModProgramadores.Text = String.Empty;
                 rtbDescricaoFcn.Text = String.Empty;
                 rtbSnippet.Text = String.Empty;
                 rtbDescricaoFcn.Enabled = false;

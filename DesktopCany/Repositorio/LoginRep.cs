@@ -13,7 +13,7 @@ using System.Security.Cryptography;
 
 namespace DesktopCany.Repositorio
 {
-    class LoginDAL
+    class LoginREP
     {
         Conexao con = new Conexao();
 

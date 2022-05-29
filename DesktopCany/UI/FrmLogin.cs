@@ -19,21 +19,44 @@ namespace DesktopCany.UI
             InitializeComponent();
         }
 
-        LoginDAL loginDAL = new LoginDAL();
+        LoginREP loginREP = new LoginREP();
         Login login = new Login();
+        List<string> colaboradorList = new List<string>();
 
         internal Login RetornaLogin()
         {
+            login.Usuario = "Bruno";
             return login;
         }
 
         private void btnAutenticar_Click(object sender, EventArgs e)
         {
             login.Usuario = txtUsuario.Text;
-            login.Senha = txtSenha.Text;
-
-            login = loginDAL.Autenticar(login);
-
+            
+            var colaborador = Propriedades.Configuracoes.Default.Colaborador;
+            if (txtUsuario.Text.Equals(String.Empty))
+            {
+                MessageBox.Show("Usuário ou senha inválidos");
+            }
+            else
+            {
+                
+                Propriedades.Configuracoes.Default.Colaborador = txtUsuario.Text;
+                Propriedades.Configuracoes.Default.Save();
+                MessageBox.Show("Configurações salvas! \n\n Para que as alterações sejam aplicadas reinicie o software.");
+                this.Close();
+            }
+            /*
+            else
+            {
+                login.Usuario = txtUsuario.Text;
+                MessageBox.Show("Configurações salvas! \n\n Para que as alterações sejam aplicadas reinicie o programa.");
+                //this.Close();
+            }
+            */
+            //login.Senha = txtSenha.Text;
+            //login.Autenticado = true;
+            /*
             if (login.Autenticado == false)
             {
                 MessageBox.Show("Usuário ou senha inválidos");
@@ -43,6 +66,7 @@ namespace DesktopCany.UI
                 MessageBox.Show("Logado");
                 this.Close();
             }
+            */
         }
 
         private void txtSenha_KeyDown(object sender, KeyEventArgs e)
@@ -51,6 +75,11 @@ namespace DesktopCany.UI
             {
                 btnAutenticar.PerformClick();
             }
+        }
+
+        private void FrmLoginOnLoad(object sender, EventArgs e)
+        {
+            
         }
     }
 }

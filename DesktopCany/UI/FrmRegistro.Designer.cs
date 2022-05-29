@@ -81,8 +81,8 @@
             // 
             // rtbSnippet
             // 
-            this.rtbSnippet.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.rtbSnippet.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtbSnippet.Location = new System.Drawing.Point(328, 12);
             this.rtbSnippet.Name = "rtbSnippet";
@@ -102,6 +102,8 @@
             // 
             // cmbModProgramadores
             // 
+            this.cmbModProgramadores.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbModProgramadores.Enabled = false;
             this.cmbModProgramadores.FormattingEnabled = true;
             this.cmbModProgramadores.Location = new System.Drawing.Point(12, 426);
             this.cmbModProgramadores.Name = "cmbModProgramadores";

@@ -47,6 +47,7 @@
 
         private void FrmMenu_FormClosing(object sender, FormClosingEventArgs e)
         {
+            /*
             DialogResult resposta;
 
             resposta = MessageBox.Show("Deseja realmente sair?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
@@ -54,9 +55,10 @@
             {
                 e.Cancel = true;
             }
+            */
         }
 
-        private void FrmMenu_Load(object? sender, EventArgs? e)
+        private void FrmMenu_Load(object sender, EventArgs e)
         {
             this.Text = Propriedades.Configuracoes.Default.AppTitulo;
             this.BackColor = Propriedades.Configuracoes.Default.CorDasTelas;
@@ -67,48 +69,44 @@
             registroToolStripMenuItem.Enabled = false;
             backupToolStripMenuItem.Enabled = false;
 
-            //if (Propriedades.Configuracoes.Default.EnderecoServidorSQL.ToString().Equals("urlDBSQLite.db"))
-            //{
-            //    lblUsuario.Text = "Status : Banco de Dados não configurado";
-            //    MessageBox.Show("Configure a conexão com o Banco de Dados");
-            //    ConfiguracoesToolStripMenuItem_Click(null, null);
-            //}
-            //else
-            //{
-            //    if (status.TestarConexao())
-            //    {
-            lblUsuario.Text = "Status : Conexão Estabelecida";
-            consultaModificacaoToolStripMenuItem.Enabled = true;
-            registroToolStripMenuItem.Enabled = true;
-            backupToolStripMenuItem.Enabled = true;
-            //    }
-            //    else
-            //    {
-            //        lblUsuario.Text = "Status : Conexão não Estabelecida";
-            //        MessageBox.Show("Verifique a configuração de conexão com o Banco de Dados");
-            //        ConfiguracoesToolStripMenuItem_Click(null, null);
-            //    }
-
-            //}
-
-            //FrmRegistro tela = new();
-            FrmLogin tela = new();
-            tela.MdiParent = this;
-            //tela.WindowState = FormWindowState.Maximized;
-            tela.Show();
-
-
-            loginLogoutToolStripMenuItem.Text = "Login";
-
-            //UI.frmLogin tela = new UI.frmLogin();
-            //tela.ShowDialog();
-
-            if (tela.RetornaLogin().Autenticado)
+            if (Propriedades.Configuracoes.Default.Colaborador.Equals(String.Empty))
             {
-                lblUsuario.Text = "Usuário logado: " + tela.RetornaLogin().Usuario;
-                backupToolStripMenuItem.Enabled = true;
+                consultaModificacaoToolStripMenuItem.Enabled = false;
+                registroToolStripMenuItem.Enabled = false;
+                backupToolStripMenuItem.Enabled = false;
+                gerenciamentoToolStripMenuItem.Enabled = false;
+                janelasAbertasToolStripMenuItem.Enabled = false;
+                configuraçõesToolStripMenuItem.Enabled = false;
+                FrmLogin tela = new();
+                tela.MdiParent = this;
+                //tela.WindowState = FormWindowState.Maximized;
+                tela.Show();
 
-                loginLogoutToolStripMenuItem.Text = "Logout";
+
+                //loginLogoutToolStripMenuItem.Text = "Login";
+
+                //UI.frmLogin tela = new UI.frmLogin();
+                //tela.ShowDialog();
+                /*
+                if (tela.RetornaLogin().Autenticado)
+                {
+                    lblUsuario.Text = "Usuário logado: " + tela.RetornaLogin().Usuario;
+                    backupToolStripMenuItem.Enabled = true;
+
+                    loginLogoutToolStripMenuItem.Text = "Logout";
+
+                }
+                */
+            }
+            else
+            {
+                lblUsuario.Text = "Colaborador: " + Propriedades.Configuracoes.Default.Colaborador;
+                consultaModificacaoToolStripMenuItem.Enabled = true;
+                registroToolStripMenuItem.Enabled = true;
+                backupToolStripMenuItem.Enabled = true;
+                gerenciamentoToolStripMenuItem.Enabled = true;
+                janelasAbertasToolStripMenuItem.Enabled = true;
+                configuraçõesToolStripMenuItem.Enabled = true;
             }
         }
 
