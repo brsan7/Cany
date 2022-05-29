@@ -63,13 +63,14 @@
             this.consultaModificacaoToolStripMenuItem.Name = "consultaModificacaoToolStripMenuItem";
             this.consultaModificacaoToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.consultaModificacaoToolStripMenuItem.Text = "Consulta";
+            this.consultaModificacaoToolStripMenuItem.Visible = false;
             this.consultaModificacaoToolStripMenuItem.Click += new System.EventHandler(this.ConsultaModificacaoToolStripMenuItem_Click);
             // 
             // registroToolStripMenuItem
             // 
             this.registroToolStripMenuItem.Name = "registroToolStripMenuItem";
-            this.registroToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
-            this.registroToolStripMenuItem.Text = "Registro";
+            this.registroToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.registroToolStripMenuItem.Text = "Home";
             this.registroToolStripMenuItem.Click += new System.EventHandler(this.RegistroToolStripMenuItem_Click);
             // 
             // janelasAbertasToolStripMenuItem

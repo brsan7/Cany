@@ -6,7 +6,7 @@ namespace DesktopCany.Repositorio
     {
         public static List<string> SelecionarBibliotecas(string linguagem)
         {
-            List<string> resultado = new() { "Bibliotecas" };
+            List<string> resultado = new() { "**Bibliotecas**" };
             using (var db = new Cany_ContextSQLite())
             {
                 try

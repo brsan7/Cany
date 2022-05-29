@@ -47,7 +47,6 @@
 
         private void FrmMenu_FormClosing(object sender, FormClosingEventArgs e)
         {
-            /*
             DialogResult resposta;
 
             resposta = MessageBox.Show("Deseja realmente sair?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
@@ -55,7 +54,6 @@
             {
                 e.Cancel = true;
             }
-            */
         }
 
         private void FrmMenu_Load(object sender, EventArgs e)

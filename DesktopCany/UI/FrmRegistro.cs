@@ -21,6 +21,9 @@ namespace DesktopCany.UI
         private List<string> lstFuncoes = new();
         private List<string> lstFcnModDatas = new();
         private List<string> lstModProgramadores = new();
+        private bool firstScan = true;
+        private string operacao = "Modificação";
+
         public FrmRegistro()
         {
             InitializeComponent();
@@ -37,7 +40,6 @@ namespace DesktopCany.UI
 
             rtbDescricaoLib.Enabled=false;
             rtbDescricaoFcn.Enabled=false;
-            cmbModProgramadores.Enabled=false;
         }
 
         private void CmbLinguagens_TextChanged(object sender, EventArgs e)
@@ -47,6 +49,7 @@ namespace DesktopCany.UI
                 && btnRegMod.Text.Equals("RegMod"))
             {
                 btnRegMod.Text = "RegNewLang";
+                operacao = "Linguagem";
                 btnRegMod.Enabled = true;
                 rtbDescricaoLang.Enabled = true;
                 setup_RegNew();
@@ -60,8 +63,8 @@ namespace DesktopCany.UI
                 && !cmbBibliotecas.Text.Equals("Bibliotecas")
                 && btnRegMod.Text.Equals("RegMod"))
             {
-                //cmbLinguagens.DropDownStyle = ComboBoxStyle.DropDownList;
                 btnRegMod.Text = "RegNewLib";
+                operacao = "Biblioteca";
                 btnRegMod.Enabled = true;
                 rtbDescricaoLib.Enabled = true;
                 setup_RegNew();
@@ -76,15 +79,14 @@ namespace DesktopCany.UI
                 && !cmbFuncoes.Text.Equals("Funcoes")
                 && btnRegMod.Text.Equals("RegMod"))
             {
-                //cmbLinguagens.DropDownStyle = ComboBoxStyle.DropDownList;
-                //cmbBibliotecas.DropDownStyle = ComboBoxStyle.DropDownList;
                 btnRegMod.Text = "RegNewFcn";
+                operacao = "Função";
                 btnRegMod.Enabled = true;
                 rtbDescricaoFcn.Enabled = true;
                 setup_RegNew();
             }
         }
-
+        
         private void CmbLinguagens_SelectedIndexChanged(object sender, EventArgs e)
         {
             resetFrmRegistro();
@@ -131,26 +133,20 @@ namespace DesktopCany.UI
                 biblitotecaEnt.FK_ID_FcnModData = new();
                 biblitotecaEnt.FK_ID_FcnModData.Funcao = cmbFuncoes.Text;
 
-                cmbFcnModDatas.Enabled = true;
-                cmbModProgramadores.Enabled = true;
-
                 cmbFcnModDatas.Items.Clear();
                 lstFcnModDatas = new(FuncoesRep.SelecionarModDatas(biblitotecaEnt));
                 lstFcnModDatas.ForEach(fcnModDatalst => cmbFcnModDatas.Items.Add(fcnModDatalst));
                 
-                cmbModProgramadores.Items.Clear();
-                lstModProgramadores = new(FuncoesRep.SelecionarModProgramadores(biblitotecaEnt));
-                cmbModProgramadores.Items.Add(Propriedades.Configuracoes.Default.Colaborador);
-                lstModProgramadores.ForEach(modProgramadorlst => cmbModProgramadores.Items.Add(modProgramadorlst));
+                cmbModProgramador.Items.Clear();
+                lstModProgramadores = new(FuncoesRep.SelecionarModProgramador(biblitotecaEnt));
+                lstModProgramadores.ForEach(modProgramadorlst => cmbModProgramador.Items.Add(modProgramadorlst));
                 
-                cmbModProgramadores.Text = Propriedades.Configuracoes.Default.Colaborador;
-
                 List<FuncaoEnt> modsFuncao = new();
                 modsFuncao.AddRange(FuncoesRep.SelecionarModsFuncao(biblitotecaEnt).Distinct());
                 biblitotecaEnt.FK_ID_FcnModData = modsFuncao.Last();
 
                 cmbFcnModDatas.SelectedIndex = cmbFcnModDatas.Items.Count - 1;
-                //cmbModProgramadores.SelectedIndex = 0;
+                cmbModProgramador.SelectedIndex = cmbModProgramador.Items.Count-1;
 
                 /*observar o comportamento*//*
                 cmbLinguagens.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -158,6 +154,8 @@ namespace DesktopCany.UI
                 cmbFuncoes.DropDownStyle = ComboBoxStyle.DropDownList;
                 /*observar o comportamento*/
 
+                cmbFcnModDatas.Enabled = true;
+                cmbModProgramador.Enabled = true;
                 rtbDescricaoFcn.Enabled = true;
                 rtbSnippet.Enabled = true;
                 rtbDescricaoFcn.Text = biblitotecaEnt.FK_ID_FcnModData.DescricaoFcn;
@@ -175,6 +173,7 @@ namespace DesktopCany.UI
             {
                 biblitotecaEnt.FK_ID_FcnModData.ID_FcnModData = cmbFcnModDatas.Text;
                 biblitotecaEnt.FK_ID_FcnModData = FuncoesRep.BuscarMod(biblitotecaEnt);
+                cmbModProgramador.Text = biblitotecaEnt.FK_ID_FcnModData.ModProgramador;
                 rtbDescricaoFcn.Text = biblitotecaEnt.FK_ID_FcnModData.DescricaoFcn;
                 rtbSnippet.Text = biblitotecaEnt.FK_ID_FcnModData.Snippet;
             }
@@ -182,10 +181,34 @@ namespace DesktopCany.UI
 
         private void CmbModProgramadores_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbModProgramadores.SelectedIndex != 0)
+            
+            if (cmbModProgramador.SelectedIndex != 0 && !firstScan)
             {
-                //
+                biblitotecaEnt.FK_ID_FcnModData.ModProgramador = cmbModProgramador.Text;
+                biblitotecaEnt.FK_ID_FcnModData.Funcao = cmbFuncoes.Text;
+                List<FuncaoEnt> ModsProgramador = new(FuncoesRep.BuscarModProgramador(biblitotecaEnt));
+                biblitotecaEnt.FK_ID_FcnModData = ModsProgramador.Last();
+                
+                cmbFcnModDatas.Items.Clear();
+                ModsProgramador.ForEach(modificacoesProgramador => cmbFcnModDatas.Items.Add(modificacoesProgramador.ID_FcnModData));
+                
+                rtbDescricaoFcn.Text = biblitotecaEnt.FK_ID_FcnModData.DescricaoFcn;
+                rtbSnippet.Text = biblitotecaEnt.FK_ID_FcnModData.Snippet;
+
+                cmbFcnModDatas.SelectedIndex = cmbFcnModDatas.Items.Count - 1;
             }
+
+            if(cmbModProgramador.Text.Equals("**Colaboradores**"))
+            {
+                biblitotecaEnt.FK_ID_FcnModData = new();
+                biblitotecaEnt.FK_ID_FcnModData.Funcao = cmbFuncoes.Text;
+                resetFrmRegistro();
+                cmbFcnModDatas.Items.Clear();
+                lstFcnModDatas = new(FuncoesRep.SelecionarModDatas(biblitotecaEnt));
+                lstFcnModDatas.ForEach(fcnModDatalst => cmbFcnModDatas.Items.Add(fcnModDatalst));
+                cmbFcnModDatas.SelectedIndex = 0;
+            }
+            firstScan = false;
         }
 
         private void ChkBoxModEstavel_SelectedIndexChanged(object sender, EventArgs e)
@@ -197,7 +220,6 @@ namespace DesktopCany.UI
             BibliotecaEnt inAgrupamentoEnt = ComporRegistro();
             if (!BibliotecasRep.Registrar(inAgrupamentoEnt))
             {
-                //MessageBox.Show("Inserido");
                 FuncoesRep.Registrar(inAgrupamentoEnt.FK_ID_FcnModData);
                 BibliotecaEnt agrupamentoEnt = new()
                 {
@@ -210,10 +232,21 @@ namespace DesktopCany.UI
                 };
                 BibliotecasRep.Registrar(agrupamentoEnt);
             }
-            MessageBox.Show("Registrado");
+            MessageBox.Show(operacao+" Registrada!");
             cmbLinguagens.SelectedIndex = 0;
             if (cmbBibliotecas.Items.Count > 0) cmbBibliotecas.SelectedIndex = 0;
             if (cmbFuncoes.Items.Count > 0) cmbFuncoes.SelectedIndex = 0;
+            
+            lstLinguagens = new(LinguagensRep.SelecionarLinguagens());
+            foreach (var item in lstLinguagens)
+            {
+                if (!cmbLinguagens.Items.Contains(item))
+                {
+                    cmbLinguagens.Items.Add(item);
+                }
+            }
+            
+            cmbLinguagens.SelectedIndex = 0;
             resetFrmRegistro();
         }
         private BibliotecaEnt ComporRegistro()
@@ -228,8 +261,8 @@ namespace DesktopCany.UI
                 ID_FcnModData = DateTime.Now.ToString(),
                 Funcao = cmbFuncoes.Text,
                 DescricaoFcn = rtbDescricaoFcn.Text,
-                ModProgramador = cmbModProgramadores.Text,
-                Snippet = rtbSnippet.Text,
+                ModProgramador = Propriedades.Configuracoes.Default.Colaborador,
+                Snippet = rtbSnippet.Text
             };
             BibliotecaEnt inBibliotecaEnt = new()
             {
@@ -247,7 +280,6 @@ namespace DesktopCany.UI
             {
                 rtbDescricaoLang.Text = "Descrição da Linguagem";
 
-                //cmbBibliotecas.DropDownStyle = ComboBoxStyle.DropDown;
                 cmbBibliotecas.Enabled = true;
                 cmbBibliotecas.Text = "Biblioteca";
             }
@@ -257,48 +289,40 @@ namespace DesktopCany.UI
             {
                 rtbDescricaoLib.Text = "Descrição da Biblioteca";
 
-                //cmbFuncoes.DropDownStyle = ComboBoxStyle.DropDown;
                 cmbFuncoes.Enabled = true;
                 cmbFuncoes.Text = "Função";
             }
-
+            
             if (btnRegMod.Text.Equals("RegNewFcn")
                 || btnRegMod.Text.Equals("RegNewLib")
                 || btnRegMod.Text.Equals("RegNewLang"))
             {
                 rtbDescricaoFcn.Text = "Descrição da Função";
                 rtbSnippet.Text = "Snippet da Função";
-
-                //cmbModProgramadores.DropDownStyle = ComboBoxStyle.DropDown;
-                cmbModProgramadores.Enabled = true;
-                cmbModProgramadores.Text = Propriedades.Configuracoes.Default.Colaborador;
             }
+            rtbDescricaoLang.Enabled = true;
+            rtbDescricaoLib.Enabled = true;
+            rtbDescricaoFcn.Enabled = true;
         }
 
         private void resetFrmRegistro()
         {
             if (cmbLinguagens.SelectedIndex == 0)
             {
-                //cmbLinguagens.DropDownStyle = ComboBoxStyle.DropDown;
-
-                cmbLinguagens.Items.Clear();
-                lstLinguagens = new(LinguagensRep.SelecionarLinguagens());
-                lstLinguagens.ForEach(linguagenslst => cmbLinguagens.Items.Add(linguagenslst));
-
-                
-                cmbBibliotecas.Text = String.Empty;
                 rtbDescricaoLang.Text = String.Empty;
+                rtbDescricaoLib.Text = String.Empty;
+                cmbBibliotecas.Text = String.Empty;
+                cmbFuncoes.Text = String.Empty;
+                
                 cmbBibliotecas.Enabled = false;
                 cmbFuncoes.Enabled = false;
                 rtbDescricaoLang.Enabled = false;
-            }
-
-            if (cmbBibliotecas.SelectedIndex == 0
-                || cmbLinguagens.SelectedIndex == 0)
+                rtbDescricaoLib.Enabled = false;
+                rtbDescricaoFcn.Enabled = false;
+            }            
+            
+            if (cmbBibliotecas.SelectedIndex == 0)
             {
-                //cmbLinguagens.DropDownStyle = ComboBoxStyle.DropDown;
-                //cmbBibliotecas.DropDownStyle = ComboBoxStyle.DropDown;
-
                 cmbFuncoes.Enabled = false;
                 cmbFuncoes.Text = String.Empty;
                 rtbDescricaoLib.Text = String.Empty;
@@ -309,19 +333,24 @@ namespace DesktopCany.UI
                 || cmbBibliotecas.SelectedIndex == 0
                 || cmbLinguagens.SelectedIndex == 0)
             {
-                //cmbFuncoes.DropDownStyle = ComboBoxStyle.DropDown;
-
-                cmbFcnModDatas.Enabled = false;
-                cmbModProgramadores.Enabled = false;
-                cmbFcnModDatas.Text = String.Empty;
-                cmbModProgramadores.Text = Propriedades.Configuracoes.Default.Colaborador;//cmbModProgramadores.Text = String.Empty;
-                rtbDescricaoFcn.Text = String.Empty;
-                rtbSnippet.Text = String.Empty;
                 rtbDescricaoFcn.Enabled = false;
                 rtbSnippet.Enabled = false;
                 btnRegMod.Text = "RegMod";
+                operacao = "Modificação";
                 btnRegMod.Enabled = false;
             }
+            
+            if (cmbFcnModDatas.Items.Count > 0
+                && !cmbModProgramador.Text.Equals("**Colaboradores**"))
+            {
+                cmbFcnModDatas.Items.Clear();
+                cmbModProgramador.Items.Clear();
+                cmbFcnModDatas.Enabled = false;
+                cmbModProgramador.Enabled = false;
+            }
+            rtbDescricaoFcn.Text = String.Empty;
+            rtbSnippet.Text = String.Empty;
+            firstScan = true;
         }
     }
 }

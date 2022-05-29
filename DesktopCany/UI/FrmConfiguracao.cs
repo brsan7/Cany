@@ -43,7 +43,7 @@ namespace DesktopCany.UI
 
             Propriedades.Configuracoes.Default.Save();
 
-            MessageBox.Show("Configurações salvas! \n\n Para que as alterações sejam aplicadas reinicie o programa.");
+            MessageBox.Show("Configurações salvas! \n\n Para que as alterações sejam aplicadas reinicie o software.");
             this.Close();
         }
 

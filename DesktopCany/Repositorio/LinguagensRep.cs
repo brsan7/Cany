@@ -11,7 +11,7 @@ namespace DesktopCany.Repositorio
     {
         public static List<string> SelecionarLinguagens()
         {
-            List<string> resultado = new() { "Linguagens" };
+            List<string> resultado = new() { "**Linguagens**" };
             using (var db = new Cany_ContextSQLite())
             {
                 try

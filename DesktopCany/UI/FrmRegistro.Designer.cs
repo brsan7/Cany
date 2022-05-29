@@ -34,7 +34,7 @@
             this.cmbFuncoes = new System.Windows.Forms.ComboBox();
             this.rtbSnippet = new System.Windows.Forms.RichTextBox();
             this.cmbFcnModDatas = new System.Windows.Forms.ComboBox();
-            this.cmbModProgramadores = new System.Windows.Forms.ComboBox();
+            this.cmbModProgramador = new System.Windows.Forms.ComboBox();
             this.rtbDescricaoLib = new System.Windows.Forms.RichTextBox();
             this.chkBoxModEstavel = new System.Windows.Forms.CheckBox();
             this.btnRegMod = new System.Windows.Forms.Button();
@@ -94,7 +94,7 @@
             // 
             this.cmbFcnModDatas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbFcnModDatas.FormattingEnabled = true;
-            this.cmbFcnModDatas.Location = new System.Drawing.Point(12, 397);
+            this.cmbFcnModDatas.Location = new System.Drawing.Point(12, 398);
             this.cmbFcnModDatas.Name = "cmbFcnModDatas";
             this.cmbFcnModDatas.Size = new System.Drawing.Size(150, 23);
             this.cmbFcnModDatas.TabIndex = 5;
@@ -102,14 +102,13 @@
             // 
             // cmbModProgramadores
             // 
-            this.cmbModProgramadores.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbModProgramadores.Enabled = false;
-            this.cmbModProgramadores.FormattingEnabled = true;
-            this.cmbModProgramadores.Location = new System.Drawing.Point(12, 426);
-            this.cmbModProgramadores.Name = "cmbModProgramadores";
-            this.cmbModProgramadores.Size = new System.Drawing.Size(310, 23);
-            this.cmbModProgramadores.TabIndex = 6;
-            this.cmbModProgramadores.SelectedIndexChanged += new System.EventHandler(this.CmbModProgramadores_SelectedIndexChanged);
+            this.cmbModProgramador.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbModProgramador.FormattingEnabled = true;
+            this.cmbModProgramador.Location = new System.Drawing.Point(12, 426);
+            this.cmbModProgramador.Name = "cmbModProgramadores";
+            this.cmbModProgramador.Size = new System.Drawing.Size(310, 23);
+            this.cmbModProgramador.TabIndex = 6;
+            this.cmbModProgramador.SelectedIndexChanged += new System.EventHandler(this.CmbModProgramadores_SelectedIndexChanged);
             // 
             // rtbDescricaoLib
             // 
@@ -158,7 +157,7 @@
             this.Controls.Add(this.btnRegMod);
             this.Controls.Add(this.chkBoxModEstavel);
             this.Controls.Add(this.rtbDescricaoLib);
-            this.Controls.Add(this.cmbModProgramadores);
+            this.Controls.Add(this.cmbModProgramador);
             this.Controls.Add(this.cmbFcnModDatas);
             this.Controls.Add(this.rtbSnippet);
             this.Controls.Add(this.cmbFuncoes);
@@ -181,7 +180,7 @@
         private ComboBox cmbFuncoes;
         private RichTextBox rtbSnippet;
         private ComboBox cmbFcnModDatas;
-        private ComboBox cmbModProgramadores;
+        private ComboBox cmbModProgramador;
         private RichTextBox rtbDescricaoLib;
         private CheckBox chkBoxModEstavel;
         private Button btnRegMod;

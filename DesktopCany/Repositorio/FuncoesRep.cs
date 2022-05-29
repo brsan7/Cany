@@ -13,7 +13,7 @@ namespace DesktopCany.Repositorio
 
         public static List<string> SelecionarFuncoes(BibliotecaEnt busca)
         {
-            List<string> resultado = new() { "Funções" };
+            List<string> resultado = new() { "**Funções**" };
             using (var db = new Cany_ContextSQLite())
             {
                 try
@@ -41,7 +41,7 @@ namespace DesktopCany.Repositorio
 
         public static List<FuncaoEnt> SelecionarModsFuncao(BibliotecaEnt busca)
         {
-            List<FuncaoEnt> resultado = new() { new() { ID_FcnModData = "Data_Mod_Id" } };
+            List<FuncaoEnt> resultado = new() { new() { ID_FcnModData = "**Data_Mod_Id**" } };
             using (var db = new Cany_ContextSQLite())
             {
                 try
@@ -70,7 +70,7 @@ namespace DesktopCany.Repositorio
 
         public static List<string> SelecionarModDatas(BibliotecaEnt busca)
         {
-            List<string> resultado = new() { "Data_Mod_Id" };
+            List<string> resultado = new() { "**Data_Mod_Id**" };
             using (var db = new Cany_ContextSQLite())
             {
                 try
@@ -95,9 +95,9 @@ namespace DesktopCany.Repositorio
             return resultado;
         }
 
-        public static List<string> SelecionarModProgramadores(BibliotecaEnt busca)
+        public static List<string> SelecionarModProgramador(BibliotecaEnt busca)
         {
-            List<string> resultado = new() { "Programador Responsável" };
+            List<string> resultado = new() { "**Colaboradores**" };
             using (var db = new Cany_ContextSQLite())
             {
                 try
@@ -143,6 +143,36 @@ namespace DesktopCany.Repositorio
                     Console.WriteLine("[class FuncoesRep]"
                                     + Environment.NewLine
                                     + "[public static FuncaoEnt BuscarMod(BibliotecaEnt busca)]"
+                                    + Environment.NewLine
+                                    + "[Linha 125]"
+                                    + Environment.NewLine
+                                    + ex);
+                }
+            }
+            return resultado;
+        }
+
+        public static List<FuncaoEnt> BuscarModProgramador(BibliotecaEnt busca)
+        {
+            List<FuncaoEnt> resultado = new();
+            using (var db = new Cany_ContextSQLite())
+            {
+                try
+                {
+                    resultado = (from bibliotecas in db.TB_Bibliotecas
+                                 join funcoes in db.TB_Funcoes
+                                 on bibliotecas.ID_Linguagem equals busca.ID_Linguagem
+                                 where bibliotecas.Biblioteca == busca.Biblioteca
+                                 //where funcoes.Funcao == busca.FK_ID_FcnModData.Funcao
+                                 where funcoes.ModProgramador == busca.FK_ID_FcnModData.ModProgramador
+                                 where funcoes.Funcao == busca.FK_ID_FcnModData.Funcao
+                                 select funcoes).OrderBy(tb => tb.ID_FcnModData).Distinct().ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("[class FuncoesRep]"
+                                    + Environment.NewLine
+                                    + "[public static FuncaoEnt BuscarModProgramador(BibliotecaEnt busca)]"
                                     + Environment.NewLine
                                     + "[Linha 125]"
                                     + Environment.NewLine
