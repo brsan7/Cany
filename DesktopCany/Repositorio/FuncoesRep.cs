@@ -14,7 +14,7 @@ namespace DesktopCany.Repositorio
         public static List<string> SelecionarFuncoes(BibliotecaEnt busca)
         {
             List<string> resultado = new() { "**Funções**" };
-            using (var db = new Cany_ContextSQLite())
+            using (var db = new CanyContext())
             {
                 try
                 {
@@ -42,7 +42,7 @@ namespace DesktopCany.Repositorio
         public static List<FuncaoEnt> SelecionarModsFuncao(BibliotecaEnt busca)
         {
             List<FuncaoEnt> resultado = new() { new() { ID_FcnModData = "**Data_Mod_Id**" } };
-            using (var db = new Cany_ContextSQLite())
+            using (var db = new CanyContext())
             {
                 try
                 {
@@ -71,7 +71,7 @@ namespace DesktopCany.Repositorio
         public static List<string> SelecionarModDatas(BibliotecaEnt busca)
         {
             List<string> resultado = new() { "**Data_Mod_Id**" };
-            using (var db = new Cany_ContextSQLite())
+            using (var db = new CanyContext())
             {
                 try
                 {
@@ -98,7 +98,7 @@ namespace DesktopCany.Repositorio
         public static List<string> SelecionarModProgramador(BibliotecaEnt busca)
         {
             List<string> resultado = new() { "**Colaboradores**" };
-            using (var db = new Cany_ContextSQLite())
+            using (var db = new CanyContext())
             {
                 try
                 {
@@ -125,7 +125,7 @@ namespace DesktopCany.Repositorio
         public static FuncaoEnt BuscarMod(BibliotecaEnt busca)
         {
             FuncaoEnt resultado = new();
-            using (var db = new Cany_ContextSQLite())
+            using (var db = new CanyContext())
             {
                 try
                 {
@@ -155,7 +155,7 @@ namespace DesktopCany.Repositorio
         public static List<FuncaoEnt> BuscarModProgramador(BibliotecaEnt busca)
         {
             List<FuncaoEnt> resultado = new();
-            using (var db = new Cany_ContextSQLite())
+            using (var db = new CanyContext())
             {
                 try
                 {
@@ -184,7 +184,7 @@ namespace DesktopCany.Repositorio
 
         public static List<FuncaoEnt> SelecionarTB_Funcoes()
         {
-            using (var db = new Cany_ContextSQLite())
+            using (var db = new CanyContext())
             {
                 List<FuncaoEnt> resultado = new();
                 try
@@ -208,7 +208,7 @@ namespace DesktopCany.Repositorio
 
         public static List<FuncaoEnt> Buscar_Funcao(string busca)
         {
-            using (var db = new Cany_ContextSQLite())
+            using (var db = new CanyContext())
             {
                 List<FuncaoEnt> resultado = new();
                 try
@@ -233,7 +233,7 @@ namespace DesktopCany.Repositorio
 
         public static List<FuncaoEnt> Buscar_ModData(string busca)
         {
-            using (var db = new Cany_ContextSQLite())
+            using (var db = new CanyContext())
             {
                 List<FuncaoEnt> resultado = new();
                 try
@@ -258,7 +258,7 @@ namespace DesktopCany.Repositorio
 
         public static List<FuncaoEnt> Buscar_ModProgramador(string busca)
         {
-            using (var db = new Cany_ContextSQLite())
+            using (var db = new CanyContext())
             {
                 List<FuncaoEnt> resultado = new();
                 try
@@ -283,7 +283,7 @@ namespace DesktopCany.Repositorio
 
         public static List<FuncaoEnt> Buscar_FuncoesPorLibLang(BibliotecaEnt busca)
         {
-            using (var db = new Cany_ContextSQLite())
+            using (var db = new CanyContext())
             {
                 List<FuncaoEnt> resultado = new();
                 try
@@ -311,7 +311,7 @@ namespace DesktopCany.Repositorio
 
         public static List<FuncaoEnt> Buscar_FuncoesPorLinguagem(BibliotecaEnt busca)
         {
-            using (var db = new Cany_ContextSQLite())
+            using (var db = new CanyContext())
             {
                 List<FuncaoEnt> resultado = new();
                 try
@@ -339,7 +339,7 @@ namespace DesktopCany.Repositorio
 
         public static void Registrar(FuncaoEnt funcaoEnt)
         {
-            using (var db = new Cany_ContextSQLite())
+            using (var db = new CanyContext())
             {
                 try
                 {
@@ -361,7 +361,7 @@ namespace DesktopCany.Repositorio
 
         public static void Remover(FuncaoEnt funcaoEnt)
         {
-            using (var db = new Cany_ContextSQLite())
+            using (var db = new CanyContext())
             {
                 try
                 {

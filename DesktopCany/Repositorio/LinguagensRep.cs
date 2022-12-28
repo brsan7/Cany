@@ -12,7 +12,7 @@ namespace DesktopCany.Repositorio
         public static List<string> SelecionarLinguagens()
         {
             List<string> resultado = new() { "**Linguagens**" };
-            using (var db = new Cany_ContextSQLite())
+            using (var db = new CanyContext())
             {
                 try
                 {
@@ -32,7 +32,7 @@ namespace DesktopCany.Repositorio
         public static string BuscarDescricao(string linguagem)
         {
             string resultado = "";
-            using (var db = new Cany_ContextSQLite())
+            using (var db = new CanyContext())
             {
                 try
                 {
@@ -53,7 +53,7 @@ namespace DesktopCany.Repositorio
 
         public static List<LinguagemEnt> SelecionarTB_Linguagens()
         {
-            using (var db = new Cany_ContextSQLite())
+            using (var db = new CanyContext())
             {
                 try
                 {
@@ -74,7 +74,7 @@ namespace DesktopCany.Repositorio
 
         public static List<LinguagemEnt> Buscar_Linguagem(string busca)
         {
-            using (var db = new Cany_ContextSQLite())
+            using (var db = new CanyContext())
             {
                 List<LinguagemEnt> resultado = new();
                 try
@@ -99,7 +99,7 @@ namespace DesktopCany.Repositorio
 
         public static void Remover(LinguagemEnt linguagemEnt)
         {
-            using (var db = new Cany_ContextSQLite())
+            using (var db = new CanyContext())
             {
                 try
                 {

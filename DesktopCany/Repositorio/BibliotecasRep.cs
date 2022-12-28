@@ -7,7 +7,7 @@ namespace DesktopCany.Repositorio
         public static List<string> SelecionarBibliotecas(string linguagem)
         {
             List<string> resultado = new() { "**Bibliotecas**" };
-            using (var db = new Cany_ContextSQLite())
+            using (var db = new CanyContext())
             {
                 try
                 {
@@ -32,7 +32,7 @@ namespace DesktopCany.Repositorio
         public static string BuscarDescricao(string linguagem)
         {
             string resultado = "";
-            using (var db = new Cany_ContextSQLite())
+            using (var db = new CanyContext())
             {
                 try
                 {
@@ -57,7 +57,7 @@ namespace DesktopCany.Repositorio
         public static List<BibliotecaEnt> SelecionarTB_Bibliotecas()
         {
             List<BibliotecaEnt> resultado = new();
-            using (var db = new Cany_ContextSQLite())
+            using (var db = new CanyContext())
             {
                 try
                 {
@@ -81,7 +81,7 @@ namespace DesktopCany.Repositorio
 
         public static List<BibliotecaEnt> Buscar_Biblioteca(string busca)
         {
-            using (var db = new Cany_ContextSQLite())
+            using (var db = new CanyContext())
             {
                 List<BibliotecaEnt> resultado = new();
                 try
@@ -106,7 +106,7 @@ namespace DesktopCany.Repositorio
 
         public static List<BibliotecaEnt> Buscar_BibliotecasPorLinguagem(LinguagemEnt busca)
         {
-            using (var db = new Cany_ContextSQLite())
+            using (var db = new CanyContext())
             {
                 List<BibliotecaEnt> resultado = new();
                 try
@@ -131,7 +131,7 @@ namespace DesktopCany.Repositorio
 
         public static List<BibliotecaEnt> Buscar_BibliotecasPorFuncao(BibliotecaEnt busca)
         {
-            using (var db = new Cany_ContextSQLite())
+            using (var db = new CanyContext())
             {
                 List<BibliotecaEnt> resultado = new();
                 try
@@ -156,7 +156,7 @@ namespace DesktopCany.Repositorio
 
         public static bool Registrar(BibliotecaEnt RI)
         {
-            using (var db = new Cany_ContextSQLite())
+            using (var db = new CanyContext())
             {
                 try
                 {

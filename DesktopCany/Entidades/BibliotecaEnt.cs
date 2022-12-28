@@ -9,13 +9,13 @@ namespace DesktopCany.Entidades
         [Key]
         public Int64 ID_Biblioteca { get; set; } = 0;
 
-        [ForeignKey("FK_ID_Linguagem")][MaxLength(10)]
+        [ForeignKey("FK_ID_Linguagem")][MaxLength(30)]
         public string ID_Linguagem { get; set; } = String.Empty;
 
-        [ForeignKey("FK_ID_FcnModData")][MaxLength(10)]
+        [ForeignKey("FK_ID_FcnModData")][MaxLength(20)]
         public string ID_FcnModData { get; set; } = String.Empty;
 
-        [MaxLength(10)]
+        [MaxLength(30)]
         public string Biblioteca { get; set; } = String.Empty;
 
         [MaxLength(200)]

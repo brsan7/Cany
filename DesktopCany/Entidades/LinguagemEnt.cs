@@ -11,10 +11,10 @@ namespace DesktopCany.Entidades
 {
     class LinguagemEnt
     {
-        [Key][MaxLength(10)]
+        [Key][MaxLength(30)]
         public string ID_Linguagem { get; set; } = String.Empty;
 
-        [MaxLength(100)]
+        [MaxLength(200)]
         public string DescricaoLang{ get; set; } = String.Empty;
 
     }

@@ -2,21 +2,19 @@
 using DesktopCany.Entidades;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
 namespace DesktopCany.Migrations
 {
-    [DbContext(typeof(Cany_ContextSQLite))]
-    [Migration("20220327121919_InitialCreate")]
-    partial class InitialCreate
+    [DbContext(typeof(CanyContext))]
+    partial class CanyContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "6.0.3");
+            modelBuilder.HasAnnotation("ProductVersion", "7.0.1");
 
             modelBuilder.Entity("DesktopCany.Entidades.BibliotecaEnt", b =>
                 {
@@ -26,7 +24,7 @@ namespace DesktopCany.Migrations
 
                     b.Property<string>("Biblioteca")
                         .IsRequired()
-                        .HasMaxLength(10)
+                        .HasMaxLength(30)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("DescricaoLib")
@@ -36,12 +34,12 @@ namespace DesktopCany.Migrations
 
                     b.Property<string>("ID_FcnModData")
                         .IsRequired()
-                        .HasMaxLength(10)
+                        .HasMaxLength(20)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ID_Linguagem")
                         .IsRequired()
-                        .HasMaxLength(10)
+                        .HasMaxLength(30)
                         .HasColumnType("TEXT");
 
                     b.HasKey("ID_Biblioteca");
@@ -66,7 +64,7 @@ namespace DesktopCany.Migrations
 
                     b.Property<string>("Funcao")
                         .IsRequired()
-                        .HasMaxLength(10)
+                        .HasMaxLength(50)
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("ModEstavel")
@@ -74,12 +72,12 @@ namespace DesktopCany.Migrations
 
                     b.Property<string>("ModProgramador")
                         .IsRequired()
-                        .HasMaxLength(10)
+                        .HasMaxLength(30)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Snippet")
                         .IsRequired()
-                        .HasMaxLength(400)
+                        .HasMaxLength(8000)
                         .HasColumnType("TEXT");
 
                     b.HasKey("ID_FcnModData");
@@ -90,12 +88,12 @@ namespace DesktopCany.Migrations
             modelBuilder.Entity("DesktopCany.Entidades.LinguagemEnt", b =>
                 {
                     b.Property<string>("ID_Linguagem")
-                        .HasMaxLength(10)
+                        .HasMaxLength(30)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("DescricaoLang")
                         .IsRequired()
-                        .HasMaxLength(100)
+                        .HasMaxLength(200)
                         .HasColumnType("TEXT");
 
                     b.HasKey("ID_Linguagem");
