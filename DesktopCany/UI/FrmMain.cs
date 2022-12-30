@@ -59,7 +59,7 @@ namespace DesktopCany.UI
         {
             consultaModificacaoToolStripMenuItem.Enabled = true;
             registroToolStripMenuItem.Enabled = true;
-            backupToolStripMenuItem.Enabled = true;
+            //backupToolStripMenuItem.Enabled = true;
             gerenciamentoToolStripMenuItem.Enabled = true;
             janelasAbertasToolStripMenuItem.Enabled = true;
             configuraçõesToolStripMenuItem.Enabled = true;
@@ -100,6 +100,33 @@ namespace DesktopCany.UI
                 conf = false;
             }
         }
+
+        private void AbrirJanelaNormal(Form tela)
+        {
+            FecharJanelasUnicas();
+            tela.MdiParent = this;
+            tela.WindowState = FormWindowState.Normal;
+            tela.Show();
+        }
+
+        private void AbrirJanelaMaximizada(Form tela)
+        {
+            FecharJanelasUnicas();
+            tela.MdiParent = this;
+            tela.WindowState = FormWindowState.Maximized;
+            tela.Show();
+        }
+
+        private void FecharJanelasUnicas()
+        {
+            foreach (var janela in this.MdiChildren)
+            {
+                if (!janela.Text.Contains("lang:"))
+                {
+                    janela.Close();
+                }
+            }
+        }
         /*
          * ######################################################################
          * FINAL FUNÇÕES
@@ -124,46 +151,35 @@ namespace DesktopCany.UI
         
         private void ConsultaModificacaoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmConsulta tela = new();
-            tela.MdiParent = this;
-            tela.Show();
+            //desabilitado
+            AbrirJanelaNormal(new FrmConsulta());
         }
 
         private void RegistroToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmRegistro tela = new();
-            tela.MdiParent = this;
-            tela.WindowState = FormWindowState.Maximized;
-            tela.Show();
+            AbrirJanelaMaximizada(new FrmRegistro());
         }
 
         private void GerenciamentoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmGerenciamento tela = new();
-            tela.MdiParent = this;
-            tela.WindowState = FormWindowState.Maximized;
-            tela.Show();
+            AbrirJanelaMaximizada(new FrmGerenciamento());
         }
 
         private void BackupToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmBackup tela = new();
-            tela.MdiParent = this;
-            tela.Show();
+            //desabilitado
+            AbrirJanelaNormal(new FrmBackup());
         }
 
         private void ConfiguracoesToolStripMenuItem_Click(object? sender, EventArgs? e)
         {
-            FrmConfiguracao tela = new();
-            tela.MdiParent = this;
-            tela.Show();
+            AbrirJanelaNormal(new FrmConfiguracao());
         }
 
         private void LoginToolStripMenuItem_Hide()
         {
-            FrmLogin tela = new();
-            tela.MdiParent = this;
-            tela.Show();
+            //configuração inicial
+            AbrirJanelaNormal(new FrmLogin());
         }
 
         private void loginLogoutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -172,7 +188,7 @@ namespace DesktopCany.UI
         }
 
         private void FrmMain_MdiChildActivate(object sender, EventArgs e)
-        {            
+        {
             if (conf && FrmMain.ActiveForm?.ActiveMdiChild?.ToString()==null)
             {
                 VerificaConfiguracao();

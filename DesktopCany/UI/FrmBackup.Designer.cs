@@ -36,9 +36,10 @@
             // 
             // btnGerar
             // 
-            this.btnGerar.Location = new System.Drawing.Point(110, 51);
+            this.btnGerar.Location = new System.Drawing.Point(128, 59);
+            this.btnGerar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnGerar.Name = "btnGerar";
-            this.btnGerar.Size = new System.Drawing.Size(92, 48);
+            this.btnGerar.Size = new System.Drawing.Size(107, 55);
             this.btnGerar.TabIndex = 0;
             this.btnGerar.Text = "Gerar Backup";
             this.btnGerar.UseVisualStyleBackColor = true;
@@ -46,9 +47,10 @@
             // 
             // btnRestaurar
             // 
-            this.btnRestaurar.Location = new System.Drawing.Point(110, 121);
+            this.btnRestaurar.Location = new System.Drawing.Point(128, 140);
+            this.btnRestaurar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnRestaurar.Name = "btnRestaurar";
-            this.btnRestaurar.Size = new System.Drawing.Size(92, 48);
+            this.btnRestaurar.Size = new System.Drawing.Size(107, 55);
             this.btnRestaurar.TabIndex = 1;
             this.btnRestaurar.Text = "Restaurar Backup";
             this.btnRestaurar.UseVisualStyleBackColor = true;
@@ -64,15 +66,16 @@
             this.saveFileDialog1.DefaultExt = "bak";
             this.saveFileDialog1.Filter = "Backup|*.bak";
             // 
-            // frmBackup
+            // FrmBackup
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(307, 247);
+            this.ClientSize = new System.Drawing.Size(358, 285);
             this.Controls.Add(this.btnRestaurar);
             this.Controls.Add(this.btnGerar);
-            this.Name = "frmBackup";
-            this.Text = "frmBackup";
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.Name = "FrmBackup";
+            this.Text = "Backup";
             this.Load += new System.EventHandler(this.frmBackup_Load);
             this.ResumeLayout(false);
 

@@ -100,12 +100,12 @@
             this.cmbFcnModDatas.TabIndex = 5;
             this.cmbFcnModDatas.SelectedIndexChanged += new System.EventHandler(this.CmbFcnModDatas_SelectedIndexChanged);
             // 
-            // cmbModProgramadores
+            // cmbModProgramador
             // 
             this.cmbModProgramador.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbModProgramador.FormattingEnabled = true;
             this.cmbModProgramador.Location = new System.Drawing.Point(12, 426);
-            this.cmbModProgramador.Name = "cmbModProgramadores";
+            this.cmbModProgramador.Name = "cmbModProgramador";
             this.cmbModProgramador.Size = new System.Drawing.Size(310, 23);
             this.cmbModProgramador.TabIndex = 6;
             this.cmbModProgramador.SelectedIndexChanged += new System.EventHandler(this.CmbModProgramadores_SelectedIndexChanged);
@@ -165,7 +165,7 @@
             this.Controls.Add(this.cmbBibliotecas);
             this.Controls.Add(this.cmbLinguagens);
             this.Name = "FrmRegistro";
-            this.Text = "FrmRegistro";
+            this.Text = "Home";
             this.Load += new System.EventHandler(this.FrmRegistroOnLoad);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -165,7 +165,7 @@
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.dgvLinguagens);
             this.Name = "FrmGerenciamento";
-            this.Text = "FrmGerenciamento";
+            this.Text = "Gerenciamento";
             this.Load += new System.EventHandler(this.FrmGerenciamentoDb_OnLoad);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLinguagens)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBibliotecas)).EndInit();

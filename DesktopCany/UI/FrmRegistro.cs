@@ -160,7 +160,7 @@ namespace DesktopCany.UI
                 rtbSnippet.Enabled = true;
                 rtbDescricaoFcn.Text = biblitotecaEnt.FK_ID_FcnModData.DescricaoFcn;
                 rtbSnippet.Text = biblitotecaEnt.FK_ID_FcnModData.Snippet;
-
+                this.Text = "lang:" + cmbLinguagens.Text + "_lib:" + cmbBibliotecas.Text + "_fcn:" + cmbFuncoes.Text;
 
 
                 btnRegMod.Enabled = true;
@@ -176,6 +176,7 @@ namespace DesktopCany.UI
                 cmbModProgramador.Text = biblitotecaEnt.FK_ID_FcnModData.ModProgramador;
                 rtbDescricaoFcn.Text = biblitotecaEnt.FK_ID_FcnModData.DescricaoFcn;
                 rtbSnippet.Text = biblitotecaEnt.FK_ID_FcnModData.Snippet;
+                this.Text = "lang:" + cmbLinguagens.Text + "_lib:" + cmbBibliotecas.Text + "_fcn:" + cmbFuncoes.Text;
             }
         }
 
@@ -194,6 +195,7 @@ namespace DesktopCany.UI
                 
                 rtbDescricaoFcn.Text = biblitotecaEnt.FK_ID_FcnModData.DescricaoFcn;
                 rtbSnippet.Text = biblitotecaEnt.FK_ID_FcnModData.Snippet;
+                this.Text = "lang:" + cmbLinguagens.Text + "_lib:" + cmbBibliotecas.Text + "_fcn:" + cmbFuncoes.Text;
 
                 cmbFcnModDatas.SelectedIndex = cmbFcnModDatas.Items.Count - 1;
             }
@@ -351,6 +353,7 @@ namespace DesktopCany.UI
             rtbDescricaoFcn.Text = String.Empty;
             rtbSnippet.Text = String.Empty;
             firstScan = true;
+            this.Text = "Home";
         }
     }
 }
