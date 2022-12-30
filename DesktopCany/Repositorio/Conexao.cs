@@ -55,7 +55,7 @@ namespace DesktopCany.Repositorio
                 {
                     try
                     {
-                        servidor = db.TB_Linguagens.First().ID_Linguagem;
+                        servidor = db.TB_Linguagens?.Find("TestarConexao()")?.ID_Linguagem ?? String.Empty;
                         configurado = true;
                     }
                     catch (Exception ex)
