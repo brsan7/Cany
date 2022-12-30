@@ -43,7 +43,7 @@ namespace DesktopCany.UI
                 
                 Propriedades.Configuracoes.Default.Colaborador = txtUsuario.Text;
                 Propriedades.Configuracoes.Default.Save();
-                MessageBox.Show("Configurações salvas! \n\n Para que as alterações sejam aplicadas reinicie o software.");
+                MessageBox.Show("Configuração salva!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
                 this.Close();
             }
             /*
@@ -80,6 +80,17 @@ namespace DesktopCany.UI
         private void FrmLoginOnLoad(object sender, EventArgs e)
         {
             
+        }
+
+        private void txtUsuario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == (char)Keys.Enter)
+            {
+                if (txtUsuario.Text.Length > 0)
+                {
+                    btnAutenticar.PerformClick();
+                }
+            }
         }
     }
 }

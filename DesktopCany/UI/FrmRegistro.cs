@@ -232,7 +232,7 @@ namespace DesktopCany.UI
                 };
                 BibliotecasRep.Registrar(agrupamentoEnt);
             }
-            MessageBox.Show(operacao+" Registrada!");
+            MessageBox.Show(operacao+" Registrada!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
             cmbLinguagens.SelectedIndex = 0;
             if (cmbBibliotecas.Items.Count > 0) cmbBibliotecas.SelectedIndex = 0;
             if (cmbFuncoes.Items.Count > 0) cmbFuncoes.SelectedIndex = 0;

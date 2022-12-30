@@ -155,7 +155,7 @@ namespace DesktopCany.UI
                         ID_FcnModData = dgvFuncoes.SelectedRows[0].Cells["ID_FcnModData"].Value.ToString()
                     };
                     FuncoesRep.Remover(funcaoEnt);
-                    MessageBox.Show("Função Removida");
+                    MessageBox.Show("Função Removida", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
                     setupDSourceDgvs(null);
                 }
             }
@@ -178,7 +178,7 @@ namespace DesktopCany.UI
                         ID_Linguagem = dgvLinguagens.SelectedRows[0].Cells["ID_Linguagem"].Value.ToString()
                     };
                     LinguagensRep.Remover(linguagemEnt);
-                    MessageBox.Show("Linguagem Removida");
+                    MessageBox.Show("Linguagem Removida", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
                     setupDSourceDgvs(null);
                 }
             }

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 using System.Data; //Trabalhar com dados.
 using System.Data.SqlClient; //Cliente do servidor SQLServer.
+using Microsoft.IdentityModel.Tokens;
+using static System.Net.Mime.MediaTypeNames;
+using DesktopCany.Entidades;
 
 namespace DesktopCany.Repositorio
 {
@@ -41,19 +44,28 @@ namespace DesktopCany.Repositorio
             }
         }
 
-        public bool TestarConexao()
+        public static bool TestarConexao()
         {
-            bool teste = true;
-            try
+            bool configurado;
+            string servidor = Propriedades.Configuracoes.Default.EnderecoServidorSQL;
+
+            if (CanyContext.genesis || servidor != "*Nome ou endereço do servidor*")
             {
-                con.Open();
-                con.Close();
+                using (var db = new CanyContext())
+                {
+                    try
+                    {
+                        servidor = db.TB_Linguagens.First().ID_Linguagem;
+                        configurado = true;
+                    }
+                    catch (Exception ex)
+                    {
+                        configurado = false;
+                    }
+                }
+                return configurado;
             }
-            catch (Exception)
-            {
-                teste = false;
-            }
-            return teste;
+            else return false;
         }
     }
 }

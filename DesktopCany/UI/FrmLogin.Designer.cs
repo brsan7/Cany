@@ -51,6 +51,7 @@
             this.txtUsuario.PlaceholderText = "Configure sua Assinatura de Colaborador";
             this.txtUsuario.Size = new System.Drawing.Size(310, 23);
             this.txtUsuario.TabIndex = 3;
+            this.txtUsuario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUsuario_KeyPress);
             // 
             // FrmLogin
             // 
@@ -60,6 +61,8 @@
             this.Controls.Add(this.txtUsuario);
             this.Controls.Add(this.btnAutenticar);
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Colaborador";
