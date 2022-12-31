@@ -16,7 +16,7 @@ namespace DesktopCany.Entidades
         [Required][MaxLength(50)]
         public string Funcao { get; set; } = String.Empty;
 
-        [MaxLength(200)]
+        [MaxLength(400)]
         public string DescricaoFcn { get; set; } = String.Empty;
 
         [Required][MaxLength(30)]
