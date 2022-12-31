@@ -45,6 +45,7 @@
             // 
             this.cmbLinguagens.FormattingEnabled = true;
             this.cmbLinguagens.Location = new System.Drawing.Point(12, 12);
+            this.cmbLinguagens.MaxLength = 30;
             this.cmbLinguagens.Name = "cmbLinguagens";
             this.cmbLinguagens.Size = new System.Drawing.Size(310, 23);
             this.cmbLinguagens.TabIndex = 0;
@@ -55,6 +56,7 @@
             // 
             this.cmbBibliotecas.FormattingEnabled = true;
             this.cmbBibliotecas.Location = new System.Drawing.Point(12, 124);
+            this.cmbBibliotecas.MaxLength = 30;
             this.cmbBibliotecas.Name = "cmbBibliotecas";
             this.cmbBibliotecas.Size = new System.Drawing.Size(310, 23);
             this.cmbBibliotecas.TabIndex = 1;
@@ -64,6 +66,7 @@
             // rtbDescricaoLang
             // 
             this.rtbDescricaoLang.Location = new System.Drawing.Point(12, 41);
+            this.rtbDescricaoLang.MaxLength = 200;
             this.rtbDescricaoLang.Name = "rtbDescricaoLang";
             this.rtbDescricaoLang.Size = new System.Drawing.Size(310, 77);
             this.rtbDescricaoLang.TabIndex = 2;
@@ -73,6 +76,7 @@
             // 
             this.cmbFuncoes.FormattingEnabled = true;
             this.cmbFuncoes.Location = new System.Drawing.Point(12, 236);
+            this.cmbFuncoes.MaxLength = 50;
             this.cmbFuncoes.Name = "cmbFuncoes";
             this.cmbFuncoes.Size = new System.Drawing.Size(310, 23);
             this.cmbFuncoes.TabIndex = 3;
@@ -113,6 +117,7 @@
             // rtbDescricaoLib
             // 
             this.rtbDescricaoLib.Location = new System.Drawing.Point(12, 153);
+            this.rtbDescricaoLib.MaxLength = 200;
             this.rtbDescricaoLib.Name = "rtbDescricaoLib";
             this.rtbDescricaoLib.Size = new System.Drawing.Size(310, 77);
             this.rtbDescricaoLib.TabIndex = 7;
@@ -143,6 +148,7 @@
             // rtbDescricaoFcn
             // 
             this.rtbDescricaoFcn.Location = new System.Drawing.Point(12, 265);
+            this.rtbDescricaoFcn.MaxLength = 400;
             this.rtbDescricaoFcn.Name = "rtbDescricaoFcn";
             this.rtbDescricaoFcn.Size = new System.Drawing.Size(310, 126);
             this.rtbDescricaoFcn.TabIndex = 10;

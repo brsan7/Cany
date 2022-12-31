@@ -162,7 +162,6 @@ namespace DesktopCany.UI
                 rtbSnippet.Text = biblitotecaEnt.FK_ID_FcnModData.Snippet;
                 this.Text = "lang:" + cmbLinguagens.Text + "_lib:" + cmbBibliotecas.Text + "_fcn:" + cmbFuncoes.Text;
 
-
                 btnRegMod.Enabled = true;
             }
         }
@@ -305,6 +304,7 @@ namespace DesktopCany.UI
             rtbDescricaoLang.Enabled = true;
             rtbDescricaoLib.Enabled = true;
             rtbDescricaoFcn.Enabled = true;
+            rtbSnippet.Enabled = true;
         }
 
         private void resetFrmRegistro()
