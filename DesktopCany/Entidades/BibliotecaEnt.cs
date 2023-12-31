@@ -12,7 +12,7 @@ namespace DesktopCany.Entidades
         [ForeignKey("FK_ID_Linguagem")][MaxLength(30)]
         public string ID_Linguagem { get; set; } = String.Empty;
 
-        [ForeignKey("FK_ID_FcnModData")][MaxLength(20)]
+        [ForeignKey("FK_ID_FcnModData")][MaxLength(100)]
         public string ID_FcnModData { get; set; } = String.Empty;
 
         [MaxLength(30)]

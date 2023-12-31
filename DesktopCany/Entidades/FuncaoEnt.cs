@@ -10,7 +10,7 @@ namespace DesktopCany.Entidades
 {
     class FuncaoEnt
     {
-        [Key][MaxLength(20)]
+        [Key][MaxLength(100)]
         public string ID_FcnModData { get; set; } = String.Empty;
 
         [Required][MaxLength(50)]
