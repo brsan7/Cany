@@ -168,31 +168,39 @@ namespace DesktopCany.UI
                 modsFuncao.AddRange(FuncoesRep.SelecionarModsFuncao(biblitotecaEnt).Distinct());
                 biblitotecaEnt.FK_ID_FcnModData = modsFuncao.Last();
 
-                cmbFcnModDatas.SelectedIndex = cmbFcnModDatas.Items.Count - 1;
-                cmbModProgramador.SelectedIndex = cmbModProgramador.Items.Count-1;
-
-                /*observar o comportamento*//*
-                cmbLinguagens.DropDownStyle = ComboBoxStyle.DropDownList;
-                cmbBibliotecas.DropDownStyle = ComboBoxStyle.DropDownList;
-                cmbFuncoes.DropDownStyle = ComboBoxStyle.DropDownList;
-                /*observar o comportamento*/
-
-                cmbFcnModDatas.Enabled = true;
-                cmbModProgramador.Enabled = true;
-                rtbDescricaoFcn.Enabled = true;
-                rtbSnippet.Enabled = true;
-                rtbDescricaoFcn.Text = biblitotecaEnt.FK_ID_FcnModData.DescricaoFcn;
-                rtbSnippet.Text = biblitotecaEnt.FK_ID_FcnModData.Snippet;
-                this.Text = "lang:" + cmbLinguagens.Text + "_lib:" + cmbBibliotecas.Text + "_fcn:" + cmbFuncoes.Text;
-
-                btnRegMod.Enabled = true;
-
                 if (editar.Count == 4)
                 {
                     cmbFcnModDatas.SelectedIndex = cmbFcnModDatas.FindString(editar[3].ToString());
                     cmbFcnModDatas.Enabled = false;
                     cmbModProgramador.Enabled = false;
+                    if (biblitotecaEnt.FK_ID_FcnModData.ModEstavel == false)
+                    {
+                        chkBoxModEstavel.Enabled = true;
+                    }
+                    else
+                    {
+                        editar.Add("HOMOLOGADO");
+                    }
                 }
+                else
+                {
+                    cmbFcnModDatas.Enabled = true;
+                    cmbModProgramador.Enabled = true;
+                    cmbFcnModDatas.SelectedIndex = cmbFcnModDatas.Items.Count - 1;
+                    cmbModProgramador.SelectedIndex = cmbModProgramador.Items.Count - 1;
+                }
+
+                
+                rtbDescricaoFcn.Enabled = true;
+                rtbSnippet.Enabled = true;
+                rtbDescricaoFcn.Text = biblitotecaEnt.FK_ID_FcnModData.DescricaoFcn;
+                chkBoxModEstavel.Checked = biblitotecaEnt.FK_ID_FcnModData.ModEstavel;
+                rtbSnippet.Text = biblitotecaEnt.FK_ID_FcnModData.Snippet;
+                this.Text = "lang:" + cmbLinguagens.Text + "_lib:" + cmbBibliotecas.Text + "_fcn:" + cmbFuncoes.Text;
+
+                btnRegMod.Enabled = true;
+
+                
             }
         }
 
@@ -204,6 +212,7 @@ namespace DesktopCany.UI
                 biblitotecaEnt.FK_ID_FcnModData = FuncoesRep.BuscarMod(biblitotecaEnt);
                 cmbModProgramador.Text = biblitotecaEnt.FK_ID_FcnModData.ModProgramador;
                 rtbDescricaoFcn.Text = biblitotecaEnt.FK_ID_FcnModData.DescricaoFcn;
+                chkBoxModEstavel.Checked = biblitotecaEnt.FK_ID_FcnModData.ModEstavel;
                 rtbSnippet.Text = biblitotecaEnt.FK_ID_FcnModData.Snippet;
                 this.Text = "lang:" + cmbLinguagens.Text + "_lib:" + cmbBibliotecas.Text + "_fcn:" + cmbFuncoes.Text;
             }
@@ -242,9 +251,33 @@ namespace DesktopCany.UI
             firstScan = false;
         }
 
+        private FuncaoEnt ComporHomologacao()
+        {
+            FuncaoEnt funcao = new()
+            {
+
+                ID_FcnModData = cmbFcnModDatas.Text,
+                Funcao = cmbFuncoes.Text,
+                DescricaoFcn = rtbDescricaoFcn.Text,
+                ModProgramador = cmbModProgramador.Text,
+                ModEstavel = chkBoxModEstavel.Checked,
+                Snippet = rtbSnippet.Text
+            };
+            return funcao;
+        }
+
         private void ChkBoxModEstavel_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //
+            if (chkBoxModEstavel.Enabled)
+            {
+                DialogResult resposta = MessageBox.Show("Deseja realmente Homologar?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                if (resposta == DialogResult.Yes)
+                {
+                    FuncoesRep.Homologar(ComporHomologacao());
+                    MessageBox.Show("Homologado!");
+                    chkBoxModEstavel.Enabled = false;
+                }
+            }
         }
         private void BtnRegMod_OnClick(object sender, EventArgs e)
         {

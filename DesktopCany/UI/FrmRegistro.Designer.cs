@@ -124,6 +124,7 @@
             // chkBoxModEstavel
             // 
             chkBoxModEstavel.AutoSize = true;
+            chkBoxModEstavel.Enabled = false;
             chkBoxModEstavel.Location = new Point(225, 400);
             chkBoxModEstavel.Name = "chkBoxModEstavel";
             chkBoxModEstavel.Size = new Size(97, 19);

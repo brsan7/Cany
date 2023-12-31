@@ -337,6 +337,28 @@ namespace DesktopCany.Repositorio
             }
         }
 
+        public static void Homologar(FuncaoEnt funcaoEnt)
+        {
+            using (var db = new CanyContext())
+            {
+                try
+                {
+                    db.TB_Funcoes.Update(funcaoEnt);
+                    db.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("[class FuncoesRep]"
+                                    + Environment.NewLine
+                                    + "[public static void Homologar(FuncaoEnt funcaoEnt)]"
+                                    + Environment.NewLine
+                                    + "[Linha 340]"
+                                    + Environment.NewLine
+                                    + ex);
+                }
+            }
+        }
+
         public static void Registrar(FuncaoEnt funcaoEnt)
         {
             using (var db = new CanyContext())
