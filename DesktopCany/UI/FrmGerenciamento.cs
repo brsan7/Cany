@@ -89,7 +89,7 @@ namespace DesktopCany.UI
 
         private void dgvLinguagens_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            string id_Linguagem = dgvLinguagens.SelectedRows[0].Cells["ID_Linguagem"].Value.ToString();
+            string id_Linguagem = $@"{dgvLinguagens.SelectedRows[0].Cells["ID_Linguagem"].Value}";
             BibliotecaEnt bibliotecaEnt = new()
             {
                 ID_Linguagem = id_Linguagem,
@@ -107,15 +107,15 @@ namespace DesktopCany.UI
         {
             BibliotecaEnt bibliotecaEnt = new()
             {
-                ID_Linguagem = dgvBibliotecas.SelectedRows[0].Cells["ID_Linguagem"].Value.ToString(),
-                Biblioteca = dgvBibliotecas.SelectedRows[0].Cells["Biblioteca"].Value.ToString(),
+                ID_Linguagem = $@"{dgvBibliotecas.SelectedRows[0].Cells["ID_Linguagem"].Value}",
+                Biblioteca = $@"{dgvBibliotecas.SelectedRows[0].Cells["Biblioteca"].Value}",
             };
             setupDSourceDgvs(bibliotecaEnt);
         }
 
         private void dgvFuncoes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            string ID_FcnModData = dgvFuncoes.SelectedRows[0].Cells["ID_FcnModData"].Value.ToString();
+            string ID_FcnModData = $@"{dgvFuncoes.SelectedRows[0].Cells["ID_FcnModData"].Value}";
             BibliotecaEnt bibliotecaEnt = new()
             {
                 ID_FcnModData = ID_FcnModData,
@@ -140,17 +140,12 @@ namespace DesktopCany.UI
         private void btnEdit_Click(object sender, EventArgs e)
         {
             FrmRegistro tela = new FrmRegistro();
-            //tela.MdiParent = this;
-            //tela.WindowState = FormWindowState.Maximized;
             tela.operacao = "Editar";
-            //tela.editar = new();
-            tela.editar.Add(dgvLinguagens.SelectedRows[0].Cells["ID_Linguagem"].Value.ToString());
-            tela.editar.Add(dgvBibliotecas.SelectedRows[0].Cells["Biblioteca"].Value.ToString());
-            tela.editar.Add(dgvFuncoes.SelectedRows[0].Cells["Funcao"].Value.ToString());
-            tela.editar.Add(dgvFuncoes.SelectedRows[0].Cells["ID_FcnModData"].Value.ToString());
+            tela.editar.Add($@"{dgvLinguagens.SelectedRows[0].Cells["ID_Linguagem"].Value}");
+            tela.editar.Add($@"{dgvBibliotecas.SelectedRows[0].Cells["Biblioteca"].Value}");
+            tela.editar.Add($@"{dgvFuncoes.SelectedRows[0].Cells["Funcao"].Value}");
+            tela.editar.Add($@"{dgvFuncoes.SelectedRows[0].Cells["ID_FcnModData"].Value}");
             tela.Show();
-            //AbrirJanelaMaximizada(new FrmRegistro());
-
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
@@ -169,7 +164,7 @@ namespace DesktopCany.UI
                 {
                     FuncaoEnt funcaoEnt = new()
                     {
-                        ID_FcnModData = dgvFuncoes.SelectedRows[0].Cells["ID_FcnModData"].Value.ToString()
+                        ID_FcnModData = $@"{dgvFuncoes.SelectedRows[0].Cells["ID_FcnModData"].Value}"
                     };
                     FuncoesRep.Remover(funcaoEnt);
                     MessageBox.Show("Função Removida", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
@@ -192,7 +187,7 @@ namespace DesktopCany.UI
                 {
                     LinguagemEnt linguagemEnt = new()
                     {
-                        ID_Linguagem = dgvLinguagens.SelectedRows[0].Cells["ID_Linguagem"].Value.ToString()
+                        ID_Linguagem = $@"{dgvLinguagens.SelectedRows[0].Cells["ID_Linguagem"].Value}"
                     };
                     LinguagensRep.Remover(linguagemEnt);
                     MessageBox.Show("Linguagem Removida", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
