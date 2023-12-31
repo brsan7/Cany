@@ -5,12 +5,14 @@ using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DesktopCany.Entidades;
 using DesktopCany.Repositorio;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.VisualBasic.Devices;
 
 
 namespace DesktopCany.UI
@@ -298,6 +300,13 @@ namespace DesktopCany.UI
             fmtID_FcnModData = $@"{fmtID_FcnModData}_{milissegundos}";
             fmtID_FcnModData = $@"{fmtID_FcnModData}_{Propriedades.Configuracoes.Default.Colaborador}";
             fmtID_FcnModData = $@"{fmtID_FcnModData}".Replace(' ', '_');
+            var mcAddr = NetworkInterface.GetAllNetworkInterfaces()
+                .FirstOrDefault
+                (
+                    nic => nic.OperationalStatus == OperationalStatus.Up 
+                    && nic.NetworkInterfaceType != NetworkInterfaceType.Loopback
+                )?.GetPhysicalAddress();
+            fmtID_FcnModData = $@"{fmtID_FcnModData}_{mcAddr}";
             return fmtID_FcnModData;
         }
         private BibliotecaEnt ComporRegistro()
