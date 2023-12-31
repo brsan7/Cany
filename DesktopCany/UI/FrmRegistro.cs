@@ -268,14 +268,14 @@ namespace DesktopCany.UI
 
         private void ChkBoxModEstavel_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (chkBoxModEstavel.Enabled)
+            if (chkBoxModEstavel.Enabled && chkBoxModEstavel.Checked)
             {
                 DialogResult resposta = MessageBox.Show("Deseja realmente Homologar?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
                 if (resposta == DialogResult.Yes)
                 {
                     FuncoesRep.Homologar(ComporHomologacao());
                     MessageBox.Show("Homologado!");
-                    chkBoxModEstavel.Enabled = false;
+                    this.Close();
                 }
             }
         }
