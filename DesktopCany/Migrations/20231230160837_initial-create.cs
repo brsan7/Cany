@@ -5,7 +5,7 @@
 namespace DesktopCany.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class initialcreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -14,12 +14,12 @@ namespace DesktopCany.Migrations
                 name: "TB_Funcoes",
                 columns: table => new
                 {
-                    IDFcnModData = table.Column<string>(name: "ID_FcnModData", type: "TEXT", maxLength: 20, nullable: false),
-                    Funcao = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false),
-                    DescricaoFcn = table.Column<string>(type: "TEXT", maxLength: 200, nullable: false),
-                    ModProgramador = table.Column<string>(type: "TEXT", maxLength: 30, nullable: false),
-                    ModEstavel = table.Column<bool>(type: "INTEGER", nullable: false),
-                    Snippet = table.Column<string>(type: "TEXT", maxLength: 8000, nullable: false)
+                    IDFcnModData = table.Column<string>(name: "ID_FcnModData", type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Funcao = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    DescricaoFcn = table.Column<string>(type: "nvarchar(400)", maxLength: 400, nullable: false),
+                    ModProgramador = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    ModEstavel = table.Column<bool>(type: "bit", nullable: false),
+                    Snippet = table.Column<string>(type: "nvarchar(max)", maxLength: 8000, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -30,8 +30,8 @@ namespace DesktopCany.Migrations
                 name: "TB_Linguagens",
                 columns: table => new
                 {
-                    IDLinguagem = table.Column<string>(name: "ID_Linguagem", type: "TEXT", maxLength: 30, nullable: false),
-                    DescricaoLang = table.Column<string>(type: "TEXT", maxLength: 200, nullable: false)
+                    IDLinguagem = table.Column<string>(name: "ID_Linguagem", type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    DescricaoLang = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -42,12 +42,12 @@ namespace DesktopCany.Migrations
                 name: "TB_Bibliotecas",
                 columns: table => new
                 {
-                    IDBiblioteca = table.Column<long>(name: "ID_Biblioteca", type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    IDLinguagem = table.Column<string>(name: "ID_Linguagem", type: "TEXT", maxLength: 30, nullable: false),
-                    IDFcnModData = table.Column<string>(name: "ID_FcnModData", type: "TEXT", maxLength: 20, nullable: false),
-                    Biblioteca = table.Column<string>(type: "TEXT", maxLength: 30, nullable: false),
-                    DescricaoLib = table.Column<string>(type: "TEXT", maxLength: 200, nullable: false)
+                    IDBiblioteca = table.Column<long>(name: "ID_Biblioteca", type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IDLinguagem = table.Column<string>(name: "ID_Linguagem", type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    IDFcnModData = table.Column<string>(name: "ID_FcnModData", type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Biblioteca = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    DescricaoLib = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false)
                 },
                 constraints: table =>
                 {
