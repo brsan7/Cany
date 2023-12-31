@@ -28,151 +28,157 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvLinguagens = new System.Windows.Forms.DataGridView();
-            this.btnRemove = new System.Windows.Forms.Button();
-            this.dgvBibliotecas = new System.Windows.Forms.DataGridView();
-            this.dgvFuncoes = new System.Windows.Forms.DataGridView();
-            this.txtBuscaLinguagens = new System.Windows.Forms.TextBox();
-            this.txtBuscarBibliotecas = new System.Windows.Forms.TextBox();
-            this.txtBuscarFuncoes = new System.Windows.Forms.TextBox();
-            this.txtFcnModData = new System.Windows.Forms.TextBox();
-            this.txtModProgramador = new System.Windows.Forms.TextBox();
-            this.btnReset = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLinguagens)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvBibliotecas)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvFuncoes)).BeginInit();
-            this.SuspendLayout();
+            dgvLinguagens = new DataGridView();
+            btnRemove = new Button();
+            dgvBibliotecas = new DataGridView();
+            dgvFuncoes = new DataGridView();
+            txtBuscaLinguagens = new TextBox();
+            txtBuscarBibliotecas = new TextBox();
+            txtBuscarFuncoes = new TextBox();
+            txtFcnModData = new TextBox();
+            txtModProgramador = new TextBox();
+            btnReset = new Button();
+            btnEdit = new Button();
+            ((System.ComponentModel.ISupportInitialize)dgvLinguagens).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvBibliotecas).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvFuncoes).BeginInit();
+            SuspendLayout();
             // 
             // dgvLinguagens
             // 
-            this.dgvLinguagens.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvLinguagens.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvLinguagens.Location = new System.Drawing.Point(12, 41);
-            this.dgvLinguagens.Name = "dgvLinguagens";
-            this.dgvLinguagens.RowTemplate.Height = 25;
-            this.dgvLinguagens.Size = new System.Drawing.Size(858, 119);
-            this.dgvLinguagens.TabIndex = 0;
-            this.dgvLinguagens.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLinguagens_CellDoubleClick);
+            dgvLinguagens.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvLinguagens.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvLinguagens.Location = new Point(12, 41);
+            dgvLinguagens.Name = "dgvLinguagens";
+            dgvLinguagens.RowTemplate.Height = 25;
+            dgvLinguagens.Size = new Size(858, 119);
+            dgvLinguagens.TabIndex = 0;
+            dgvLinguagens.CellDoubleClick += dgvLinguagens_CellDoubleClick;
             // 
             // btnRemove
             // 
-            this.btnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRemove.Location = new System.Drawing.Point(324, 415);
-            this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(234, 23);
-            this.btnRemove.TabIndex = 6;
-            this.btnRemove.Text = "Remover";
-            this.btnRemove.UseVisualStyleBackColor = true;
-            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            btnRemove.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnRemove.Location = new Point(670, 415);
+            btnRemove.Name = "btnRemove";
+            btnRemove.Size = new Size(200, 23);
+            btnRemove.TabIndex = 6;
+            btnRemove.Text = "Remover";
+            btnRemove.UseVisualStyleBackColor = true;
+            btnRemove.Click += btnRemove_Click;
             // 
             // dgvBibliotecas
             // 
-            this.dgvBibliotecas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvBibliotecas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBibliotecas.Location = new System.Drawing.Point(12, 165);
-            this.dgvBibliotecas.Name = "dgvBibliotecas";
-            this.dgvBibliotecas.RowTemplate.Height = 25;
-            this.dgvBibliotecas.Size = new System.Drawing.Size(858, 119);
-            this.dgvBibliotecas.TabIndex = 7;
-            this.dgvBibliotecas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBibliotecas_CellDoubleClick);
+            dgvBibliotecas.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvBibliotecas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvBibliotecas.Location = new Point(12, 165);
+            dgvBibliotecas.Name = "dgvBibliotecas";
+            dgvBibliotecas.RowTemplate.Height = 25;
+            dgvBibliotecas.Size = new Size(858, 119);
+            dgvBibliotecas.TabIndex = 7;
+            dgvBibliotecas.CellDoubleClick += dgvBibliotecas_CellDoubleClick;
             // 
             // dgvFuncoes
             // 
-            this.dgvFuncoes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvFuncoes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvFuncoes.Location = new System.Drawing.Point(12, 290);
-            this.dgvFuncoes.Name = "dgvFuncoes";
-            this.dgvFuncoes.RowTemplate.Height = 25;
-            this.dgvFuncoes.Size = new System.Drawing.Size(858, 119);
-            this.dgvFuncoes.TabIndex = 8;
-            this.dgvFuncoes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFuncoes_CellDoubleClick);
+            dgvFuncoes.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvFuncoes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvFuncoes.Location = new Point(12, 290);
+            dgvFuncoes.Name = "dgvFuncoes";
+            dgvFuncoes.RowTemplate.Height = 25;
+            dgvFuncoes.Size = new Size(858, 119);
+            dgvFuncoes.TabIndex = 8;
+            dgvFuncoes.CellDoubleClick += dgvFuncoes_CellDoubleClick;
             // 
             // txtBuscaLinguagens
             // 
-            this.txtBuscaLinguagens.Location = new System.Drawing.Point(12, 12);
-            this.txtBuscaLinguagens.Name = "txtBuscaLinguagens";
-            this.txtBuscaLinguagens.PlaceholderText = "buscar Linguagem";
-            this.txtBuscaLinguagens.Size = new System.Drawing.Size(150, 23);
-            this.txtBuscaLinguagens.TabIndex = 9;
-            this.txtBuscaLinguagens.TextChanged += new System.EventHandler(this.txtBuscarLinguagem_TextChanged);
+            txtBuscaLinguagens.Location = new Point(12, 12);
+            txtBuscaLinguagens.Name = "txtBuscaLinguagens";
+            txtBuscaLinguagens.PlaceholderText = "buscar Linguagem";
+            txtBuscaLinguagens.Size = new Size(150, 23);
+            txtBuscaLinguagens.TabIndex = 9;
+            txtBuscaLinguagens.TextChanged += txtBuscarLinguagem_TextChanged;
             // 
             // txtBuscarBibliotecas
             // 
-            this.txtBuscarBibliotecas.Location = new System.Drawing.Point(168, 12);
-            this.txtBuscarBibliotecas.Name = "txtBuscarBibliotecas";
-            this.txtBuscarBibliotecas.PlaceholderText = "buscar Biblioteca";
-            this.txtBuscarBibliotecas.Size = new System.Drawing.Size(150, 23);
-            this.txtBuscarBibliotecas.TabIndex = 10;
-            this.txtBuscarBibliotecas.TextChanged += new System.EventHandler(this.txtBuscarBiblioteca_TextChanged);
+            txtBuscarBibliotecas.Location = new Point(168, 12);
+            txtBuscarBibliotecas.Name = "txtBuscarBibliotecas";
+            txtBuscarBibliotecas.PlaceholderText = "buscar Biblioteca";
+            txtBuscarBibliotecas.Size = new Size(150, 23);
+            txtBuscarBibliotecas.TabIndex = 10;
+            txtBuscarBibliotecas.TextChanged += txtBuscarBiblioteca_TextChanged;
             // 
             // txtBuscarFuncoes
             // 
-            this.txtBuscarFuncoes.Location = new System.Drawing.Point(324, 12);
-            this.txtBuscarFuncoes.Name = "txtBuscarFuncoes";
-            this.txtBuscarFuncoes.PlaceholderText = "buscar Função";
-            this.txtBuscarFuncoes.Size = new System.Drawing.Size(150, 23);
-            this.txtBuscarFuncoes.TabIndex = 11;
-            this.txtBuscarFuncoes.TextChanged += new System.EventHandler(this.txtBuscarFuncoes_TextChanged);
+            txtBuscarFuncoes.Location = new Point(324, 12);
+            txtBuscarFuncoes.Name = "txtBuscarFuncoes";
+            txtBuscarFuncoes.PlaceholderText = "buscar Função";
+            txtBuscarFuncoes.Size = new Size(150, 23);
+            txtBuscarFuncoes.TabIndex = 11;
+            txtBuscarFuncoes.TextChanged += txtBuscarFuncoes_TextChanged;
             // 
             // txtFcnModData
             // 
-            this.txtFcnModData.Location = new System.Drawing.Point(480, 12);
-            this.txtFcnModData.Name = "txtFcnModData";
-            this.txtFcnModData.PlaceholderText = "buscar ModData";
-            this.txtFcnModData.Size = new System.Drawing.Size(150, 23);
-            this.txtFcnModData.TabIndex = 12;
-            this.txtFcnModData.TextChanged += new System.EventHandler(this.txtBuscarModData_TextChanged);
+            txtFcnModData.Location = new Point(480, 12);
+            txtFcnModData.Name = "txtFcnModData";
+            txtFcnModData.PlaceholderText = "buscar ModData";
+            txtFcnModData.Size = new Size(150, 23);
+            txtFcnModData.TabIndex = 12;
+            txtFcnModData.TextChanged += txtBuscarModData_TextChanged;
             // 
             // txtModProgramador
             // 
-            this.txtModProgramador.Location = new System.Drawing.Point(636, 12);
-            this.txtModProgramador.Name = "txtModProgramador";
-            this.txtModProgramador.PlaceholderText = "buscar ModProgramador";
-            this.txtModProgramador.Size = new System.Drawing.Size(150, 23);
-            this.txtModProgramador.TabIndex = 13;
-            this.txtModProgramador.TextChanged += new System.EventHandler(this.txtBuscarModProgramador_TextChanged);
+            txtModProgramador.Location = new Point(636, 12);
+            txtModProgramador.Name = "txtModProgramador";
+            txtModProgramador.PlaceholderText = "buscar ModProgramador";
+            txtModProgramador.Size = new Size(150, 23);
+            txtModProgramador.TabIndex = 13;
+            txtModProgramador.TextChanged += txtBuscarModProgramador_TextChanged;
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(792, 12);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(78, 23);
-            this.btnReset.TabIndex = 14;
-            this.btnReset.Text = "reset";
-            this.btnReset.UseVisualStyleBackColor = true;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            btnReset.Location = new Point(792, 12);
+            btnReset.Name = "btnReset";
+            btnReset.Size = new Size(78, 23);
+            btnReset.TabIndex = 14;
+            btnReset.Text = "reset";
+            btnReset.UseVisualStyleBackColor = true;
+            btnReset.Click += btnReset_Click;
+            // 
+            // btnEdit
+            // 
+            btnEdit.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnEdit.Enabled = false;
+            btnEdit.Location = new Point(464, 415);
+            btnEdit.Name = "btnEdit";
+            btnEdit.Size = new Size(200, 23);
+            btnEdit.TabIndex = 15;
+            btnEdit.Text = "Editar";
+            btnEdit.UseVisualStyleBackColor = true;
+            btnEdit.Click += btnEdit_Click;
             // 
             // FrmGerenciamento
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 450);
-            this.Controls.Add(this.btnReset);
-            this.Controls.Add(this.txtModProgramador);
-            this.Controls.Add(this.txtFcnModData);
-            this.Controls.Add(this.txtBuscarFuncoes);
-            this.Controls.Add(this.txtBuscarBibliotecas);
-            this.Controls.Add(this.txtBuscaLinguagens);
-            this.Controls.Add(this.dgvFuncoes);
-            this.Controls.Add(this.dgvBibliotecas);
-            this.Controls.Add(this.btnRemove);
-            this.Controls.Add(this.dgvLinguagens);
-            this.Name = "FrmGerenciamento";
-            this.Text = "Gerenciamento";
-            this.Load += new System.EventHandler(this.FrmGerenciamentoDb_OnLoad);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLinguagens)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvBibliotecas)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvFuncoes)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(884, 450);
+            Controls.Add(btnEdit);
+            Controls.Add(btnReset);
+            Controls.Add(txtModProgramador);
+            Controls.Add(txtFcnModData);
+            Controls.Add(txtBuscarFuncoes);
+            Controls.Add(txtBuscarBibliotecas);
+            Controls.Add(txtBuscaLinguagens);
+            Controls.Add(dgvFuncoes);
+            Controls.Add(dgvBibliotecas);
+            Controls.Add(btnRemove);
+            Controls.Add(dgvLinguagens);
+            Name = "FrmGerenciamento";
+            Text = "Gerenciamento";
+            Load += FrmGerenciamentoDb_OnLoad;
+            ((System.ComponentModel.ISupportInitialize)dgvLinguagens).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvBibliotecas).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvFuncoes).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -187,5 +193,6 @@
         private TextBox txtFcnModData;
         private TextBox txtModProgramador;
         private Button btnReset;
+        private Button btnEdit;
     }
 }

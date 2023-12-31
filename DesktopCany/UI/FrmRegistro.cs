@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DesktopCany.Entidades;
 using DesktopCany.Repositorio;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 
 namespace DesktopCany.UI
@@ -22,7 +24,8 @@ namespace DesktopCany.UI
         private List<string> lstFcnModDatas = new();
         private List<string> lstModProgramadores = new();
         private bool firstScan = true;
-        private string operacao = "Modificação";
+        public string operacao = "Modificação";
+        public List<string> editar = new();
 
         public FrmRegistro()
         {
@@ -40,6 +43,12 @@ namespace DesktopCany.UI
 
             rtbDescricaoLib.Enabled=false;
             rtbDescricaoFcn.Enabled=false;
+
+            if (editar.Count == 4)
+            {
+                cmbLinguagens.SelectedIndex = cmbLinguagens.FindString(editar[0].ToString());
+                cmbLinguagens.Enabled = false;
+            }
         }
 
         private void CmbLinguagens_TextChanged(object sender, EventArgs e)
@@ -102,6 +111,12 @@ namespace DesktopCany.UI
 
                 rtbDescricaoLang.Enabled = true;
                 rtbDescricaoLang.Text = LinguagensRep.BuscarDescricao(cmbLinguagens.Text);
+
+                if (editar.Count == 4)
+                {
+                    cmbBibliotecas.SelectedIndex = cmbBibliotecas.FindString(editar[1].ToString());
+                    cmbBibliotecas.Enabled = false;
+                }
             }
         }
 
@@ -120,6 +135,12 @@ namespace DesktopCany.UI
 
                 rtbDescricaoLib.Enabled = true;
                 rtbDescricaoLib.Text = BibliotecasRep.BuscarDescricao(cmbLinguagens.Text);
+
+                if (editar.Count == 4)
+                {
+                    cmbFuncoes.SelectedIndex = cmbFuncoes.FindString(editar[2].ToString());
+                    cmbFuncoes.Enabled = false;
+                }
             }
         }
 
@@ -163,6 +184,13 @@ namespace DesktopCany.UI
                 this.Text = "lang:" + cmbLinguagens.Text + "_lib:" + cmbBibliotecas.Text + "_fcn:" + cmbFuncoes.Text;
 
                 btnRegMod.Enabled = true;
+
+                if (editar.Count == 4)
+                {
+                    cmbFcnModDatas.SelectedIndex = cmbFcnModDatas.FindString(editar[3].ToString());
+                    cmbFcnModDatas.Enabled = false;
+                    cmbModProgramador.Enabled = false;
+                }
             }
         }
 
@@ -234,6 +262,10 @@ namespace DesktopCany.UI
                 BibliotecasRep.Registrar(agrupamentoEnt);
             }
             MessageBox.Show(operacao+" Registrada!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
+            if(editar.Count == 4)
+            {
+                this.Close();
+            }
             cmbLinguagens.SelectedIndex = 0;
             if (cmbBibliotecas.Items.Count > 0) cmbBibliotecas.SelectedIndex = 0;
             if (cmbFuncoes.Items.Count > 0) cmbFuncoes.SelectedIndex = 0;
@@ -302,8 +334,6 @@ namespace DesktopCany.UI
         {
             if (btnRegMod.Enabled == true)
             {
-                rtbDescricaoLang.Text = "Descrição da Linguagem";
-
                 cmbBibliotecas.Enabled = true;
                 cmbFuncoes.Enabled = true;
                 rtbDescricaoLang.Enabled = true;
@@ -322,22 +352,16 @@ namespace DesktopCany.UI
                     rtbSnippet.Text = "Snippet da Função";
                     break;
                 case "RegNewLib":
-                rtbDescricaoLib.Text = "Descrição da Biblioteca";
-
-                cmbFuncoes.Enabled = true;
-                cmbFuncoes.Text = "Função";
+                    rtbDescricaoLib.Text = "Descrição da Biblioteca";
+                    cmbFuncoes.Text = "Função";
                     rtbDescricaoFcn.Text = "Descrição da Função";
                     rtbSnippet.Text = "Snippet da Função";
                     break;
                 case "RegNewFcn":
-                rtbDescricaoFcn.Text = "Descrição da Função";
-                rtbSnippet.Text = "Snippet da Função";
+                    rtbDescricaoFcn.Text = "Descrição da Função";
+                    rtbSnippet.Text = "Snippet da Função";
                     break;
             }
-            rtbDescricaoLang.Enabled = true;
-            rtbDescricaoLib.Enabled = true;
-            rtbDescricaoFcn.Enabled = true;
-            rtbSnippet.Enabled = true;
         }
 
         private void resetFrmRegistro()

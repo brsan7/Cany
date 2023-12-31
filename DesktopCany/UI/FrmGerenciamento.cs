@@ -96,7 +96,7 @@ namespace DesktopCany.UI
                 FK_ID_Linguagem = new() { ID_Linguagem = id_Linguagem }
             };
             setupDSourceDgvs(bibliotecaEnt);
-            if(dgvBibliotecas.RowCount == 0)
+            if (dgvBibliotecas.RowCount == 0)
             {
                 btnRemove.Enabled = true;
                 btnRemove.Text = "Remover Linguagem";
@@ -105,7 +105,7 @@ namespace DesktopCany.UI
 
         private void dgvBibliotecas_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            BibliotecaEnt bibliotecaEnt = new() 
+            BibliotecaEnt bibliotecaEnt = new()
             {
                 ID_Linguagem = dgvBibliotecas.SelectedRows[0].Cells["ID_Linguagem"].Value.ToString(),
                 Biblioteca = dgvBibliotecas.SelectedRows[0].Cells["Biblioteca"].Value.ToString(),
@@ -122,6 +122,7 @@ namespace DesktopCany.UI
                 FK_ID_FcnModData = new() { ID_FcnModData = ID_FcnModData }
             };
             setupDSourceDgvs(bibliotecaEnt);
+            btnEdit.Enabled = true;
             btnRemove.Enabled = true;
             btnRemove.Text = "Remover Modificação";
         }
@@ -134,6 +135,22 @@ namespace DesktopCany.UI
             txtFcnModData.Clear();
             txtModProgramador.Clear();
             setupDSourceDgvs(null);
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            FrmRegistro tela = new FrmRegistro();
+            //tela.MdiParent = this;
+            //tela.WindowState = FormWindowState.Maximized;
+            tela.operacao = "Editar";
+            //tela.editar = new();
+            tela.editar.Add(dgvLinguagens.SelectedRows[0].Cells["ID_Linguagem"].Value.ToString());
+            tela.editar.Add(dgvBibliotecas.SelectedRows[0].Cells["Biblioteca"].Value.ToString());
+            tela.editar.Add(dgvFuncoes.SelectedRows[0].Cells["Funcao"].Value.ToString());
+            tela.editar.Add(dgvFuncoes.SelectedRows[0].Cells["ID_FcnModData"].Value.ToString());
+            tela.Show();
+            //AbrirJanelaMaximizada(new FrmRegistro());
+
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
@@ -186,6 +203,7 @@ namespace DesktopCany.UI
 
         private void setupDSourceDgvs(BibliotecaEnt? buscas)
         {
+            btnEdit.Enabled = false;
             btnRemove.Enabled = false;
             btnRemove.Text = "Remover";
             //Apresenta todos os registros
@@ -205,7 +223,7 @@ namespace DesktopCany.UI
             }
 
             //Apresenta todos os registros relacionado a biblioteca selecionada
-            if (buscas?.Biblioteca.Length > 0 
+            if (buscas?.Biblioteca.Length > 0
                 && buscas?.ID_Linguagem.Length > 0)
             {
                 dgvLinguagens.DataSource = LinguagensRep.Buscar_Linguagem(buscas.ID_Linguagem);
