@@ -177,70 +177,68 @@ $@"{composicaoTxt}
                     switch (campos.Split("]|>:")[0])
                     {
                         case "ID_Linguagem":
-                            linguagemEnt.ID_Linguagem = campos.Split("]|>:")[1].Trim();
+                            linguagemEnt.ID_Linguagem = campos.Split($"]|>:{Environment.NewLine}")[1];
                             break;
                         case "DescricaoLang":
-                            linguagemEnt.DescricaoLang = campos.Split("]|>:")[1];
+                            linguagemEnt.DescricaoLang = campos.Split($"]|>:{Environment.NewLine}")[1];
                             break;
                         case "ID_Biblioteca":
                             /*AUTOMATICO*/
                             break;
                         case "Biblioteca":
-                            biblitotecaEnt.Biblioteca = campos.Split("]|>:")[1].Trim();
+                            biblitotecaEnt.Biblioteca = campos.Split($"]|>:{Environment.NewLine}")[1];
                             break;
                         case "DescricaoLib":
-                            biblitotecaEnt.DescricaoLib = campos.Split("]|>:")[1];
+                            biblitotecaEnt.DescricaoLib = campos.Split($"]|>:{Environment.NewLine}")[1];
                             break;
                         case "ID_FcnModData":
-                            funcaoEnt.ID_FcnModData = campos.Split("]|>:")[1].Trim();
+                            funcaoEnt.ID_FcnModData = campos.Split($"]|>:{Environment.NewLine}")[1];
                             break;
                         case "DescricaoFcn":
-                            funcaoEnt.DescricaoFcn = campos.Split("]|>:")[1];
+                            funcaoEnt.DescricaoFcn = campos.Split($"]|>:{Environment.NewLine}")[1];
                             break;
                         case "Funcao":
-                            funcaoEnt.Funcao = campos.Split("]|>:")[1].Trim();
+                            funcaoEnt.Funcao = campos.Split($"]|>:{Environment.NewLine}")[1];
                             break;
                         case "ModProgramador":
-                            funcaoEnt.ModProgramador = campos.Split("]|>:")[1].Trim();
+                            funcaoEnt.ModProgramador = campos.Split($"]|>:{Environment.NewLine}")[1];
                             break;
                         case "ModEstavel":
-                            funcaoEnt.ModEstavel = Convert.ToBoolean(campos.Split("]|>:")[1]);
+                            funcaoEnt.ModEstavel = Convert.ToBoolean(campos.Split($"]|>:{Environment.NewLine}")[1]);
                             break;
                         case "Snippet":
-                            funcaoEnt.Snippet = campos.Split("]|>:")[1];
+                            funcaoEnt.Snippet = campos.Split($"]|>:{Environment.NewLine}")[1];
                             break;
 
                     }//switch (campos.Split("]|>:")[0])
 
                 }//foreach (var campos in registro.Split("==>["))
 
-                if(linguagemEnt.ID_Linguagem.Length > 4) {
-                    biblitotecaEnt.FK_ID_Linguagem = linguagemEnt;
-                    biblitotecaEnt.FK_ID_FcnModData = funcaoEnt;
-                    if (!BibliotecasRep.Registrar(biblitotecaEnt))
+                biblitotecaEnt.FK_ID_Linguagem = linguagemEnt;
+                biblitotecaEnt.FK_ID_FcnModData = funcaoEnt;
+                if (!BibliotecasRep.Registrar(biblitotecaEnt))
+                {
+                    if (LinguagensRep.Buscar_Linguagem(linguagemEnt.ID_Linguagem).Count <= 0)
                     {
-                        if(LinguagensRep.Buscar_Linguagem(linguagemEnt.ID_Linguagem).Count <= 0)
-                        {
-                            LinguagensRep.Registrar(linguagemEnt);
-                        }
-                        if(FuncoesRep.Buscar_Funcao(funcaoEnt.ID_FcnModData).Count <= 0)
-                        {
-                            FuncoesRep.Registrar(funcaoEnt);
-                        }
+                        LinguagensRep.Registrar(linguagemEnt);
+                    }
+                    if (FuncoesRep.Buscar_Funcao(funcaoEnt.ID_FcnModData).Count <= 0)
+                    {
+                        FuncoesRep.Registrar(funcaoEnt);
+                    }
 
-                        BibliotecaEnt agrupamentoEnt = new()
-                        {
-                            Biblioteca = biblitotecaEnt.Biblioteca,
-                            DescricaoLib = biblitotecaEnt.DescricaoLib,
-                            ID_Linguagem = linguagemEnt.ID_Linguagem,
-                            ID_FcnModData = funcaoEnt.ID_FcnModData,
-                            FK_ID_Linguagem = null,
-                            FK_ID_FcnModData = null
-                        };
-                        if (BibliotecasRep.Buscar_BibliotecasPorFuncao(biblitotecaEnt).Count <= 0)
-                        {
-                            BibliotecasRep.Registrar(agrupamentoEnt);
-                        }
+                    BibliotecaEnt agrupamentoEnt = new()
+                    {
+                        Biblioteca = biblitotecaEnt.Biblioteca,
+                        DescricaoLib = biblitotecaEnt.DescricaoLib,
+                        ID_Linguagem = linguagemEnt.ID_Linguagem,
+                        ID_FcnModData = funcaoEnt.ID_FcnModData,
+                        FK_ID_Linguagem = null,
+                        FK_ID_FcnModData = null
+                    };
+                    if (BibliotecasRep.Buscar_BibliotecasPorFuncao(biblitotecaEnt).Count <= 0)
+                    {
+                        BibliotecasRep.Registrar(agrupamentoEnt);
                     }
                 }
 
