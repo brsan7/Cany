@@ -167,7 +167,7 @@ namespace DesktopCany.UI
 
         private void BackupToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AbrirJanelaMaximizada(new FrmBackup());
+            AbrirJanelaNormal(new FrmBackup());
         }
 
         private void ConfiguracoesToolStripMenuItem_Click(object? sender, EventArgs? e)

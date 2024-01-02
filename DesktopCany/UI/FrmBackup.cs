@@ -109,7 +109,7 @@ $@"{composicaoTxt}
 ==>[Snippet]|>:
 {funcao.Snippet}
 {finalRegistro}";
-/*Composição indentada*/
+                /*Composição indentada*/
                 indexGeral++;
                 if (indexGeral == todosRegistros.Count)
                 {
@@ -129,17 +129,19 @@ $@"{composicaoTxt}
         /***********************************************************************************/
         private void btnImportarTxt_Click(object sender, EventArgs e)
         {
-            
             Stream inStream;
             StreamReader leitruraStream;
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "txt files (*txt)|*txt";
             openFileDialog.Title = "Importar Txt";
+            labelFeedBack.Text = "Carregando o arquivo.";
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
+
                 if ((inStream = openFileDialog.OpenFile()) != null)
                 {
+
                     biblitotecaEnt = new();
                     linguagemEnt = new();
                     funcaoEnt = new();
@@ -152,14 +154,15 @@ $@"{composicaoTxt}
                         {
                             txt = $"{txt}{leitruraStream.ReadLine()}{Environment.NewLine}";
                         }
+                        labelFeedBack.Text = "Importando.";
                     }
                     catch (Exception ex)
                     {
                         Console.WriteLine(ex);
                     }
                     inStream.Close();
-                    ImportarTXT(txt);
-                    MessageBox.Show("Importação Concluída!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
+                    backgroundWorker1.WorkerReportsProgress = true;
+                    backgroundWorker1.RunWorkerAsync(txt);
 
                 }//if ((inStream = openFileDialog.OpenFile()) != null)
 
@@ -167,13 +170,20 @@ $@"{composicaoTxt}
 
         }//private void btnImportarTxt_Click(object sender, EventArgs e)
 
-        private void ImportarTXT(string txt)
+        private void ImportarTXT(string txt, BackgroundWorker worker, DoWorkEventArgs e)
         {
+            int percentItem = 100 / txt.Split(">|[Final_Registro]|<").Length;
+            int percentComplete = 0;
+            int index = 0;
+
             foreach (var registro in txt.Split(">|[Final_Registro]|<"))
             {
+                percentComplete = percentItem * index;
+                worker.ReportProgress(percentComplete);
+                index++;
+                
                 foreach (var campos in registro.Split("==>["))
                 {
-                    
                     switch (campos.Split("]|>:")[0])
                     {
                         case "ID_Linguagem":
@@ -243,6 +253,25 @@ $@"{composicaoTxt}
                 }
 
             }//foreach (var registro in txt.Split(">|[Final_Registro]|<"))
+            worker.ReportProgress(100);
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            BackgroundWorker worker = sender as BackgroundWorker;
+            ImportarTXT((string)e.Argument, worker, e);
+        }
+
+        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            this.progressBar1.Value = e.ProgressPercentage;
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            MessageBox.Show("Importação Concluída!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
+            progressBar1.Value = 0;
+            this.labelFeedBack.Text = "FeedBack User.";
         }
 
         /***********************************************************************************/
