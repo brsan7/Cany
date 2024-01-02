@@ -33,7 +33,9 @@ namespace DesktopCany.UI
         {
             InitializeComponent();
         }
-
+        /***********************************************************************************/
+        /**********************************[INICIO_EVENTO]**********************************/
+        /***********************************************************************************/
         private void FrmRegistroOnLoad(object sender, EventArgs e)
         {
             biblitotecaEnt.FK_ID_FcnModData = new FuncaoEnt();
@@ -52,7 +54,13 @@ namespace DesktopCany.UI
                 cmbLinguagens.Enabled = false;
             }
         }
-
+        /***********************************************************************************/
+        /**********************************[FIM_EVENTO]*************************************/
+        /***********************************************************************************/
+        /////////////////////////////////////////////////////////////////////////////////////
+        /***********************************************************************************/
+        /**********************************[INICIO_EVENTO]**********************************/
+        /***********************************************************************************/
         private void CmbLinguagens_TextChanged(object sender, EventArgs e)
         {
             if (cmbLinguagens.SelectedIndex == -1
@@ -66,7 +74,13 @@ namespace DesktopCany.UI
                 setup_RegNew();
             }
         }
-
+        /***********************************************************************************/
+        /**********************************[FIM_EVENTO]*************************************/
+        /***********************************************************************************/
+        /////////////////////////////////////////////////////////////////////////////////////
+        /***********************************************************************************/
+        /**********************************[INICIO_EVENTO]**********************************/
+        /***********************************************************************************/
         private void CmbBibliotecas_TextChanged(object sender, EventArgs e)
         {
             if (cmbBibliotecas.SelectedIndex == -1
@@ -81,7 +95,13 @@ namespace DesktopCany.UI
                 setup_RegNew();
             }
         }
-
+        /***********************************************************************************/
+        /**********************************[FIM_EVENTO]*************************************/
+        /***********************************************************************************/
+        /////////////////////////////////////////////////////////////////////////////////////
+        /***********************************************************************************/
+        /**********************************[INICIO_EVENTO]**********************************/
+        /***********************************************************************************/
         private void CmbFuncoes_TextChanged(object sender, EventArgs e)
         {
             if (cmbFuncoes.SelectedIndex == -1
@@ -97,7 +117,13 @@ namespace DesktopCany.UI
                 setup_RegNew();
             }
         }
-        
+        /***********************************************************************************/
+        /**********************************[FIM_EVENTO]*************************************/
+        /***********************************************************************************/
+        /////////////////////////////////////////////////////////////////////////////////////
+        /***********************************************************************************/
+        /**********************************[INICIO_EVENTO]**********************************/
+        /***********************************************************************************/
         private void CmbLinguagens_SelectedIndexChanged(object sender, EventArgs e)
         {
             resetFrmRegistro();
@@ -121,7 +147,13 @@ namespace DesktopCany.UI
                 }
             }
         }
-
+        /***********************************************************************************/
+        /**********************************[FIM_EVENTO]*************************************/
+        /***********************************************************************************/
+        /////////////////////////////////////////////////////////////////////////////////////
+        /***********************************************************************************/
+        /**********************************[INICIO_EVENTO]**********************************/
+        /***********************************************************************************/
         private void CmbBibliotecas_SelectedIndexChanged(object sender, EventArgs e)
         {
             resetFrmRegistro();
@@ -145,7 +177,13 @@ namespace DesktopCany.UI
                 }
             }
         }
-
+        /***********************************************************************************/
+        /**********************************[FIM_EVENTO]*************************************/
+        /***********************************************************************************/
+        /////////////////////////////////////////////////////////////////////////////////////
+        /***********************************************************************************/
+        /**********************************[INICIO_EVENTO]**********************************/
+        /***********************************************************************************/
         private void CmbFuncoes_SelectedIndexChanged(object sender, EventArgs e)
         {
             resetFrmRegistro();
@@ -159,11 +197,11 @@ namespace DesktopCany.UI
                 cmbFcnModDatas.Items.Clear();
                 lstFcnModDatas = new(FuncoesRep.SelecionarModDatas(biblitotecaEnt));
                 lstFcnModDatas.ForEach(fcnModDatalst => cmbFcnModDatas.Items.Add(fcnModDatalst));
-                
+
                 cmbModProgramador.Items.Clear();
                 lstModProgramadores = new(FuncoesRep.SelecionarModProgramador(biblitotecaEnt));
                 lstModProgramadores.ForEach(modProgramadorlst => cmbModProgramador.Items.Add(modProgramadorlst));
-                
+
                 List<FuncaoEnt> modsFuncao = new();
                 modsFuncao.AddRange(FuncoesRep.SelecionarModsFuncao(biblitotecaEnt).Distinct());
                 biblitotecaEnt.FK_ID_FcnModData = modsFuncao.Last();
@@ -190,7 +228,7 @@ namespace DesktopCany.UI
                     cmbModProgramador.SelectedIndex = cmbModProgramador.Items.Count - 1;
                 }
 
-                
+
                 rtbDescricaoFcn.Enabled = true;
                 rtbSnippet.Enabled = true;
                 rtbDescricaoFcn.Text = biblitotecaEnt.FK_ID_FcnModData.DescricaoFcn;
@@ -200,10 +238,15 @@ namespace DesktopCany.UI
 
                 btnRegMod.Enabled = true;
 
-                
             }
         }
-
+        /***********************************************************************************/
+        /**********************************[FIM_EVENTO]*************************************/
+        /***********************************************************************************/
+        /////////////////////////////////////////////////////////////////////////////////////
+        /***********************************************************************************/
+        /**********************************[INICIO_EVENTO]**********************************/
+        /***********************************************************************************/
         private void CmbFcnModDatas_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbFcnModDatas.SelectedIndex != 0)
@@ -217,20 +260,26 @@ namespace DesktopCany.UI
                 this.Text = "lang:" + cmbLinguagens.Text + "_lib:" + cmbBibliotecas.Text + "_fcn:" + cmbFuncoes.Text;
             }
         }
-
+        /***********************************************************************************/
+        /**********************************[FIM_EVENTO]*************************************/
+        /***********************************************************************************/
+        /////////////////////////////////////////////////////////////////////////////////////
+        /***********************************************************************************/
+        /**********************************[INICIO_EVENTO]**********************************/
+        /***********************************************************************************/
         private void CmbModProgramadores_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
             if (cmbModProgramador.SelectedIndex != 0 && !firstScan)
             {
                 biblitotecaEnt.FK_ID_FcnModData.ModProgramador = cmbModProgramador.Text;
                 biblitotecaEnt.FK_ID_FcnModData.Funcao = cmbFuncoes.Text;
                 List<FuncaoEnt> ModsProgramador = new(FuncoesRep.BuscarModProgramador(biblitotecaEnt));
                 biblitotecaEnt.FK_ID_FcnModData = ModsProgramador.Last();
-                
+
                 cmbFcnModDatas.Items.Clear();
                 ModsProgramador.ForEach(modificacoesProgramador => cmbFcnModDatas.Items.Add(modificacoesProgramador.ID_FcnModData));
-                
+
                 rtbDescricaoFcn.Text = biblitotecaEnt.FK_ID_FcnModData.DescricaoFcn;
                 rtbSnippet.Text = biblitotecaEnt.FK_ID_FcnModData.Snippet;
                 this.Text = "lang:" + cmbLinguagens.Text + "_lib:" + cmbBibliotecas.Text + "_fcn:" + cmbFuncoes.Text;
@@ -250,7 +299,26 @@ namespace DesktopCany.UI
             }
             firstScan = false;
         }
-
+        /***********************************************************************************/
+        /**********************************[FIM_EVENTO]*************************************/
+        /***********************************************************************************/
+        /////////////////////////////////////////////////////////////////////////////////////
+        /***********************************************************************************/
+        /**********************************[INICIO_EVENTO]**********************************/
+        /***********************************************************************************/
+        private void ChkBoxModEstavel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (chkBoxModEstavel.Enabled && chkBoxModEstavel.Checked)
+            {
+                DialogResult resposta = MessageBox.Show("Deseja realmente Homologar?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                if (resposta == DialogResult.Yes)
+                {
+                    FuncoesRep.Homologar(ComporHomologacao());
+                    MessageBox.Show("Homologado!");
+                    this.Close();
+                }
+            }
+        }
         private FuncaoEnt ComporHomologacao()
         {
             FuncaoEnt funcao = new()
@@ -265,20 +333,13 @@ namespace DesktopCany.UI
             };
             return funcao;
         }
-
-        private void ChkBoxModEstavel_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (chkBoxModEstavel.Enabled && chkBoxModEstavel.Checked)
-            {
-                DialogResult resposta = MessageBox.Show("Deseja realmente Homologar?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-                if (resposta == DialogResult.Yes)
-                {
-                    FuncoesRep.Homologar(ComporHomologacao());
-                    MessageBox.Show("Homologado!");
-                    this.Close();
-                }
-            }
-        }
+        /***********************************************************************************/
+        /**********************************[FIM_EVENTO]*************************************/
+        /***********************************************************************************/
+        /////////////////////////////////////////////////////////////////////////////////////
+        /***********************************************************************************/
+        /**********************************[INICIO_EVENTO]**********************************/
+        /***********************************************************************************/
         private void BtnRegMod_OnClick(object sender, EventArgs e)
         {
             BibliotecaEnt inAgrupamentoEnt = ComporRegistro();
@@ -304,7 +365,7 @@ namespace DesktopCany.UI
             cmbLinguagens.SelectedIndex = 0;
             if (cmbBibliotecas.Items.Count > 0) cmbBibliotecas.SelectedIndex = 0;
             if (cmbFuncoes.Items.Count > 0) cmbFuncoes.SelectedIndex = 0;
-            
+
             lstLinguagens = new(LinguagensRep.SelecionarLinguagens());
             foreach (var item in lstLinguagens)
             {
@@ -313,7 +374,7 @@ namespace DesktopCany.UI
                     cmbLinguagens.Items.Add(item);
                 }
             }
-            
+
             cmbLinguagens.SelectedIndex = 0;
             resetFrmRegistro();
         }
@@ -336,7 +397,7 @@ namespace DesktopCany.UI
             var mcAddr = NetworkInterface.GetAllNetworkInterfaces()
                 .FirstOrDefault
                 (
-                    nic => nic.OperationalStatus == OperationalStatus.Up 
+                    nic => nic.OperationalStatus == OperationalStatus.Up
                     && nic.NetworkInterfaceType != NetworkInterfaceType.Loopback
                 )?.GetPhysicalAddress();
             fmtID_FcnModData = $@"{fmtID_FcnModData}_{mcAddr}";
@@ -350,7 +411,7 @@ namespace DesktopCany.UI
                 DescricaoLang = rtbDescricaoLang.Text,
             };
 
-            
+
 
             FuncaoEnt inFuncaoEnt = new()
             {
@@ -371,6 +432,13 @@ namespace DesktopCany.UI
             };
             return inBibliotecaEnt;
         }
+        /***********************************************************************************/
+        /**********************************[FIM_EVENTO]*************************************/
+        /***********************************************************************************/
+        /////////////////////////////////////////////////////////////////////////////////////
+        /***********************************************************************************/
+        /******************************[INICIO_FUNÇOES_GERAIS]******************************/
+        /***********************************************************************************/
 
         private void setup_RegNew()
         {
@@ -414,14 +482,14 @@ namespace DesktopCany.UI
                 rtbDescricaoLib.Text = String.Empty;
                 cmbBibliotecas.Text = String.Empty;
                 cmbFuncoes.Text = String.Empty;
-                
+
                 cmbBibliotecas.Enabled = false;
                 cmbFuncoes.Enabled = false;
                 rtbDescricaoLang.Enabled = false;
                 rtbDescricaoLib.Enabled = false;
                 rtbDescricaoFcn.Enabled = false;
-            }            
-            
+            }
+
             if (cmbBibliotecas.SelectedIndex == 0)
             {
                 cmbFuncoes.Enabled = false;
@@ -440,7 +508,7 @@ namespace DesktopCany.UI
                 operacao = "Modificação";
                 btnRegMod.Enabled = false;
             }
-            
+
             if (cmbFcnModDatas.Items.Count > 0
                 && !cmbModProgramador.Text.Equals("**Colaboradores**"))
             {
@@ -454,5 +522,8 @@ namespace DesktopCany.UI
             firstScan = true;
             this.Text = "Home";
         }
+        /***********************************************************************************/
+        /********************************[FIM_FUNÇOES_GERAIS]*******************************/
+        /***********************************************************************************/
     }
 }
