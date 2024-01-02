@@ -28,63 +28,62 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnGerar = new System.Windows.Forms.Button();
-            this.btnRestaurar = new System.Windows.Forms.Button();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.SuspendLayout();
+            btnExportarTxt = new Button();
+            btnImportarTxt = new Button();
+            openFileDialog1 = new OpenFileDialog();
+            saveFileDialog1 = new SaveFileDialog();
+            SuspendLayout();
             // 
-            // btnGerar
+            // btnExportarTxt
             // 
-            this.btnGerar.Location = new System.Drawing.Point(128, 59);
-            this.btnGerar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnGerar.Name = "btnGerar";
-            this.btnGerar.Size = new System.Drawing.Size(107, 55);
-            this.btnGerar.TabIndex = 0;
-            this.btnGerar.Text = "Gerar Backup";
-            this.btnGerar.UseVisualStyleBackColor = true;
-            this.btnGerar.Click += new System.EventHandler(this.btnGerar_Click);
+            btnExportarTxt.Location = new Point(128, 59);
+            btnExportarTxt.Margin = new Padding(4, 3, 4, 3);
+            btnExportarTxt.Name = "btnExportarTxt";
+            btnExportarTxt.Size = new Size(107, 55);
+            btnExportarTxt.TabIndex = 0;
+            btnExportarTxt.Text = "Exportar Txt";
+            btnExportarTxt.UseVisualStyleBackColor = true;
+            btnExportarTxt.Click += btnExportarTxt_Click;
             // 
-            // btnRestaurar
+            // btnImportarTxt
             // 
-            this.btnRestaurar.Location = new System.Drawing.Point(128, 140);
-            this.btnRestaurar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnRestaurar.Name = "btnRestaurar";
-            this.btnRestaurar.Size = new System.Drawing.Size(107, 55);
-            this.btnRestaurar.TabIndex = 1;
-            this.btnRestaurar.Text = "Restaurar Backup";
-            this.btnRestaurar.UseVisualStyleBackColor = true;
-            this.btnRestaurar.Click += new System.EventHandler(this.btnRestaurar_Click);
+            btnImportarTxt.Location = new Point(128, 140);
+            btnImportarTxt.Margin = new Padding(4, 3, 4, 3);
+            btnImportarTxt.Name = "btnImportarTxt";
+            btnImportarTxt.Size = new Size(107, 55);
+            btnImportarTxt.TabIndex = 1;
+            btnImportarTxt.Text = "Importar Txt";
+            btnImportarTxt.UseVisualStyleBackColor = true;
+            btnImportarTxt.Click += btnImportarTxt_Click;
             // 
             // openFileDialog1
             // 
-            this.openFileDialog1.DefaultExt = "bak";
-            this.openFileDialog1.Filter = "Backup|*.bak";
+            openFileDialog1.DefaultExt = "bak";
+            openFileDialog1.Filter = "Backup|*.bak";
             // 
             // saveFileDialog1
             // 
-            this.saveFileDialog1.DefaultExt = "bak";
-            this.saveFileDialog1.Filter = "Backup|*.bak";
+            saveFileDialog1.DefaultExt = "bak";
+            saveFileDialog1.Filter = "Backup|*.bak";
             // 
             // FrmBackup
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(358, 285);
-            this.Controls.Add(this.btnRestaurar);
-            this.Controls.Add(this.btnGerar);
-            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.Name = "FrmBackup";
-            this.Text = "Backup";
-            this.Load += new System.EventHandler(this.frmBackup_Load);
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(358, 285);
+            Controls.Add(btnImportarTxt);
+            Controls.Add(btnExportarTxt);
+            Margin = new Padding(4, 3, 4, 3);
+            Name = "FrmBackup";
+            Text = "Backup";
+            Load += frmBackup_Load;
+            ResumeLayout(false);
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btnGerar;
-        private System.Windows.Forms.Button btnRestaurar;
+        private System.Windows.Forms.Button btnExportarTxt;
+        private System.Windows.Forms.Button btnImportarTxt;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }

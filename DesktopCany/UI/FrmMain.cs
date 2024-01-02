@@ -59,7 +59,7 @@ namespace DesktopCany.UI
         {
             consultaModificacaoToolStripMenuItem.Enabled = true;
             registroToolStripMenuItem.Enabled = true;
-            //backupToolStripMenuItem.Enabled = true;
+            backupToolStripMenuItem.Enabled = true;
             gerenciamentoToolStripMenuItem.Enabled = true;
             janelasAbertasToolStripMenuItem.Enabled = true;
             configuraçõesToolStripMenuItem.Enabled = true;
@@ -167,8 +167,7 @@ namespace DesktopCany.UI
 
         private void BackupToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //desabilitado
-            AbrirJanelaNormal(new FrmBackup());
+            AbrirJanelaMaximizada(new FrmBackup());
         }
 
         private void ConfiguracoesToolStripMenuItem_Click(object? sender, EventArgs? e)

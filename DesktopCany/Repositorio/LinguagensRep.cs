@@ -118,5 +118,27 @@ namespace DesktopCany.Repositorio
                 }
             }
         }
+
+        public static void Registrar(LinguagemEnt linguagemEnt)
+        {
+            using (var db = new CanyContext())
+            {
+                try
+                {
+                    db.TB_Linguagens.Add(linguagemEnt);
+                    db.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("[class LinguagensRep]"
+                                    + Environment.NewLine
+                                    + "[public static void Registrar(LinguagemEnt linguagemEnt)]"
+                                    + Environment.NewLine
+                                    + "[Linha 122]"
+                                    + Environment.NewLine
+                                    + ex);
+                }
+            }
+        }
     }
 }
