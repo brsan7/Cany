@@ -59,7 +59,7 @@ namespace DesktopCany.UI
                         char[] escrita = ComporTxt().ToCharArray();
                         await streamWrite.WriteAsync(escrita, 0, escrita.Length);
                         //labelFeedBack.Text = "Importando.";
-                        }
+                    }
                     exStream.Close();
                 }
                 MessageBox.Show("Exportação Concluída!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
@@ -72,7 +72,7 @@ namespace DesktopCany.UI
             int indexGeral = 1;
             string composicaoTxt = ">|[Inicio_Arquivo]|<";
             string finalRegistro = ">|[Final_Registro]|<";
-
+            
             foreach (var item in todosRegistros)
             {
                 BibliotecaEnt lib = item;
@@ -199,40 +199,48 @@ $@"{composicaoTxt}
                 
                 foreach (var campos in registro.Split("==>["))
                 {
-                    switch (campos.Split("]|>:")[0])
+                    string[] dado = campos.Split($"]|>:{Environment.NewLine}");
+                    string chave = dado[0];
+                    string valor = "";
+                    if (dado.Count() > 1)
+                    {
+                        valor = dado[1].Substring(0, dado[1].Length - 2);
+                    }
+
+                    switch (chave)
                     {
                         case "ID_Linguagem":
-                            linguagemEnt.ID_Linguagem = campos.Split($"]|>:{Environment.NewLine}")[1];
+                            linguagemEnt.ID_Linguagem = valor;
                             break;
                         case "DescricaoLang":
-                            linguagemEnt.DescricaoLang = campos.Split($"]|>:{Environment.NewLine}")[1];
+                            linguagemEnt.DescricaoLang = valor;
                             break;
                         case "ID_Biblioteca":
                             /*AUTOMATICO*/
                             break;
                         case "Biblioteca":
-                            biblitotecaEnt.Biblioteca = campos.Split($"]|>:{Environment.NewLine}")[1];
+                            biblitotecaEnt.Biblioteca = valor;
                             break;
                         case "DescricaoLib":
-                            biblitotecaEnt.DescricaoLib = campos.Split($"]|>:{Environment.NewLine}")[1];
+                            biblitotecaEnt.DescricaoLib = valor;
                             break;
                         case "ID_FcnModData":
-                            funcaoEnt.ID_FcnModData = campos.Split($"]|>:{Environment.NewLine}")[1];
+                            funcaoEnt.ID_FcnModData = valor;
                             break;
                         case "DescricaoFcn":
-                            funcaoEnt.DescricaoFcn = campos.Split($"]|>:{Environment.NewLine}")[1];
+                            funcaoEnt.DescricaoFcn = valor;
                             break;
                         case "Funcao":
-                            funcaoEnt.Funcao = campos.Split($"]|>:{Environment.NewLine}")[1];
+                            funcaoEnt.Funcao = valor;
                             break;
                         case "ModProgramador":
-                            funcaoEnt.ModProgramador = campos.Split($"]|>:{Environment.NewLine}")[1];
+                            funcaoEnt.ModProgramador = valor;
                             break;
                         case "ModEstavel":
-                            funcaoEnt.ModEstavel = Convert.ToBoolean(campos.Split($"]|>:{Environment.NewLine}")[1]);
+                            funcaoEnt.ModEstavel = Convert.ToBoolean(valor);
                             break;
                         case "Snippet":
-                            funcaoEnt.Snippet = campos.Split($"]|>:{Environment.NewLine}")[1];
+                            funcaoEnt.Snippet = valor;
                             break;
 
                     }//switch (campos.Split("]|>:")[0])
