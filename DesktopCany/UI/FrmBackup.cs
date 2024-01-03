@@ -42,7 +42,7 @@ namespace DesktopCany.UI
         /***********************************************************************************/
         /**********************************[INICIO_EVENTO]**********************************/
         /***********************************************************************************/
-        private void btnExportarTxt_Click(object sender, EventArgs e)
+        private async void btnExportarTxt_Click(object sender, EventArgs e)
         {
             Stream exStream;
             StreamWriter streamWrite;
@@ -54,14 +54,12 @@ namespace DesktopCany.UI
             {
                 if ((exStream = saveFileDialog.OpenFile()) != null)
                 {
-                    streamWrite = new StreamWriter(exStream, Encoding.Latin1);
-                    foreach (string linha in ComporTxt().Split($"{Environment.NewLine}"))
+                    using (streamWrite = new StreamWriter(exStream, Encoding.Latin1))
                     {
-                        if (linha.Length > 0)
-                        {
-                            streamWrite.WriteLine(linha);
+                        char[] escrita = ComporTxt().ToCharArray();
+                        await streamWrite.WriteAsync(escrita, 0, escrita.Length);
+                        //labelFeedBack.Text = "Importando.";
                         }
-                    }
                     exStream.Close();
                 }
                 MessageBox.Show("Exportação Concluída!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
