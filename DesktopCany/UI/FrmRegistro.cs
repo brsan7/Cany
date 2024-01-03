@@ -168,7 +168,7 @@ namespace DesktopCany.UI
                 cmbFuncoes.Enabled = true;
 
                 rtbDescricaoLib.Enabled = true;
-                rtbDescricaoLib.Text = BibliotecasRep.BuscarDescricao(cmbLinguagens.Text);
+                rtbDescricaoLib.Text = BibliotecasRep.BuscarDescricao(cmbLinguagens.Text, cmbBibliotecas.Text);
 
                 if (editar.Count == 4)
                 {

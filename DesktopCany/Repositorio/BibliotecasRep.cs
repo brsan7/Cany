@@ -29,7 +29,7 @@ namespace DesktopCany.Repositorio
             return resultado;
         }
 
-        public static string BuscarDescricao(string linguagem)
+        public static string BuscarDescricao(string linguagem, string biblioteca)
         {
             string resultado = "";
             using (var db = new CanyContext())
@@ -38,6 +38,7 @@ namespace DesktopCany.Repositorio
                 {
                     resultado = (from bibliotecas in db.TB_Bibliotecas
                                  where bibliotecas.ID_Linguagem.Equals(linguagem)
+                                 where bibliotecas.Biblioteca.Equals(biblioteca)
                                  select bibliotecas.DescricaoLib).First().ToString();
                 }
                 catch (Exception ex)
