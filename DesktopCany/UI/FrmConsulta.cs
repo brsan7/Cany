@@ -10,79 +10,225 @@ using System.Windows.Forms;
 using DesktopCany.Repositorio;
 using DesktopCany.Entidades;
 using Microsoft.EntityFrameworkCore;
+using System.Runtime.CompilerServices;
 
 namespace DesktopCany.UI
 {
     public partial class FrmConsulta : Form
     {
+        private BibliotecaEnt biblitotecaEnt = new();
+        private List<string> lstLinguagens = new();
+        private List<string> lstBibliotecas = new();
+        private List<string> lstFuncoes = new();
+        private List<string> lstFcnModDatas = new();
         public FrmConsulta()
         {
             InitializeComponent();
         }
-
-        private void onClick(object sender, EventArgs e)
-        {
-            //
-        }
-
+        /***********************************************************************************/
+        /**********************************[INICIO_EVENTO]**********************************/
+        /***********************************************************************************/
         private void FrmConsultaOnLoad(object sender, EventArgs e)
         {
-            //BibliotecaEnt inAgrupamentoEnt = ComporRegistro();
-            //if (!BibliotecasRep.Registrar(inAgrupamentoEnt))
-            //{
-            //    //MessageBox.Show("INSERT SQLita");
-            //    //DominioRep.Registrar(classFileEnt.FK_ID_Biblioteca.FK_ID_Linguagem);
-            //    FuncoesRep.Registrar(inAgrupamentoEnt.FK_ID_FcnModData);
-            //    BibliotecaEnt agrupamentoEnt = new()
-            //    {
-            //        Biblioteca = inAgrupamentoEnt.Biblioteca,
-            //        DescricaoLib = inAgrupamentoEnt.DescricaoLib,
-            //        ID_Linguagem = inAgrupamentoEnt.ID_Linguagem,
-            //        ID_FcnModData = FuncoesRep.Consultar("").Last().ID_FcnModData,
-            //        FK_ID_Linguagem = null,
-            //        FK_ID_FcnModData = null
-            //    };
-            //    BibliotecasRep.Registrar(agrupamentoEnt);
-            //}
+            biblitotecaEnt.FK_ID_FcnModData = new FuncaoEnt();
 
-            ////var composiçãoViewSearch = Environment.NewLine + AgrupamentoRep.Consultar().FK_ID_Funcao.ModEstavel.ToString();
-            ////rtbViewSearch.Text += composiçãoViewSearch;
-            ////txtBusca.Text = BibliotecasRep.Consultar("").Last().ID_Biblioteca.ToString();
-            ////LinguagemEnt teste = LinguagensRep.Consultar();
-            //cBoxLinguagem.DataSource = LinguagensRep.SelecionarLinguagens();
-            ////BibliotecaEnt teste2 = BibliotecasRep.Consultar();
-            //cBoxBiblioteca.DataSource = BibliotecasRep.Consultar();
-            //FuncaoEnt teste3 = FuncoesRep.Consultar();
-            //cBoxFuncao.Text = teste3.Funcao;
+            cBoxLinguagem.Items.Clear();
+            lstLinguagens = new(LinguagensRep.SelecionarLinguagens());
+            lstLinguagens.ForEach(linguagenslst => cBoxLinguagem.Items.Add(linguagenslst));
+            cBoxLinguagem.SelectedIndex = 0;
+            cBoxLinguagem.DropDownStyle = ComboBoxStyle.DropDownList;
+            cBoxBiblioteca.DropDownStyle = ComboBoxStyle.DropDownList;
+            cBoxFuncao.DropDownStyle = ComboBoxStyle.DropDownList;
+            cBoxModData.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            this.SetDesktopBounds(0, 50, 350, 600);
+        }
+        /***********************************************************************************/
+        /**********************************[FIM_EVENTO]*************************************/
+        /***********************************************************************************/
+        /////////////////////////////////////////////////////////////////////////////////////
+        /***********************************************************************************/
+        /**********************************[INICIO_EVENTO]**********************************/
+        /***********************************************************************************/
+        private void cBoxLinguagem_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cBoxBiblioteca.Items.Clear();
+            cBoxFuncao.Items.Clear();
+            cBoxModData.Items.Clear();
+            
+            if (cBoxLinguagem.SelectedIndex > 0)
+            {
+                biblitotecaEnt = new();
+                biblitotecaEnt.FK_ID_FcnModData = new();
+                biblitotecaEnt.FK_ID_Linguagem = new();
+                biblitotecaEnt.ID_Linguagem = cBoxLinguagem.Text;
+                biblitotecaEnt.FK_ID_Linguagem.DescricaoLang = 
+                    LinguagensRep.BuscarDescricao(cBoxLinguagem.Text);
+
+                cBoxBiblioteca.Items.Clear();
+                cBoxFuncao.Items.Clear();
+                cBoxModData.Items.Clear();
+                rtbViewSearch.Clear();
+                lstBibliotecas = new(BibliotecasRep.SelecionarBibliotecas(cBoxLinguagem.Text));
+                lstBibliotecas.ForEach(biblitotecaslst => cBoxBiblioteca.Items.Add(biblitotecaslst));
+                cBoxBiblioteca.SelectedIndex = 0;
+
+                setupViewSearch();
+            }
+        }
+        /***********************************************************************************/
+        /**********************************[FIM_EVENTO]*************************************/
+        /***********************************************************************************/
+        /////////////////////////////////////////////////////////////////////////////////////
+        /***********************************************************************************/
+        /**********************************[INICIO_EVENTO]**********************************/
+        /***********************************************************************************/
+        private void cBoxBiblioteca_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cBoxFuncao.Items.Clear();
+            cBoxModData.Items.Clear();
+            
+            if (cBoxBiblioteca.SelectedIndex > 0)
+            {
+                biblitotecaEnt.FK_ID_FcnModData = new();
+                biblitotecaEnt.Biblioteca = cBoxBiblioteca.Text;
+                biblitotecaEnt.DescricaoLib = 
+                    BibliotecasRep.BuscarDescricao(cBoxLinguagem.Text, cBoxBiblioteca.Text);
+
+                cBoxFuncao.Items.Clear();
+                lstFuncoes = new(FuncoesRep.SelecionarFuncoes(biblitotecaEnt));
+                lstFuncoes.ForEach(biblitotecaslst => cBoxFuncao.Items.Add(biblitotecaslst));
+                cBoxFuncao.SelectedIndex = 0;
+
+                setupViewSearch();
+            }
+        }
+        /***********************************************************************************/
+        /**********************************[FIM_EVENTO]*************************************/
+        /***********************************************************************************/
+        /////////////////////////////////////////////////////////////////////////////////////
+        /***********************************************************************************/
+        /**********************************[INICIO_EVENTO]**********************************/
+        /***********************************************************************************/
+        private void cBoxFuncao_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cBoxModData.Items.Clear();
+            
+            if (cBoxFuncao.SelectedIndex > 0)
+            {
+                biblitotecaEnt.FK_ID_FcnModData = new();
+                biblitotecaEnt.FK_ID_FcnModData.Funcao = cBoxFuncao.Text;
+
+                cBoxModData.Items.Clear();
+                lstFcnModDatas = new(FuncoesRep.SelecionarModDatas(biblitotecaEnt));
+                lstFcnModDatas.ForEach(fcnModDatalst => cBoxModData.Items.Add(fcnModDatalst));
+                cBoxModData.SelectedIndex = cBoxModData.Items.Count - 1;
+
+                List<FuncaoEnt> modsFuncao = new();
+                modsFuncao.AddRange(FuncoesRep.SelecionarModsFuncao(biblitotecaEnt).Distinct());
+                biblitotecaEnt.FK_ID_FcnModData = modsFuncao.Last();
+
+                setupViewSearch();
+            }
+        }
+        /***********************************************************************************/
+        /**********************************[FIM_EVENTO]*************************************/
+        /***********************************************************************************/
+        /////////////////////////////////////////////////////////////////////////////////////
+        /***********************************************************************************/
+        /**********************************[INICIO_EVENTO]**********************************/
+        /***********************************************************************************/
+        private void cBoxModData_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cBoxModData.SelectedIndex != 0)
+            {
+                biblitotecaEnt.FK_ID_FcnModData = new();
+                biblitotecaEnt.FK_ID_FcnModData.ID_FcnModData = cBoxModData.Text;
+                biblitotecaEnt.FK_ID_FcnModData = FuncoesRep.BuscarMod(biblitotecaEnt);
+                setupViewSearch();
+            }
+        }
+        /***********************************************************************************/
+        /**********************************[FIM_EVENTO]*************************************/
+        /***********************************************************************************/
+        /////////////////////////////////////////////////////////////////////////////////////
+        /***********************************************************************************/
+        /**********************************[INICIO_EVENTO]**********************************/
+        /***********************************************************************************/
+        private void pboxStandBy_MouseEnter(object sender, EventArgs e)
+        {
+            rtbViewSearch.Visible = true;
+            cBoxLinguagem.Visible = true;
+            cBoxBiblioteca.Visible = true;
+            cBoxFuncao.Visible = true;
+            cBoxModData.Visible = true;
+            btnStandBy.Visible = true;
+
+            pboxStandBy.Visible = false;
+            
+            this.SetDesktopBounds(0, 50, 350, 600);
+        }
+        /***********************************************************************************/
+        /**********************************[FIM_EVENTO]*************************************/
+        /***********************************************************************************/
+        /////////////////////////////////////////////////////////////////////////////////////
+        /***********************************************************************************/
+        /**********************************[INICIO_EVENTO]**********************************/
+        /***********************************************************************************/
+        private void btnStandBy_Click(object sender, EventArgs e)
+        {
+            rtbViewSearch.Visible = false;
+            cBoxLinguagem.Visible = false;
+            cBoxBiblioteca.Visible = false;
+            cBoxFuncao.Visible = false;
+            cBoxModData.Visible = false;
+            btnStandBy.Visible = false;
+
+            pboxStandBy.Visible = true;
+            pboxStandBy.Image = Propriedades.Recursos.ImgStandBy;
+
+            this.SetDesktopBounds(0, 50, 150, 84);
 
         }
-
-        private BibliotecaEnt ComporRegistro()
+        /***********************************************************************************/
+        /**********************************[FIM_EVENTO]*************************************/
+        /***********************************************************************************/
+        /////////////////////////////////////////////////////////////////////////////////////
+        /***********************************************************************************/
+        /********************************[FUNÇÕES_GERAIS]***********************************/
+        /***********************************************************************************/
+        private void RtbAppendFormat(RichTextBox rtb, string text, Color color)
         {
-            LinguagemEnt inDominioEnt = new()
-            {
-                ID_Linguagem = "C++",
-                DescricaoLang = "Linguagem capaz de operar em baixo, médio e alto nível"
-                +Environment.NewLine+"Otimizado para trabalhar em baixo e médio nível"
-                +Environment.NewLine+""
-            };
-            FuncaoEnt inFerramentasEnt = new()
-            {
-                ID_FcnModData = DateTime.Now.ToString(),
-                Funcao = "sprintf()",
-                DescricaoFcn = "descrição da função",
-                ModProgramador = "Programador Responsável",
-                Snippet = "Snippet:[sprintf()]"
-                + Environment.NewLine + "*Markdown{ Syntax highlighting }"
-            };
-            BibliotecaEnt inAgrupamentoEnt = new()
-            {
-                Biblioteca = "stdlib.h",
-                DescricaoLib = "descrição da biblioteca",
-                FK_ID_Linguagem = inDominioEnt,
-                FK_ID_FcnModData = inFerramentasEnt
-            };
-            return inAgrupamentoEnt;
+            rtb.SelectionStart = rtb.TextLength;
+            rtb.SelectionLength = 0;
+            rtb.SelectionColor = color;
+            rtb.SelectionFont = new Font("", 10, FontStyle.Bold);
+            rtb.AppendText(text);
+            rtb.SelectionColor = rtb.ForeColor;
+        }
+
+        private void setupViewSearch()
+        {
+            rtbViewSearch.Clear();
+
+            RtbAppendFormat(rtbViewSearch, "[ Linguagem ]>>>", Color.Blue);
+            RtbAppendFormat(rtbViewSearch, $"[ {cBoxLinguagem.Text} ]", Color.Yellow);
+            rtbViewSearch.AppendText(Environment.NewLine);
+            rtbViewSearch.AppendText(biblitotecaEnt.FK_ID_Linguagem?.DescricaoLang);
+            rtbViewSearch.AppendText(Environment.NewLine);
+            rtbViewSearch.AppendText(Environment.NewLine);
+
+            RtbAppendFormat(rtbViewSearch, "[ Biblioteca ]>>>", Color.Blue);
+            RtbAppendFormat(rtbViewSearch, $"[ {cBoxBiblioteca.Text} ]", Color.Yellow);
+            rtbViewSearch.AppendText(Environment.NewLine);
+            rtbViewSearch.AppendText(biblitotecaEnt.DescricaoLib);
+            rtbViewSearch.AppendText(Environment.NewLine);
+            rtbViewSearch.AppendText(Environment.NewLine);
+
+            RtbAppendFormat(rtbViewSearch, "[ Função ]>>>", Color.Blue);
+            RtbAppendFormat(rtbViewSearch, $"[ {cBoxFuncao.Text} ]", Color.Yellow);
+            rtbViewSearch.AppendText(Environment.NewLine);
+            rtbViewSearch.AppendText(biblitotecaEnt.FK_ID_FcnModData?.Snippet);
         }
     }
 }

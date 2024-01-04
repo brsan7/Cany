@@ -59,5 +59,15 @@ namespace DesktopCany.Propriedades {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ImgStandBy {
+            get {
+                object obj = ResourceManager.GetObject("ImgStandBy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

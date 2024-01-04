@@ -49,6 +49,7 @@
 
   <ItemGroup>
     <Folder Include="Dominio\" />
+    <Folder Include="Resources\" />
   </ItemGroup>
 
 </Project>

@@ -28,121 +28,112 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.consultaModificacaoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.registroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.janelasAbertasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.configuraçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.backupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gerenciamentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.lblUsuario = new System.Windows.Forms.ToolStripStatusLabel();
-            this.menuStrip1.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
-            this.SuspendLayout();
+            menuStrip1 = new MenuStrip();
+            consultaModificacaoToolStripMenuItem = new ToolStripMenuItem();
+            registroToolStripMenuItem = new ToolStripMenuItem();
+            janelasAbertasToolStripMenuItem = new ToolStripMenuItem();
+            configuraçõesToolStripMenuItem = new ToolStripMenuItem();
+            backupToolStripMenuItem = new ToolStripMenuItem();
+            gerenciamentoToolStripMenuItem = new ToolStripMenuItem();
+            statusStrip1 = new StatusStrip();
+            lblUsuario = new ToolStripStatusLabel();
+            menuStrip1.SuspendLayout();
+            statusStrip1.SuspendLayout();
+            SuspendLayout();
             // 
             // menuStrip1
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.consultaModificacaoToolStripMenuItem,
-            this.registroToolStripMenuItem,
-            this.janelasAbertasToolStripMenuItem,
-            this.configuraçõesToolStripMenuItem,
-            this.backupToolStripMenuItem,
-            this.gerenciamentoToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.MdiWindowListItem = this.janelasAbertasToolStripMenuItem;
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(881, 24);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
+            menuStrip1.Items.AddRange(new ToolStripItem[] { consultaModificacaoToolStripMenuItem, registroToolStripMenuItem, janelasAbertasToolStripMenuItem, configuraçõesToolStripMenuItem, backupToolStripMenuItem, gerenciamentoToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.MdiWindowListItem = janelasAbertasToolStripMenuItem;
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Padding = new Padding(7, 2, 0, 2);
+            menuStrip1.Size = new Size(881, 24);
+            menuStrip1.TabIndex = 1;
+            menuStrip1.Text = "menuStrip1";
             // 
             // consultaModificacaoToolStripMenuItem
             // 
-            this.consultaModificacaoToolStripMenuItem.Name = "consultaModificacaoToolStripMenuItem";
-            this.consultaModificacaoToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
-            this.consultaModificacaoToolStripMenuItem.Text = "Consulta";
-            this.consultaModificacaoToolStripMenuItem.Visible = false;
-            this.consultaModificacaoToolStripMenuItem.Click += new System.EventHandler(this.ConsultaModificacaoToolStripMenuItem_Click);
+            consultaModificacaoToolStripMenuItem.Name = "consultaModificacaoToolStripMenuItem";
+            consultaModificacaoToolStripMenuItem.Size = new Size(66, 20);
+            consultaModificacaoToolStripMenuItem.Text = "Consulta";
+            consultaModificacaoToolStripMenuItem.Click += ConsultaModificacaoToolStripMenuItem_Click;
             // 
             // registroToolStripMenuItem
             // 
-            this.registroToolStripMenuItem.Name = "registroToolStripMenuItem";
-            this.registroToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
-            this.registroToolStripMenuItem.Text = "Home";
-            this.registroToolStripMenuItem.Click += new System.EventHandler(this.RegistroToolStripMenuItem_Click);
+            registroToolStripMenuItem.Name = "registroToolStripMenuItem";
+            registroToolStripMenuItem.Size = new Size(111, 20);
+            registroToolStripMenuItem.Text = "Desenvolvimento";
+            registroToolStripMenuItem.Click += RegistroToolStripMenuItem_Click;
             // 
             // janelasAbertasToolStripMenuItem
             // 
-            this.janelasAbertasToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.janelasAbertasToolStripMenuItem.Name = "janelasAbertasToolStripMenuItem";
-            this.janelasAbertasToolStripMenuItem.Size = new System.Drawing.Size(99, 20);
-            this.janelasAbertasToolStripMenuItem.Text = "Janelas Abertas";
+            janelasAbertasToolStripMenuItem.Alignment = ToolStripItemAlignment.Right;
+            janelasAbertasToolStripMenuItem.Name = "janelasAbertasToolStripMenuItem";
+            janelasAbertasToolStripMenuItem.Size = new Size(99, 20);
+            janelasAbertasToolStripMenuItem.Text = "Janelas Abertas";
             // 
             // configuraçõesToolStripMenuItem
             // 
-            this.configuraçõesToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.configuraçõesToolStripMenuItem.Name = "configuraçõesToolStripMenuItem";
-            this.configuraçõesToolStripMenuItem.Size = new System.Drawing.Size(96, 20);
-            this.configuraçõesToolStripMenuItem.Text = "Configurações";
-            this.configuraçõesToolStripMenuItem.Click += new System.EventHandler(this.ConfiguracoesToolStripMenuItem_Click);
+            configuraçõesToolStripMenuItem.Alignment = ToolStripItemAlignment.Right;
+            configuraçõesToolStripMenuItem.Name = "configuraçõesToolStripMenuItem";
+            configuraçõesToolStripMenuItem.Size = new Size(96, 20);
+            configuraçõesToolStripMenuItem.Text = "Configurações";
+            configuraçõesToolStripMenuItem.Click += ConfiguracoesToolStripMenuItem_Click;
             // 
             // backupToolStripMenuItem
             // 
-            this.backupToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.backupToolStripMenuItem.Name = "backupToolStripMenuItem";
-            this.backupToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
-            this.backupToolStripMenuItem.Text = "Backup";
-            this.backupToolStripMenuItem.Click += new System.EventHandler(this.BackupToolStripMenuItem_Click);
+            backupToolStripMenuItem.Alignment = ToolStripItemAlignment.Right;
+            backupToolStripMenuItem.Name = "backupToolStripMenuItem";
+            backupToolStripMenuItem.Size = new Size(58, 20);
+            backupToolStripMenuItem.Text = "Backup";
+            backupToolStripMenuItem.Click += BackupToolStripMenuItem_Click;
             // 
             // gerenciamentoToolStripMenuItem
             // 
-            this.gerenciamentoToolStripMenuItem.Name = "gerenciamentoToolStripMenuItem";
-            this.gerenciamentoToolStripMenuItem.Size = new System.Drawing.Size(100, 20);
-            this.gerenciamentoToolStripMenuItem.Text = "Gerenciamento";
-            this.gerenciamentoToolStripMenuItem.Click += new System.EventHandler(this.GerenciamentoToolStripMenuItem_Click);
+            gerenciamentoToolStripMenuItem.Name = "gerenciamentoToolStripMenuItem";
+            gerenciamentoToolStripMenuItem.Size = new Size(100, 20);
+            gerenciamentoToolStripMenuItem.Text = "Gerenciamento";
+            gerenciamentoToolStripMenuItem.Click += GerenciamentoToolStripMenuItem_Click;
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lblUsuario});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 489);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 16, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(881, 22);
-            this.statusStrip1.TabIndex = 2;
-            this.statusStrip1.Text = "statusStrip1";
+            statusStrip1.Items.AddRange(new ToolStripItem[] { lblUsuario });
+            statusStrip1.Location = new Point(0, 489);
+            statusStrip1.Name = "statusStrip1";
+            statusStrip1.Padding = new Padding(1, 0, 16, 0);
+            statusStrip1.Size = new Size(881, 22);
+            statusStrip1.TabIndex = 2;
+            statusStrip1.Text = "statusStrip1";
             // 
             // lblUsuario
             // 
-            this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(186, 17);
-            this.lblUsuario.Text = "Status : Conexão não Estabelecida";
+            lblUsuario.Name = "lblUsuario";
+            lblUsuario.Size = new Size(186, 17);
+            lblUsuario.Text = "Status : Conexão não Estabelecida";
             // 
             // FrmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(881, 511);
-            this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.menuStrip1);
-            this.IsMdiContainer = true;
-            this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.Name = "FrmMain";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Menu";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMenu_FormClosing);
-            this.Load += new System.EventHandler(this.FrmMenu_Load);
-            this.MdiChildActivate += new System.EventHandler(this.FrmMain_MdiChildActivate);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(881, 511);
+            Controls.Add(statusStrip1);
+            Controls.Add(menuStrip1);
+            IsMdiContainer = true;
+            MainMenuStrip = menuStrip1;
+            Margin = new Padding(4, 3, 4, 3);
+            Name = "FrmMain";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Menu";
+            FormClosing += FrmMenu_FormClosing;
+            Load += FrmMenu_Load;
+            MdiChildActivate += FrmMain_MdiChildActivate;
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
+            statusStrip1.ResumeLayout(false);
+            statusStrip1.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

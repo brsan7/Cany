@@ -28,93 +28,127 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtBusca = new System.Windows.Forms.TextBox();
-            this.btnEstadoBusca = new System.Windows.Forms.Button();
-            this.rtbViewSearch = new System.Windows.Forms.RichTextBox();
-            this.cBoxFuncao = new System.Windows.Forms.ComboBox();
-            this.cBoxBiblioteca = new System.Windows.Forms.ComboBox();
-            this.cBoxLinguagem = new System.Windows.Forms.ComboBox();
-            this.SuspendLayout();
-            // 
-            // txtBusca
-            // 
-            this.txtBusca.Location = new System.Drawing.Point(12, 439);
-            this.txtBusca.Name = "txtBusca";
-            this.txtBusca.PlaceholderText = "Digite para buscar na tela";
-            this.txtBusca.Size = new System.Drawing.Size(251, 23);
-            this.txtBusca.TabIndex = 0;
-            // 
-            // btnEstadoBusca
-            // 
-            this.btnEstadoBusca.Location = new System.Drawing.Point(269, 439);
-            this.btnEstadoBusca.Name = "btnEstadoBusca";
-            this.btnEstadoBusca.Size = new System.Drawing.Size(61, 23);
-            this.btnEstadoBusca.TabIndex = 1;
-            this.btnEstadoBusca.Text = "ON/OFF";
-            this.btnEstadoBusca.UseVisualStyleBackColor = true;
-            this.btnEstadoBusca.Click += new System.EventHandler(this.onClick);
+            rtbViewSearch = new RichTextBox();
+            cBoxFuncao = new ComboBox();
+            cBoxBiblioteca = new ComboBox();
+            cBoxLinguagem = new ComboBox();
+            cBoxModData = new ComboBox();
+            pboxStandBy = new PictureBox();
+            btnStandBy = new Button();
+            ((System.ComponentModel.ISupportInitialize)pboxStandBy).BeginInit();
+            SuspendLayout();
             // 
             // rtbViewSearch
             // 
-            this.rtbViewSearch.Location = new System.Drawing.Point(0, 0);
-            this.rtbViewSearch.Name = "rtbViewSearch";
-            this.rtbViewSearch.Size = new System.Drawing.Size(330, 433);
-            this.rtbViewSearch.TabIndex = 2;
-            this.rtbViewSearch.Text = "Bem Vindo ao Software Livre Cany - Versão 3   =======>*SlCany*   ================" +
-    "=======>*Em Construção*   =======================>*Em Operação*   ==============" +
-    "=========>*FrmRegistro*";
+            rtbViewSearch.BackColor = SystemColors.WindowText;
+            rtbViewSearch.BorderStyle = BorderStyle.None;
+            rtbViewSearch.ForeColor = Color.Lime;
+            rtbViewSearch.Location = new Point(0, 0);
+            rtbViewSearch.Margin = new Padding(0);
+            rtbViewSearch.Name = "rtbViewSearch";
+            rtbViewSearch.ReadOnly = true;
+            rtbViewSearch.Size = new Size(333, 436);
+            rtbViewSearch.TabIndex = 2;
+            rtbViewSearch.Text = "\t\tCany - Versão-3.7";
             // 
             // cBoxFuncao
             // 
-            this.cBoxFuncao.FormattingEnabled = true;
-            this.cBoxFuncao.Location = new System.Drawing.Point(12, 526);
-            this.cBoxFuncao.Name = "cBoxFuncao";
-            this.cBoxFuncao.Size = new System.Drawing.Size(310, 23);
-            this.cBoxFuncao.TabIndex = 3;
+            cBoxFuncao.FormattingEnabled = true;
+            cBoxFuncao.Location = new Point(12, 497);
+            cBoxFuncao.Name = "cBoxFuncao";
+            cBoxFuncao.Size = new Size(310, 23);
+            cBoxFuncao.TabIndex = 3;
+            cBoxFuncao.SelectedIndexChanged += cBoxFuncao_SelectedIndexChanged;
             // 
             // cBoxBiblioteca
             // 
-            this.cBoxBiblioteca.FormattingEnabled = true;
-            this.cBoxBiblioteca.Location = new System.Drawing.Point(12, 497);
-            this.cBoxBiblioteca.Name = "cBoxBiblioteca";
-            this.cBoxBiblioteca.Size = new System.Drawing.Size(310, 23);
-            this.cBoxBiblioteca.TabIndex = 4;
+            cBoxBiblioteca.FormattingEnabled = true;
+            cBoxBiblioteca.Location = new Point(12, 468);
+            cBoxBiblioteca.Name = "cBoxBiblioteca";
+            cBoxBiblioteca.Size = new Size(310, 23);
+            cBoxBiblioteca.TabIndex = 4;
+            cBoxBiblioteca.SelectedIndexChanged += cBoxBiblioteca_SelectedIndexChanged;
             // 
             // cBoxLinguagem
             // 
-            this.cBoxLinguagem.FormattingEnabled = true;
-            this.cBoxLinguagem.Location = new System.Drawing.Point(12, 468);
-            this.cBoxLinguagem.Name = "cBoxLinguagem";
-            this.cBoxLinguagem.Size = new System.Drawing.Size(310, 23);
-            this.cBoxLinguagem.TabIndex = 5;
+            cBoxLinguagem.FormattingEnabled = true;
+            cBoxLinguagem.Location = new Point(12, 439);
+            cBoxLinguagem.Name = "cBoxLinguagem";
+            cBoxLinguagem.Size = new Size(232, 23);
+            cBoxLinguagem.TabIndex = 5;
+            cBoxLinguagem.SelectedIndexChanged += cBoxLinguagem_SelectedIndexChanged;
+            // 
+            // cBoxModData
+            // 
+            cBoxModData.FormattingEnabled = true;
+            cBoxModData.Location = new Point(12, 526);
+            cBoxModData.Name = "cBoxModData";
+            cBoxModData.Size = new Size(310, 23);
+            cBoxModData.TabIndex = 6;
+            cBoxModData.SelectedIndexChanged += cBoxModData_SelectedIndexChanged;
+            // 
+            // pboxStandBy
+            // 
+            pboxStandBy.Image = Propriedades.Recursos.ImgStandBy;
+            pboxStandBy.InitialImage = Propriedades.Recursos.ImgStandBy;
+            pboxStandBy.Location = new Point(0, 0);
+            pboxStandBy.Margin = new Padding(0);
+            pboxStandBy.Name = "pboxStandBy";
+            pboxStandBy.Size = new Size(150, 84);
+            pboxStandBy.TabIndex = 7;
+            pboxStandBy.TabStop = false;
+            pboxStandBy.Visible = false;
+            pboxStandBy.MouseEnter += pboxStandBy_MouseEnter;
+            // 
+            // btnStandBy
+            // 
+            btnStandBy.FlatAppearance.BorderSize = 0;
+            btnStandBy.Location = new Point(247, 439);
+            btnStandBy.Margin = new Padding(0);
+            btnStandBy.Name = "btnStandBy";
+            btnStandBy.Size = new Size(75, 23);
+            btnStandBy.TabIndex = 8;
+            btnStandBy.Text = "Stand By";
+            btnStandBy.UseVisualStyleBackColor = true;
+            btnStandBy.Click += btnStandBy_Click;
             // 
             // FrmConsulta
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(334, 561);
-            this.Controls.Add(this.cBoxLinguagem);
-            this.Controls.Add(this.cBoxBiblioteca);
-            this.Controls.Add(this.cBoxFuncao);
-            this.Controls.Add(this.rtbViewSearch);
-            this.Controls.Add(this.btnEstadoBusca);
-            this.Controls.Add(this.txtBusca);
-            this.Name = "FrmConsulta";
-            this.Text = "FrmConsulta";
-            this.Load += new System.EventHandler(this.FrmConsultaOnLoad);
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            ClientSize = new Size(334, 561);
+            Controls.Add(btnStandBy);
+            Controls.Add(pboxStandBy);
+            Controls.Add(cBoxModData);
+            Controls.Add(cBoxLinguagem);
+            Controls.Add(cBoxBiblioteca);
+            Controls.Add(cBoxFuncao);
+            Controls.Add(rtbViewSearch);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            Location = new Point(1030, 0);
+            MaximizeBox = false;
+            MaximumSize = new Size(350, 600);
+            MinimizeBox = false;
+            Name = "FrmConsulta";
+            Opacity = 0.8D;
+            RightToLeftLayout = true;
+            StartPosition = FormStartPosition.Manual;
+            Text = "Cany";
+            TopMost = true;
+            Load += FrmConsultaOnLoad;
+            ((System.ComponentModel.ISupportInitialize)pboxStandBy).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
-
-        private TextBox txtBusca;
-        private Button btnEstadoBusca;
         private RichTextBox rtbViewSearch;
         private ComboBox cBoxFuncao;
         private ComboBox cBoxBiblioteca;
         private ComboBox cBoxLinguagem;
+        private ComboBox cBoxModData;
+        private PictureBox pboxStandBy;
+        private Button btnStandBy;
     }
 }

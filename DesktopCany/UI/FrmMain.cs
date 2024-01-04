@@ -108,6 +108,12 @@ namespace DesktopCany.UI
             tela.WindowState = FormWindowState.Normal;
             tela.Show();
         }
+        private void AbrirJanelaNormalIndependente(Form tela)
+        {
+            FecharJanelasUnicas();
+            tela.WindowState = FormWindowState.Normal;
+            tela.Show();
+        }
 
         private void AbrirJanelaMaximizada(Form tela)
         {
@@ -151,8 +157,7 @@ namespace DesktopCany.UI
         
         private void ConsultaModificacaoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //desabilitado
-            AbrirJanelaNormal(new FrmConsulta());
+            AbrirJanelaNormalIndependente(new FrmConsulta());
         }
 
         private void RegistroToolStripMenuItem_Click(object sender, EventArgs e)
