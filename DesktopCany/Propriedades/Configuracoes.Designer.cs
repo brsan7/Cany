@@ -12,7 +12,7 @@ namespace DesktopCany.Propriedades {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.4.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.8.0.0")]
     internal sealed partial class Configuracoes : global::System.Configuration.ApplicationSettingsBase {
         
         private static Configuracoes defaultInstance = ((Configuracoes)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Configuracoes())));
@@ -89,6 +89,18 @@ namespace DesktopCany.Propriedades {
             }
             set {
                 this["Colaborador"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0;0")]
+        public string LastPosition {
+            get {
+                return ((string)(this["LastPosition"]));
+            }
+            set {
+                this["LastPosition"] = value;
             }
         }
     }

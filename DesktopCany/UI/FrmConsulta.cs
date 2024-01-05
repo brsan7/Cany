@@ -11,6 +11,7 @@ using DesktopCany.Repositorio;
 using DesktopCany.Entidades;
 using Microsoft.EntityFrameworkCore;
 using System.Runtime.CompilerServices;
+using DesktopCany.Propriedades;
 
 namespace DesktopCany.UI
 {
@@ -41,7 +42,10 @@ namespace DesktopCany.UI
             cBoxFuncao.DropDownStyle = ComboBoxStyle.DropDownList;
             cBoxModData.DropDownStyle = ComboBoxStyle.DropDownList;
 
-            this.SetDesktopBounds(0, 50, 350, 600);
+            this.SetDesktopBounds(
+                Convert.ToInt16(Configuracoes.Default.LastPosition.Split(";")[0]),
+                Convert.ToInt16(Configuracoes.Default.LastPosition.Split(";")[1]),
+                350, 600);
         }
         /***********************************************************************************/
         /**********************************[FIM_EVENTO]*************************************/
@@ -55,14 +59,14 @@ namespace DesktopCany.UI
             cBoxBiblioteca.Items.Clear();
             cBoxFuncao.Items.Clear();
             cBoxModData.Items.Clear();
-            
+
             if (cBoxLinguagem.SelectedIndex > 0)
             {
                 biblitotecaEnt = new();
                 biblitotecaEnt.FK_ID_FcnModData = new();
                 biblitotecaEnt.FK_ID_Linguagem = new();
                 biblitotecaEnt.ID_Linguagem = cBoxLinguagem.Text;
-                biblitotecaEnt.FK_ID_Linguagem.DescricaoLang = 
+                biblitotecaEnt.FK_ID_Linguagem.DescricaoLang =
                     LinguagensRep.BuscarDescricao(cBoxLinguagem.Text);
 
                 cBoxBiblioteca.Items.Clear();
@@ -87,12 +91,12 @@ namespace DesktopCany.UI
         {
             cBoxFuncao.Items.Clear();
             cBoxModData.Items.Clear();
-            
+
             if (cBoxBiblioteca.SelectedIndex > 0)
             {
                 biblitotecaEnt.FK_ID_FcnModData = new();
                 biblitotecaEnt.Biblioteca = cBoxBiblioteca.Text;
-                biblitotecaEnt.DescricaoLib = 
+                biblitotecaEnt.DescricaoLib =
                     BibliotecasRep.BuscarDescricao(cBoxLinguagem.Text, cBoxBiblioteca.Text);
 
                 cBoxFuncao.Items.Clear();
@@ -113,7 +117,7 @@ namespace DesktopCany.UI
         private void cBoxFuncao_SelectedIndexChanged(object sender, EventArgs e)
         {
             cBoxModData.Items.Clear();
-            
+
             if (cBoxFuncao.SelectedIndex > 0)
             {
                 biblitotecaEnt.FK_ID_FcnModData = new();
@@ -163,10 +167,15 @@ namespace DesktopCany.UI
             cBoxFuncao.Visible = true;
             cBoxModData.Visible = true;
             btnStandBy.Visible = true;
+            btnDefault.Visible = true;
+            btnDefault.BackColor = Color.Green;
 
             pboxStandBy.Visible = false;
-            
-            this.SetDesktopBounds(0, 50, 350, 600);
+
+            this.SetDesktopBounds(
+                Convert.ToInt16(Configuracoes.Default.LastPosition.Split(";")[0]),
+                Convert.ToInt16(Configuracoes.Default.LastPosition.Split(";")[1]),
+                350, 600);
         }
         /***********************************************************************************/
         /**********************************[FIM_EVENTO]*************************************/
@@ -183,12 +192,47 @@ namespace DesktopCany.UI
             cBoxFuncao.Visible = false;
             cBoxModData.Visible = false;
             btnStandBy.Visible = false;
+            btnDefault.Visible = false;
 
             pboxStandBy.Visible = true;
             pboxStandBy.Image = Propriedades.Recursos.ImgStandBy;
 
-            this.SetDesktopBounds(0, 50, 150, 84);
+            this.SetDesktopBounds(
+                Convert.ToInt16(Configuracoes.Default.LastPosition.Split(";")[0]),
+                Convert.ToInt16(Configuracoes.Default.LastPosition.Split(";")[1]),
+                150, 84);
 
+        }
+        /***********************************************************************************/
+        /**********************************[FIM_EVENTO]*************************************/
+        /***********************************************************************************/
+        /////////////////////////////////////////////////////////////////////////////////////
+        /***********************************************************************************/
+        /**********************************[INICIO_EVENTO]**********************************/
+        /***********************************************************************************/
+        private void btnDefault_Click(object sender, EventArgs e)
+        {
+            btnDefault.BackColor = Color.Green;
+            Configuracoes.Default.LastPosition = $"{this.Location.X};{this.Location.Y}";
+        }
+        /***********************************************************************************/
+        /**********************************[FIM_EVENTO]*************************************/
+        /***********************************************************************************/
+        /////////////////////////////////////////////////////////////////////////////////////
+        /***********************************************************************************/
+        /**********************************[INICIO_EVENTO]**********************************/
+        /***********************************************************************************/
+        private void FrmConsulta_LocationChanged(object sender, EventArgs e)
+        {
+            if (this.Location.X.ToString().Equals(Configuracoes.Default.LastPosition.Split(";")[0])
+                && this.Location.Y.ToString().Equals(Configuracoes.Default.LastPosition.Split(";")[1]))
+            {
+                btnDefault.BackColor = Color.Green;
+            }
+            else
+            {
+                btnDefault.BackColor = Color.Silver;
+            }
         }
         /***********************************************************************************/
         /**********************************[FIM_EVENTO]*************************************/

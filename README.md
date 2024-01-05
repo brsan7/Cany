@@ -11,6 +11,12 @@ Presente, a terceita versão, tem como objetivo tornar-se colaborativo, interdis
   
 -------
 ## **Screenshots**  
+
+* Tela de Consulta sobreposta as demais janelas, com as funções Stand By e Default, que registra a posiçao memorizada na tela para o retorno do Stand By.
+<img src="https://github.com/brsan7/Cany/blob/master/Screenshots/Screenshot_3_0.png" height="543" width="883" >  
+<img src="https://github.com/brsan7/Cany/blob/master/Screenshots/Screenshot_3_1.png" height="543" width="883" >  
+  
+-------  
   
 * Telas de Configuração
 <img src="https://github.com/brsan7/Cany/blob/master/Screenshots/Screenshot_0_0.png" height="543" width="883" >  

@@ -25,5 +25,8 @@
     <Setting Name="Colaborador" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="LastPosition" Type="System.String" Scope="User">
+      <Value Profile="(Default)">0;0</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

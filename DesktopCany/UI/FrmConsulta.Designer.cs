@@ -35,6 +35,7 @@
             cBoxModData = new ComboBox();
             pboxStandBy = new PictureBox();
             btnStandBy = new Button();
+            btnDefault = new Button();
             ((System.ComponentModel.ISupportInitialize)pboxStandBy).BeginInit();
             SuspendLayout();
             // 
@@ -65,7 +66,7 @@
             cBoxBiblioteca.FormattingEnabled = true;
             cBoxBiblioteca.Location = new Point(12, 468);
             cBoxBiblioteca.Name = "cBoxBiblioteca";
-            cBoxBiblioteca.Size = new Size(310, 23);
+            cBoxBiblioteca.Size = new Size(232, 23);
             cBoxBiblioteca.TabIndex = 4;
             cBoxBiblioteca.SelectedIndexChanged += cBoxBiblioteca_SelectedIndexChanged;
             // 
@@ -102,6 +103,7 @@
             // 
             // btnStandBy
             // 
+            btnStandBy.BackColor = Color.Silver;
             btnStandBy.FlatAppearance.BorderSize = 0;
             btnStandBy.Location = new Point(247, 439);
             btnStandBy.Margin = new Padding(0);
@@ -109,8 +111,21 @@
             btnStandBy.Size = new Size(75, 23);
             btnStandBy.TabIndex = 8;
             btnStandBy.Text = "Stand By";
-            btnStandBy.UseVisualStyleBackColor = true;
+            btnStandBy.UseVisualStyleBackColor = false;
             btnStandBy.Click += btnStandBy_Click;
+            // 
+            // btnDefault
+            // 
+            btnDefault.BackColor = Color.Silver;
+            btnDefault.FlatAppearance.BorderSize = 0;
+            btnDefault.Location = new Point(247, 468);
+            btnDefault.Margin = new Padding(0);
+            btnDefault.Name = "btnDefault";
+            btnDefault.Size = new Size(75, 23);
+            btnDefault.TabIndex = 9;
+            btnDefault.Text = "Default";
+            btnDefault.UseVisualStyleBackColor = false;
+            btnDefault.Click += btnDefault_Click;
             // 
             // FrmConsulta
             // 
@@ -119,6 +134,7 @@
             AutoSize = true;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             ClientSize = new Size(334, 561);
+            Controls.Add(btnDefault);
             Controls.Add(btnStandBy);
             Controls.Add(pboxStandBy);
             Controls.Add(cBoxModData);
@@ -138,6 +154,7 @@
             Text = "Cany";
             TopMost = true;
             Load += FrmConsultaOnLoad;
+            LocationChanged += FrmConsulta_LocationChanged;
             ((System.ComponentModel.ISupportInitialize)pboxStandBy).EndInit();
             ResumeLayout(false);
         }
@@ -150,5 +167,6 @@
         private ComboBox cBoxModData;
         private PictureBox pboxStandBy;
         private Button btnStandBy;
+        private Button btnDefault;
     }
 }
