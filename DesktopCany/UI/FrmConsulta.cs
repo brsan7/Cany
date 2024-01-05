@@ -37,10 +37,6 @@ namespace DesktopCany.UI
             lstLinguagens = new(LinguagensRep.SelecionarLinguagens());
             lstLinguagens.ForEach(linguagenslst => cBoxLinguagem.Items.Add(linguagenslst));
             cBoxLinguagem.SelectedIndex = 0;
-            cBoxLinguagem.DropDownStyle = ComboBoxStyle.DropDownList;
-            cBoxBiblioteca.DropDownStyle = ComboBoxStyle.DropDownList;
-            cBoxFuncao.DropDownStyle = ComboBoxStyle.DropDownList;
-            cBoxModData.DropDownStyle = ComboBoxStyle.DropDownList;
 
             this.SetDesktopBounds(
                 Convert.ToInt16(Configuracoes.Default.LastPosition.Split(";")[0]),
@@ -69,6 +65,8 @@ namespace DesktopCany.UI
                 biblitotecaEnt.FK_ID_Linguagem.DescricaoLang =
                     LinguagensRep.BuscarDescricao(cBoxLinguagem.Text);
 
+                cBoxBiblioteca.Text = String.Empty;
+                cBoxFuncao.Text = String.Empty;
                 cBoxBiblioteca.Items.Clear();
                 cBoxFuncao.Items.Clear();
                 cBoxModData.Items.Clear();
@@ -99,6 +97,7 @@ namespace DesktopCany.UI
                 biblitotecaEnt.DescricaoLib =
                     BibliotecasRep.BuscarDescricao(cBoxLinguagem.Text, cBoxBiblioteca.Text);
 
+                cBoxFuncao.Text = String.Empty;
                 cBoxFuncao.Items.Clear();
                 lstFuncoes = new(FuncoesRep.SelecionarFuncoes(biblitotecaEnt));
                 lstFuncoes.ForEach(biblitotecaslst => cBoxFuncao.Items.Add(biblitotecaslst));
@@ -150,6 +149,98 @@ namespace DesktopCany.UI
                 biblitotecaEnt.FK_ID_FcnModData.ID_FcnModData = cBoxModData.Text;
                 biblitotecaEnt.FK_ID_FcnModData = FuncoesRep.BuscarMod(biblitotecaEnt);
                 setupViewSearch();
+            }
+        }
+        /***********************************************************************************/
+        /**********************************[FIM_EVENTO]*************************************/
+        /***********************************************************************************/
+        /////////////////////////////////////////////////////////////////////////////////////
+        /***********************************************************************************/
+        /**********************************[INICIO_EVENTO]**********************************/
+        /***********************************************************************************/
+        private void cBoxLinguagem_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            cBoxLinguagem.Items.Clear();
+            cBoxLinguagem.Items.Add("**Linguagens**");
+            cBoxLinguagem.SelectionStart = cBoxLinguagem.Text.Length;
+            foreach (var item in lstLinguagens)
+            {
+                if (item.ToUpper().Contains(cBoxLinguagem.Text.ToUpper()))
+                {
+                    if (!item.Equals("**Linguagens**"))
+                    {
+                        cBoxLinguagem.Items.Add(item);
+                    }
+                }
+            }
+        }
+        /***********************************************************************************/
+        /**********************************[FIM_EVENTO]*************************************/
+        /***********************************************************************************/
+        /////////////////////////////////////////////////////////////////////////////////////
+        /***********************************************************************************/
+        /**********************************[INICIO_EVENTO]**********************************/
+        /***********************************************************************************/
+        private void cBoxBiblioteca_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            cBoxBiblioteca.Items.Clear();
+            cBoxBiblioteca.Items.Add("**Bibliotecas**");
+            cBoxBiblioteca.SelectionStart = cBoxBiblioteca.Text.Length;
+            foreach (var item in lstBibliotecas)
+            {
+                if (item.ToUpper().Contains(cBoxBiblioteca.Text.ToUpper()))
+                {
+                    if (!item.Equals("**Bibliotecas**"))
+                    {
+                        cBoxBiblioteca.Items.Add(item);
+                    }
+                }
+            }
+        }
+        /***********************************************************************************/
+        /**********************************[FIM_EVENTO]*************************************/
+        /***********************************************************************************/
+        /////////////////////////////////////////////////////////////////////////////////////
+        /***********************************************************************************/
+        /**********************************[INICIO_EVENTO]**********************************/
+        /***********************************************************************************/
+        private void cBoxFuncao_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            cBoxFuncao.Items.Clear();
+            cBoxFuncao.Items.Add("**Funções**");
+            cBoxFuncao.SelectionStart = cBoxFuncao.Text.Length;
+            foreach (var item in lstFuncoes)
+            {
+                if (item.ToUpper().Contains(cBoxFuncao.Text.ToUpper()))
+                {
+                    if (!item.Equals("**Funções**"))
+                    {
+                        cBoxFuncao.Items.Add(item);
+                    }
+                }
+            }
+        }
+        /***********************************************************************************/
+        /**********************************[FIM_EVENTO]*************************************/
+        /***********************************************************************************/
+        /////////////////////////////////////////////////////////////////////////////////////
+        /***********************************************************************************/
+        /**********************************[INICIO_EVENTO]**********************************/
+        /***********************************************************************************/
+        private void cBoxModData_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            cBoxModData.Items.Clear();
+            cBoxModData.Items.Add("**Data_Mod_Id**");
+            cBoxModData.SelectionStart = cBoxModData.Text.Length;
+            foreach (var item in lstFcnModDatas)
+            {
+                if (item.ToUpper().Contains(cBoxModData.Text.ToUpper()))
+                {
+                    if (!item.Equals("**Data_Mod_Id**"))
+                    {
+                        cBoxModData.Items.Add(item);
+                    }
+                }
             }
         }
         /***********************************************************************************/
@@ -256,21 +347,21 @@ namespace DesktopCany.UI
             rtbViewSearch.Clear();
 
             RtbAppendFormat(rtbViewSearch, "[ Linguagem ]>>>", Color.Blue);
-            RtbAppendFormat(rtbViewSearch, $"[ {cBoxLinguagem.Text} ]", Color.Yellow);
+            RtbAppendFormat(rtbViewSearch, $"[ {biblitotecaEnt.ID_Linguagem} ]", Color.Yellow);
             rtbViewSearch.AppendText(Environment.NewLine);
             rtbViewSearch.AppendText(biblitotecaEnt.FK_ID_Linguagem?.DescricaoLang);
             rtbViewSearch.AppendText(Environment.NewLine);
             rtbViewSearch.AppendText(Environment.NewLine);
 
             RtbAppendFormat(rtbViewSearch, "[ Biblioteca ]>>>", Color.Blue);
-            RtbAppendFormat(rtbViewSearch, $"[ {cBoxBiblioteca.Text} ]", Color.Yellow);
+            RtbAppendFormat(rtbViewSearch, $"[ {biblitotecaEnt.Biblioteca} ]", Color.Yellow);
             rtbViewSearch.AppendText(Environment.NewLine);
             rtbViewSearch.AppendText(biblitotecaEnt.DescricaoLib);
             rtbViewSearch.AppendText(Environment.NewLine);
             rtbViewSearch.AppendText(Environment.NewLine);
 
             RtbAppendFormat(rtbViewSearch, "[ Função ]>>>", Color.Blue);
-            RtbAppendFormat(rtbViewSearch, $"[ {cBoxFuncao.Text} ]", Color.Yellow);
+            RtbAppendFormat(rtbViewSearch, $"[ {biblitotecaEnt.FK_ID_FcnModData?.Funcao} ]", Color.Yellow);
             rtbViewSearch.AppendText(Environment.NewLine);
             rtbViewSearch.AppendText(biblitotecaEnt.FK_ID_FcnModData?.Snippet);
         }

@@ -60,6 +60,7 @@
             cBoxFuncao.Size = new Size(310, 23);
             cBoxFuncao.TabIndex = 3;
             cBoxFuncao.SelectedIndexChanged += cBoxFuncao_SelectedIndexChanged;
+            cBoxFuncao.KeyPress += cBoxFuncao_KeyPress;
             // 
             // cBoxBiblioteca
             // 
@@ -69,6 +70,7 @@
             cBoxBiblioteca.Size = new Size(232, 23);
             cBoxBiblioteca.TabIndex = 4;
             cBoxBiblioteca.SelectedIndexChanged += cBoxBiblioteca_SelectedIndexChanged;
+            cBoxBiblioteca.KeyPress += cBoxBiblioteca_KeyPress;
             // 
             // cBoxLinguagem
             // 
@@ -78,6 +80,7 @@
             cBoxLinguagem.Size = new Size(232, 23);
             cBoxLinguagem.TabIndex = 5;
             cBoxLinguagem.SelectedIndexChanged += cBoxLinguagem_SelectedIndexChanged;
+            cBoxLinguagem.KeyPress += cBoxLinguagem_KeyPress;
             // 
             // cBoxModData
             // 
@@ -87,6 +90,7 @@
             cBoxModData.Size = new Size(310, 23);
             cBoxModData.TabIndex = 6;
             cBoxModData.SelectedIndexChanged += cBoxModData_SelectedIndexChanged;
+            cBoxModData.KeyPress += cBoxModData_KeyPress;
             // 
             // pboxStandBy
             // 
@@ -123,7 +127,7 @@
             btnDefault.Name = "btnDefault";
             btnDefault.Size = new Size(75, 23);
             btnDefault.TabIndex = 9;
-            btnDefault.Text = "Default";
+            btnDefault.Text = "Dock";
             btnDefault.UseVisualStyleBackColor = false;
             btnDefault.Click += btnDefault_Click;
             // 
