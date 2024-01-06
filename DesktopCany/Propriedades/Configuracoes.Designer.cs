@@ -115,5 +115,17 @@ namespace DesktopCany.Propriedades {
                 this["BorderStyle"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("DockUp")]
+        public string DockOrientation {
+            get {
+                return ((string)(this["DockOrientation"]));
+            }
+            set {
+                this["DockOrientation"] = value;
+            }
+        }
     }
 }

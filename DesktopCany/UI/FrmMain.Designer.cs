@@ -61,8 +61,8 @@ namespace DesktopCany.UI
             consultaModificacaoToolStripMenuItem.Name = "consultaModificacaoToolStripMenuItem";
             consultaModificacaoToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+O";
             consultaModificacaoToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.O;
-            consultaModificacaoToolStripMenuItem.Size = new Size(66, 20);
-            consultaModificacaoToolStripMenuItem.Text = "Consulta";
+            consultaModificacaoToolStripMenuItem.Size = new Size(45, 20);
+            consultaModificacaoToolStripMenuItem.Text = "Cany";
             consultaModificacaoToolStripMenuItem.Click += ConsultaModificacaoToolStripMenuItem_Click;
             // 
             // registroToolStripMenuItem

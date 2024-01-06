@@ -36,7 +36,7 @@ namespace DesktopCany.UI
             this.ForeColor = Configuracoes.Default.ForeColor;
             rtbViewSearch.BackColor = Configuracoes.Default.BackColor;
             rtbViewSearch.ForeColor = Configuracoes.Default.ForeColor;
-            btnDefault.ForeColor = Color.Black;
+            btnDockOrientation.ForeColor = Color.Black;
             btnStandBy.ForeColor = Color.Black;
 
             biblitotecaEnt.FK_ID_FcnModData = new FuncaoEnt();
@@ -50,6 +50,8 @@ namespace DesktopCany.UI
                 Convert.ToInt16(Configuracoes.Default.LastPosition.Split(";")[0]),
                 Convert.ToInt16(Configuracoes.Default.LastPosition.Split(";")[1]),
                 350, 600);
+
+            btnDockOrientation.Text = Configuracoes.Default.DockOrientation;
         }
         /***********************************************************************************/
         /**********************************[FIM_EVENTO]*************************************/
@@ -266,8 +268,8 @@ namespace DesktopCany.UI
             cBoxFuncao.Visible = true;
             cBoxModData.Visible = true;
             btnStandBy.Visible = true;
-            btnDefault.Visible = true;
-            btnDefault.BackColor = Color.Green;
+            btnDockOrientation.Visible = true;
+            btnDockOrientation.BackColor = Color.Green;
 
             pboxStandBy.Visible = false;
 
@@ -291,16 +293,26 @@ namespace DesktopCany.UI
             cBoxFuncao.Visible = false;
             cBoxModData.Visible = false;
             btnStandBy.Visible = false;
-            btnDefault.Visible = false;
+            btnDockOrientation.Visible = false;
 
             pboxStandBy.Visible = true;
             pboxStandBy.Image = Propriedades.Recursos.ImgStandBy;
 
-            this.SetDesktopBounds(
-                Convert.ToInt16(Configuracoes.Default.LastPosition.Split(";")[0]),
-                Convert.ToInt16(Configuracoes.Default.LastPosition.Split(";")[1]),
-                150, 84);
-
+            switch (Configuracoes.Default.DockOrientation)
+            {
+                case "DockUp":
+                    this.SetDesktopBounds(
+                        Convert.ToInt16(Configuracoes.Default.LastPosition.Split(";")[0]),
+                        Convert.ToInt16(Configuracoes.Default.LastPosition.Split(";")[1]),
+                        150, 84);
+                    break;
+                case "DockDown":
+                    this.SetDesktopBounds(
+                        Convert.ToInt16(Configuracoes.Default.LastPosition.Split(";")[0]) + 182,
+                        Convert.ToInt16(Configuracoes.Default.LastPosition.Split(";")[1]) + 468,
+                        150, 84);
+                    break;
+            }
         }
         /***********************************************************************************/
         /**********************************[FIM_EVENTO]*************************************/
@@ -309,9 +321,19 @@ namespace DesktopCany.UI
         /***********************************************************************************/
         /**********************************[INICIO_EVENTO]**********************************/
         /***********************************************************************************/
-        private void btnDefault_Click(object sender, EventArgs e)
+        private void btnDockOrientation_Click(object sender, EventArgs e)
         {
-            btnDefault.BackColor = Color.Green;
+            if (Configuracoes.Default.DockOrientation.Equals("DockUp"))
+            {
+                Configuracoes.Default.DockOrientation = "DockDown";
+                btnDockOrientation.Text = "DockDown";
+            }
+            else
+            {
+                Configuracoes.Default.DockOrientation = "DockUp";
+                btnDockOrientation.Text = "DockUp";
+            }
+            btnDockOrientation.BackColor = Color.Green;
             Configuracoes.Default.LastPosition = $"{this.Location.X};{this.Location.Y}";
             Configuracoes.Default.Save();
         }
@@ -327,11 +349,11 @@ namespace DesktopCany.UI
             if (this.Location.X.ToString().Equals(Configuracoes.Default.LastPosition.Split(";")[0])
                 && this.Location.Y.ToString().Equals(Configuracoes.Default.LastPosition.Split(";")[1]))
             {
-                btnDefault.BackColor = Color.Green;
+                btnDockOrientation.BackColor = Color.Green;
             }
             else
             {
-                btnDefault.BackColor = Color.Silver;
+                btnDockOrientation.BackColor = Color.Silver;
             }
         }
         /***********************************************************************************/
@@ -346,7 +368,7 @@ namespace DesktopCany.UI
             rtb.SelectionStart = rtb.TextLength;
             rtb.SelectionLength = 0;
             rtb.SelectionColor = color;
-            rtb.SelectionFont = new Font("", 10, FontStyle.Bold);
+            rtb.SelectionFont = new Font("", 9, FontStyle.Bold);
             rtb.AppendText(text);
             rtb.SelectionColor = rtb.ForeColor;
         }

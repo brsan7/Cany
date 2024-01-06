@@ -37,7 +37,7 @@ namespace DesktopCany.UI
             cBoxModData = new ComboBox();
             pboxStandBy = new PictureBox();
             btnStandBy = new Button();
-            btnDefault = new Button();
+            btnDockOrientation = new Button();
             ((System.ComponentModel.ISupportInitialize)pboxStandBy).BeginInit();
             SuspendLayout();
             // 
@@ -119,19 +119,19 @@ namespace DesktopCany.UI
             btnStandBy.UseVisualStyleBackColor = false;
             btnStandBy.Click += btnStandBy_Click;
             // 
-            // btnDefault
+            // btnDockOrientation
             // 
-            btnDefault.BackColor = Color.Silver;
-            btnDefault.FlatAppearance.BorderSize = 0;
-            btnDefault.ForeColor = Color.Black;
-            btnDefault.Location = new Point(247, 468);
-            btnDefault.Margin = new Padding(0);
-            btnDefault.Name = "btnDefault";
-            btnDefault.Size = new Size(75, 23);
-            btnDefault.TabIndex = 9;
-            btnDefault.Text = "Dock";
-            btnDefault.UseVisualStyleBackColor = false;
-            btnDefault.Click += btnDefault_Click;
+            btnDockOrientation.BackColor = Color.Silver;
+            btnDockOrientation.FlatAppearance.BorderSize = 0;
+            btnDockOrientation.ForeColor = Color.Black;
+            btnDockOrientation.Location = new Point(247, 468);
+            btnDockOrientation.Margin = new Padding(0);
+            btnDockOrientation.Name = "btnDockOrientation";
+            btnDockOrientation.Size = new Size(75, 23);
+            btnDockOrientation.TabIndex = 9;
+            btnDockOrientation.Text = "DockUp";
+            btnDockOrientation.UseVisualStyleBackColor = false;
+            btnDockOrientation.Click += btnDockOrientation_Click;
             // 
             // FrmConsulta
             // 
@@ -140,7 +140,7 @@ namespace DesktopCany.UI
             AutoSize = true;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             ClientSize = new Size(334, 561);
-            Controls.Add(btnDefault);
+            Controls.Add(btnDockOrientation);
             Controls.Add(btnStandBy);
             Controls.Add(pboxStandBy);
             Controls.Add(cBoxModData);
@@ -173,6 +173,6 @@ namespace DesktopCany.UI
         private ComboBox cBoxModData;
         private PictureBox pboxStandBy;
         private Button btnStandBy;
-        private Button btnDefault;
+        private Button btnDockOrientation;
     }
 }

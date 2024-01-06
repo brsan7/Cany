@@ -31,5 +31,8 @@
     <Setting Name="BorderStyle" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="DockOrientation" Type="System.String" Scope="User">
+      <Value Profile="(Default)">DockUp</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
