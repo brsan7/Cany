@@ -33,10 +33,10 @@ Selecione as opções manualmente através do combo-box ou pesquise no mesmo.
 <img src="https://github.com/brsan7/Cany/blob/master/Screenshots/Screenshot_4.gif" height="543" width="883" >  
   
 * Stand By - DockDown  
-<img src="https://github.com/brsan7/Cany/blob/master/Screenshots/Screenshot_3_0.png" height="543" width="883" >  
+<img src="https://github.com/brsan7/Cany/blob/master/Screenshots/Screenshot_3_0.gif" height="543" width="883" >  
   
 * Stand By - DockUp  
-<img src="https://github.com/brsan7/Cany/blob/master/Screenshots/Screenshot_3_1.png" height="543" width="883" >  
+<img src="https://github.com/brsan7/Cany/blob/master/Screenshots/Screenshot_3_1.gif" height="543" width="883" >  
 
 -------  
   
