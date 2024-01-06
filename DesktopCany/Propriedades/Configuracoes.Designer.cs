@@ -25,18 +25,6 @@ namespace DesktopCany.Propriedades {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Cany")]
-        public string AppTitulo {
-            get {
-                return ((string)(this["AppTitulo"]));
-            }
-            set {
-                this["AppTitulo"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("*Nome ou endereço do servidor*")]
         public string EnderecoServidorSQL {
             get {
@@ -62,12 +50,12 @@ namespace DesktopCany.Propriedades {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Control")]
-        public global::System.Drawing.Color CorDasTelas {
+        public global::System.Drawing.Color BackColor {
             get {
-                return ((global::System.Drawing.Color)(this["CorDasTelas"]));
+                return ((global::System.Drawing.Color)(this["BackColor"]));
             }
             set {
-                this["CorDasTelas"] = value;
+                this["BackColor"] = value;
             }
         }
         
@@ -101,6 +89,30 @@ namespace DesktopCany.Propriedades {
             }
             set {
                 this["LastPosition"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("ControlText")]
+        public global::System.Drawing.Color ForeColor {
+            get {
+                return ((global::System.Drawing.Color)(this["ForeColor"]));
+            }
+            set {
+                this["ForeColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool BorderStyle {
+            get {
+                return ((bool)(this["BorderStyle"]));
+            }
+            set {
+                this["BorderStyle"] = value;
             }
         }
     }

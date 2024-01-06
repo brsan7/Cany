@@ -16,10 +16,20 @@ namespace DesktopCany.UI
             InitializeComponent();
         }
 
-        private void FrmMenu_Load(object sender, EventArgs e)
+        private void FrmMenu_Load(object? sender, EventArgs? e)
         {
-            this.Text = Propriedades.Configuracoes.Default.AppTitulo;
-            this.BackColor = Propriedades.Configuracoes.Default.CorDasTelas;
+            if (Propriedades.Configuracoes.Default.BorderStyle)
+            {
+                FormBorderStyle = FormBorderStyle.Sizable;
+            }
+
+            this.Text = "Cany";
+            this.BackColor = Propriedades.Configuracoes.Default.BackColor;
+            this.ForeColor = Propriedades.Configuracoes.Default.ForeColor;
+            menuStrip1.BackColor = Propriedades.Configuracoes.Default.BackColor;
+            menuStrip1.ForeColor = Propriedades.Configuracoes.Default.ForeColor;
+            statusStrip1.BackColor = Propriedades.Configuracoes.Default.BackColor;
+            statusStrip1.ForeColor = Propriedades.Configuracoes.Default.ForeColor;
 
             DisableStripMenu();
 
@@ -83,7 +93,9 @@ namespace DesktopCany.UI
             }
             else
             {
+#pragma warning disable CS0162 // Código inacessível detectado
                 string msg = "O Banco de dados não está configurado.";
+#pragma warning restore CS0162 // Código inacessível detectado
                 MessageBox.Show(msg, "Alerta - Conexão não estabelecida", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
                 ConfiguracoesToolStripMenuItem_Click(this, null);
             }
@@ -191,7 +203,7 @@ namespace DesktopCany.UI
             FrmMenu_Load(null, null);
         }
 
-        private void FrmMain_MdiChildActivate(object sender, EventArgs e)
+        private void FrmMain_MdiChildActivate(object? sender, EventArgs? e)
         {
             if (conf && FrmMain.ActiveForm?.ActiveMdiChild?.ToString()==null)
             {

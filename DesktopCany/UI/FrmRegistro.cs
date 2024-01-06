@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DesktopCany.Entidades;
+using DesktopCany.Propriedades;
 using DesktopCany.Repositorio;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.VisualBasic.Devices;
@@ -38,6 +39,19 @@ namespace DesktopCany.UI
         /***********************************************************************************/
         private void FrmRegistroOnLoad(object sender, EventArgs e)
         {
+            this.BackColor = Configuracoes.Default.BackColor;
+            this.ForeColor = Configuracoes.Default.ForeColor;
+            rtbDescricaoLang.ForeColor = Configuracoes.Default.ForeColor;
+            rtbDescricaoLang.BackColor = Configuracoes.Default.BackColor;
+            rtbDescricaoLib.ForeColor = Configuracoes.Default.ForeColor;
+            rtbDescricaoLib.BackColor = Configuracoes.Default.BackColor;
+            rtbDescricaoFcn.ForeColor = Configuracoes.Default.ForeColor;
+            rtbDescricaoFcn.BackColor = Configuracoes.Default.BackColor;
+            rtbSnippet.ForeColor = Configuracoes.Default.ForeColor;
+            rtbSnippet.BackColor = Configuracoes.Default.BackColor;
+            chkBoxModEstavel.ForeColor = Configuracoes.Default.BackColor;
+            chkBoxModEstavel.BackColor = Configuracoes.Default.ForeColor;
+
             biblitotecaEnt.FK_ID_FcnModData = new FuncaoEnt();
 
             cmbLinguagens.Items.Clear();
@@ -45,13 +59,14 @@ namespace DesktopCany.UI
             lstLinguagens.ForEach(linguagenslst => cmbLinguagens.Items.Add(linguagenslst));
             cmbLinguagens.SelectedIndex = 0;
 
-            rtbDescricaoLib.Enabled=false;
-            rtbDescricaoFcn.Enabled=false;
+            rtbDescricaoLib.ReadOnly = true;
+            rtbDescricaoFcn.ReadOnly = true;
+            rtbSnippet.ReadOnly = true;
 
             if (editar.Count == 4)
             {
                 cmbLinguagens.SelectedIndex = cmbLinguagens.FindString(editar[0].ToString());
-                cmbLinguagens.Enabled = false;
+                rtbDescricaoLang.ReadOnly = true;
             }
         }
         /***********************************************************************************/
@@ -70,7 +85,7 @@ namespace DesktopCany.UI
                 btnRegMod.Text = "RegNewLang";
                 operacao = "Linguagem";
                 btnRegMod.Enabled = true;
-                rtbDescricaoLang.Enabled = true;
+                rtbDescricaoLang.ReadOnly = false;
                 setup_RegNew();
             }
         }
@@ -91,7 +106,7 @@ namespace DesktopCany.UI
                 btnRegMod.Text = "RegNewLib";
                 operacao = "Biblioteca";
                 btnRegMod.Enabled = true;
-                rtbDescricaoLib.Enabled = true;
+                rtbDescricaoLib.ReadOnly = false;
                 setup_RegNew();
             }
         }
@@ -113,7 +128,7 @@ namespace DesktopCany.UI
                 btnRegMod.Text = "RegNewFcn";
                 operacao = "Função";
                 btnRegMod.Enabled = true;
-                rtbDescricaoFcn.Enabled = true;
+                rtbDescricaoFcn.ReadOnly = false;
                 setup_RegNew();
             }
         }
@@ -137,7 +152,8 @@ namespace DesktopCany.UI
                 cmbBibliotecas.SelectedIndex = 0;
                 cmbBibliotecas.Enabled = true;
 
-                rtbDescricaoLang.Enabled = true;
+                rtbDescricaoLang.ReadOnly = false;
+
                 rtbDescricaoLang.Text = LinguagensRep.BuscarDescricao(cmbLinguagens.Text);
 
                 if (editar.Count == 4)
@@ -167,7 +183,7 @@ namespace DesktopCany.UI
                 cmbFuncoes.SelectedIndex = 0;
                 cmbFuncoes.Enabled = true;
 
-                rtbDescricaoLib.Enabled = true;
+                rtbDescricaoLib.ReadOnly = false;
                 rtbDescricaoLib.Text = BibliotecasRep.BuscarDescricao(cmbLinguagens.Text, cmbBibliotecas.Text);
 
                 if (editar.Count == 4)
@@ -229,15 +245,14 @@ namespace DesktopCany.UI
                 }
 
 
-                rtbDescricaoFcn.Enabled = true;
-                rtbSnippet.Enabled = true;
+                rtbDescricaoFcn.ReadOnly = false;
+                rtbSnippet.ReadOnly = false;
                 rtbDescricaoFcn.Text = biblitotecaEnt.FK_ID_FcnModData.DescricaoFcn;
                 chkBoxModEstavel.Checked = biblitotecaEnt.FK_ID_FcnModData.ModEstavel;
                 rtbSnippet.Text = biblitotecaEnt.FK_ID_FcnModData.Snippet;
                 this.Text = "lang:" + cmbLinguagens.Text + "_lib:" + cmbBibliotecas.Text + "_fcn:" + cmbFuncoes.Text;
 
                 btnRegMod.Enabled = true;
-
             }
         }
         /***********************************************************************************/
@@ -446,10 +461,11 @@ namespace DesktopCany.UI
             {
                 cmbBibliotecas.Enabled = true;
                 cmbFuncoes.Enabled = true;
-                rtbDescricaoLang.Enabled = true;
-                rtbDescricaoLib.Enabled = true;
-                rtbDescricaoFcn.Enabled = true;
-                rtbSnippet.Enabled = true;
+
+                rtbDescricaoLang.ReadOnly = false;
+                rtbDescricaoLib.ReadOnly = false;
+                rtbDescricaoFcn.ReadOnly = false;
+                rtbSnippet.ReadOnly = false;
             }
             switch (btnRegMod.Text)
             {
@@ -485,9 +501,10 @@ namespace DesktopCany.UI
 
                 cmbBibliotecas.Enabled = false;
                 cmbFuncoes.Enabled = false;
-                rtbDescricaoLang.Enabled = false;
-                rtbDescricaoLib.Enabled = false;
-                rtbDescricaoFcn.Enabled = false;
+                rtbDescricaoLang.ReadOnly = true;
+                rtbDescricaoLib.ReadOnly = true;
+                rtbDescricaoFcn.ReadOnly = true;
+                rtbSnippet.ReadOnly = true;
             }
 
             if (cmbBibliotecas.SelectedIndex == 0)
@@ -495,15 +512,15 @@ namespace DesktopCany.UI
                 cmbFuncoes.Enabled = false;
                 cmbFuncoes.Text = String.Empty;
                 rtbDescricaoLib.Text = String.Empty;
-                rtbDescricaoLib.Enabled = false;
+                rtbDescricaoLib.ReadOnly = true;
             }
 
             if (cmbFuncoes.SelectedIndex == 0
                 || cmbBibliotecas.SelectedIndex == 0
                 || cmbLinguagens.SelectedIndex == 0)
             {
-                rtbDescricaoFcn.Enabled = false;
-                rtbSnippet.Enabled = false;
+                rtbDescricaoFcn.ReadOnly = true;
+                rtbSnippet.ReadOnly = true;
                 btnRegMod.Text = "RegMod";
                 operacao = "Modificação";
                 btnRegMod.Enabled = false;

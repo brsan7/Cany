@@ -63,6 +63,16 @@ namespace DesktopCany.Propriedades {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ImgHome {
+            get {
+                object obj = ResourceManager.GetObject("ImgHome", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ImgStandBy {
             get {
                 object obj = ResourceManager.GetObject("ImgStandBy", resourceCulture);

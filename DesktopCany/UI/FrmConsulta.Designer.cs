@@ -1,4 +1,6 @@
-﻿namespace DesktopCany.UI
+﻿using DesktopCany.Propriedades;
+
+namespace DesktopCany.UI
 {
     partial class FrmConsulta
     {
@@ -41,9 +43,7 @@
             // 
             // rtbViewSearch
             // 
-            rtbViewSearch.BackColor = SystemColors.WindowText;
             rtbViewSearch.BorderStyle = BorderStyle.None;
-            rtbViewSearch.ForeColor = Color.Lime;
             rtbViewSearch.Location = new Point(0, 0);
             rtbViewSearch.Margin = new Padding(0);
             rtbViewSearch.Name = "rtbViewSearch";
@@ -94,8 +94,8 @@
             // 
             // pboxStandBy
             // 
-            pboxStandBy.Image = Propriedades.Recursos.ImgStandBy;
-            pboxStandBy.InitialImage = Propriedades.Recursos.ImgStandBy;
+            pboxStandBy.Image = Recursos.ImgStandBy;
+            pboxStandBy.InitialImage = Recursos.ImgStandBy;
             pboxStandBy.Location = new Point(0, 0);
             pboxStandBy.Margin = new Padding(0);
             pboxStandBy.Name = "pboxStandBy";
@@ -109,6 +109,7 @@
             // 
             btnStandBy.BackColor = Color.Silver;
             btnStandBy.FlatAppearance.BorderSize = 0;
+            btnStandBy.ForeColor = Color.Black;
             btnStandBy.Location = new Point(247, 439);
             btnStandBy.Margin = new Padding(0);
             btnStandBy.Name = "btnStandBy";
@@ -122,6 +123,7 @@
             // 
             btnDefault.BackColor = Color.Silver;
             btnDefault.FlatAppearance.BorderSize = 0;
+            btnDefault.ForeColor = Color.Black;
             btnDefault.Location = new Point(247, 468);
             btnDefault.Margin = new Padding(0);
             btnDefault.Name = "btnDefault";
@@ -155,7 +157,7 @@
             Opacity = 0.8D;
             RightToLeftLayout = true;
             StartPosition = FormStartPosition.Manual;
-            Text = "Cany";
+            Text = "Cany [Pod]";
             TopMost = true;
             Load += FrmConsultaOnLoad;
             LocationChanged += FrmConsulta_LocationChanged;

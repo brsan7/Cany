@@ -1,4 +1,6 @@
-﻿namespace DesktopCany.UI
+﻿using DesktopCany.Propriedades;
+
+namespace DesktopCany.UI
 {
     partial class FrmBackup
     {
@@ -39,7 +41,8 @@
             // 
             // btnExportarTxt
             // 
-            btnExportarTxt.Location = new Point(128, 59);
+            btnExportarTxt.ForeColor = Color.Black;
+            btnExportarTxt.Location = new Point(85, 77);
             btnExportarTxt.Margin = new Padding(4, 3, 4, 3);
             btnExportarTxt.Name = "btnExportarTxt";
             btnExportarTxt.Size = new Size(107, 55);
@@ -50,7 +53,8 @@
             // 
             // btnImportarTxt
             // 
-            btnImportarTxt.Location = new Point(128, 140);
+            btnImportarTxt.ForeColor = Color.Black;
+            btnImportarTxt.Location = new Point(85, 145);
             btnImportarTxt.Margin = new Padding(4, 3, 4, 3);
             btnImportarTxt.Name = "btnImportarTxt";
             btnImportarTxt.Size = new Size(107, 55);
@@ -80,8 +84,9 @@
             progressBar1.Dock = DockStyle.Top;
             progressBar1.Location = new Point(0, 0);
             progressBar1.Name = "progressBar1";
-            progressBar1.Size = new Size(358, 23);
+            progressBar1.Size = new Size(277, 23);
             progressBar1.TabIndex = 2;
+            progressBar1.Visible = false;
             // 
             // labelFeedBack
             // 
@@ -91,16 +96,18 @@
             labelFeedBack.Size = new Size(83, 15);
             labelFeedBack.TabIndex = 3;
             labelFeedBack.Text = "FeedBack User";
+            labelFeedBack.Visible = false;
             // 
             // FrmBackup
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(358, 285);
+            ClientSize = new Size(277, 277);
             Controls.Add(labelFeedBack);
             Controls.Add(progressBar1);
             Controls.Add(btnImportarTxt);
             Controls.Add(btnExportarTxt);
+            FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(4, 3, 4, 3);
             Name = "FrmBackup";
             StartPosition = FormStartPosition.CenterScreen;

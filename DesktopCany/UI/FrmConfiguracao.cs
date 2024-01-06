@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace DesktopCany.UI
+﻿namespace DesktopCany.UI
 {
     public partial class FrmConfiguracao : Form
     {
@@ -17,33 +7,64 @@ namespace DesktopCany.UI
             InitializeComponent();
         }
 
+        Color corFundo = Propriedades.Configuracoes.Default.BackColor;
+        Color corTexto = Propriedades.Configuracoes.Default.ForeColor;
+
         private void frmConfiguracao_Load(object? sender, EventArgs? e)
         {
-            txtTitulo.Text = Propriedades.Configuracoes.Default.AppTitulo;
+            chkBoxBorder.Checked = Propriedades.Configuracoes.Default.BorderStyle;
             txtNomeBase.Text = Propriedades.Configuracoes.Default.NomeBaseDeDados;
             txtEndereco.Text = Propriedades.Configuracoes.Default.EnderecoServidorSQL;
-            txtCor.Text = Propriedades.Configuracoes.Default.CorDasTelas.ToString();
+            txtCorFundo.Text = Propriedades.Configuracoes.Default.BackColor.ToString();
+            txtCorTexto.Text = Propriedades.Configuracoes.Default.ForeColor.ToString();
+            this.BackColor = Propriedades.Configuracoes.Default.BackColor;
+            this.ForeColor = Propriedades.Configuracoes.Default.ForeColor;
+            btnCorFundo.ForeColor = Color.Black;
+            btnCorText.ForeColor = Color.Black;
+            btnRestaurar.ForeColor = Color.Black;
+            btnSalvar.ForeColor = Color.Black;
         }
-
-        private void btnCor_Click(object sender, EventArgs e)
+        private void btnCorText_Click(object sender, EventArgs e)
         {
             DialogResult resposta = colorDialog1.ShowDialog();
-            if(resposta != DialogResult.Cancel)
+            if (resposta != DialogResult.Cancel)
             {
-                Propriedades.Configuracoes.Default.CorDasTelas = colorDialog1.Color;
-                txtCor.Text = colorDialog1.Color.ToString();
+                
+                txtCorTexto.Text = colorDialog1.Color.ToString();
+                corTexto = colorDialog1.Color;
+            }
+        }
+        private void btnCor_Click(object sender, EventArgs e)
+        {
+            DialogResult resposta = colorDialog2.ShowDialog();
+            if (resposta != DialogResult.Cancel)
+            {
+                
+                txtCorFundo.Text = colorDialog2.Color.ToString();
+                corFundo = colorDialog2.Color;
             }
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            Propriedades.Configuracoes.Default.AppTitulo = txtTitulo.Text;
+            Propriedades.Configuracoes.Default.BorderStyle = chkBoxBorder.Checked;
+            Propriedades.Configuracoes.Default.ForeColor = corTexto;
+            Propriedades.Configuracoes.Default.BackColor = corFundo;
             Propriedades.Configuracoes.Default.EnderecoServidorSQL = txtEndereco.Text;
             Propriedades.Configuracoes.Default.NomeBaseDeDados = txtNomeBase.Text;
-
             Propriedades.Configuracoes.Default.Save();
 
-            MessageBox.Show("Configurações salvas!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
+            string msg = "Configurações salvas!";
+            msg = $"{msg}{Environment.NewLine}";
+            msg = $"{msg}As configurações serão aplicadas após o reinicio.";
+            MessageBox.Show(
+                msg, 
+                "Informação", 
+                MessageBoxButtons.OK, 
+                MessageBoxIcon.Information, 
+                MessageBoxDefaultButton.Button2
+                );
+
             this.Close();
         }
 

@@ -1,4 +1,6 @@
-﻿namespace DesktopCany.UI
+﻿using DesktopCany.Propriedades;
+
+namespace DesktopCany.UI
 {
     partial class FrmGerenciamento
     {
@@ -57,7 +59,8 @@
             // 
             // btnRemove
             // 
-            btnRemove.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnRemove.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnRemove.ForeColor = Color.Black;
             btnRemove.Location = new Point(670, 415);
             btnRemove.Name = "btnRemove";
             btnRemove.Size = new Size(200, 23);
@@ -135,6 +138,7 @@
             // 
             // btnReset
             // 
+            btnReset.ForeColor = Color.Black;
             btnReset.Location = new Point(792, 12);
             btnReset.Name = "btnReset";
             btnReset.Size = new Size(78, 23);
@@ -145,8 +149,9 @@
             // 
             // btnEdit
             // 
-            btnEdit.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnEdit.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnEdit.Enabled = false;
+            btnEdit.ForeColor = Color.Black;
             btnEdit.Location = new Point(464, 415);
             btnEdit.Name = "btnEdit";
             btnEdit.Size = new Size(200, 23);

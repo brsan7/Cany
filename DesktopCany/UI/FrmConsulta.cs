@@ -31,6 +31,14 @@ namespace DesktopCany.UI
         /***********************************************************************************/
         private void FrmConsultaOnLoad(object sender, EventArgs e)
         {
+
+            this.BackColor = Configuracoes.Default.BackColor;
+            this.ForeColor = Configuracoes.Default.ForeColor;
+            rtbViewSearch.BackColor = Configuracoes.Default.BackColor;
+            rtbViewSearch.ForeColor = Configuracoes.Default.ForeColor;
+            btnDefault.ForeColor = Color.Black;
+            btnStandBy.ForeColor = Color.Black;
+
             biblitotecaEnt.FK_ID_FcnModData = new FuncaoEnt();
 
             cBoxLinguagem.Items.Clear();
@@ -305,6 +313,7 @@ namespace DesktopCany.UI
         {
             btnDefault.BackColor = Color.Green;
             Configuracoes.Default.LastPosition = $"{this.Location.X};{this.Location.Y}";
+            Configuracoes.Default.Save();
         }
         /***********************************************************************************/
         /**********************************[FIM_EVENTO]*************************************/

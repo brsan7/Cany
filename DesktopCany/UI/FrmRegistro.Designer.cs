@@ -1,4 +1,6 @@
-﻿namespace DesktopCany.UI
+﻿using DesktopCany.Propriedades;
+
+namespace DesktopCany.UI
 {
     partial class FrmRegistro
     {
@@ -65,6 +67,7 @@
             // 
             // rtbDescricaoLang
             // 
+            rtbDescricaoLang.BorderStyle = BorderStyle.None;
             rtbDescricaoLang.Location = new Point(12, 41);
             rtbDescricaoLang.MaxLength = 200;
             rtbDescricaoLang.Name = "rtbDescricaoLang";
@@ -86,9 +89,10 @@
             // rtbSnippet
             // 
             rtbSnippet.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            rtbSnippet.BorderStyle = BorderStyle.None;
             rtbSnippet.Location = new Point(328, 12);
             rtbSnippet.Name = "rtbSnippet";
-            rtbSnippet.Size = new Size(658, 437);
+            rtbSnippet.Size = new Size(524, 437);
             rtbSnippet.TabIndex = 4;
             rtbSnippet.Text = "";
             // 
@@ -114,6 +118,7 @@
             // 
             // rtbDescricaoLib
             // 
+            rtbDescricaoLib.BorderStyle = BorderStyle.None;
             rtbDescricaoLib.Location = new Point(12, 153);
             rtbDescricaoLib.MaxLength = 200;
             rtbDescricaoLib.Name = "rtbDescricaoLib";
@@ -136,6 +141,7 @@
             // btnRegMod
             // 
             btnRegMod.Enabled = false;
+            btnRegMod.ForeColor = Color.Black;
             btnRegMod.Location = new Point(226, 427);
             btnRegMod.Name = "btnRegMod";
             btnRegMod.Size = new Size(96, 23);
@@ -146,6 +152,7 @@
             // 
             // rtbDescricaoFcn
             // 
+            rtbDescricaoFcn.BorderStyle = BorderStyle.None;
             rtbDescricaoFcn.Location = new Point(12, 265);
             rtbDescricaoFcn.MaxLength = 400;
             rtbDescricaoFcn.Name = "rtbDescricaoFcn";
@@ -157,7 +164,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(998, 461);
+            ClientSize = new Size(864, 461);
             Controls.Add(rtbDescricaoFcn);
             Controls.Add(btnRegMod);
             Controls.Add(chkBoxModEstavel);

@@ -1,4 +1,5 @@
 ﻿using DesktopCany.Entidades;
+using DesktopCany.Propriedades;
 using DesktopCany.Repositorio;
 using System;
 using System.Collections.Generic;
@@ -34,6 +35,10 @@ namespace DesktopCany.UI
         private void frmBackup_Load(object sender, EventArgs e)
         {
             labelFeedBack.Text = "";
+            this.BackColor = Configuracoes.Default.BackColor;
+            this.ForeColor = Configuracoes.Default.ForeColor;
+            btnExportarTxt.ForeColor = Color.Black;
+            btnImportarTxt.ForeColor = Color.Black;
         }
         /***********************************************************************************/
         /**********************************[FIM_EVENTO]*************************************/
@@ -132,6 +137,9 @@ $@"{composicaoTxt}
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "txt files (*txt)|*txt";
             openFileDialog.Title = "Importar Txt";
+
+            progressBar1.Visible = true;
+            labelFeedBack.Visible = true;
             labelFeedBack.Text = "Carregando o arquivo.";
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
@@ -180,8 +188,8 @@ $@"{composicaoTxt}
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             MessageBox.Show("Importação Concluída!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
-            progressBar1.Value = 0;
-            this.labelFeedBack.Text = "";
+            progressBar1.Visible = false;
+            labelFeedBack.Visible = false;
         }
 
 

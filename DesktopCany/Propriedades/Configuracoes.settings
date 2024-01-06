@@ -2,16 +2,13 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="DesktopCany.Propriedades" GeneratedClassName="Configuracoes">
   <Profiles />
   <Settings>
-    <Setting Name="AppTitulo" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Cany</Value>
-    </Setting>
     <Setting Name="EnderecoServidorSQL" Type="System.String" Scope="User">
       <Value Profile="(Default)">*Nome ou endereço do servidor*</Value>
     </Setting>
     <Setting Name="NomeBaseDeDados" Type="System.String" Scope="User">
       <Value Profile="(Default)">Cany</Value>
     </Setting>
-    <Setting Name="CorDasTelas" Type="System.Drawing.Color" Scope="User">
+    <Setting Name="BackColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">Control</Value>
     </Setting>
     <Setting Name="Cany_DB_ConnectionString" Type="(Connection string)" Scope="Application">
@@ -27,6 +24,12 @@
     </Setting>
     <Setting Name="LastPosition" Type="System.String" Scope="User">
       <Value Profile="(Default)">0;0</Value>
+    </Setting>
+    <Setting Name="ForeColor" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">ControlText</Value>
+    </Setting>
+    <Setting Name="BorderStyle" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>
 </SettingsFile>

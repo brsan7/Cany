@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DesktopCany.Entidades;
+using DesktopCany.Propriedades;
 using DesktopCany.Repositorio;
 
 namespace DesktopCany.UI
@@ -60,6 +61,15 @@ namespace DesktopCany.UI
 
             //Configura a fonte de dados
             setupDSourceDgvs(null);
+
+            this.BackColor = Configuracoes.Default.BackColor;
+            this.ForeColor = Configuracoes.Default.ForeColor;
+            dgvLinguagens.ForeColor = Color.Black;
+            dgvBibliotecas.ForeColor = Color.Black;
+            dgvFuncoes.ForeColor = Color.Black;
+            btnReset.ForeColor = Color.Black;
+            btnEdit.ForeColor = Color.Black;
+            btnRemove.ForeColor = Color.Black;
         }
 
         private void txtBuscarLinguagem_TextChanged(object sender, EventArgs e)
