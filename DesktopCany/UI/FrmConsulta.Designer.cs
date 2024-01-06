@@ -50,7 +50,7 @@ namespace DesktopCany.UI
             rtbViewSearch.ReadOnly = true;
             rtbViewSearch.Size = new Size(333, 436);
             rtbViewSearch.TabIndex = 2;
-            rtbViewSearch.Text = "\t\tCany - Versão-3.7";
+            rtbViewSearch.Text = "\t\tCany - Versão-4.0";
             // 
             // cBoxFuncao
             // 
