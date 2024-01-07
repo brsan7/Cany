@@ -25,25 +25,25 @@ namespace DesktopCany.Propriedades {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("*Nome ou endereço do servidor*")]
-        public string EnderecoServidorSQL {
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DataBaseLocal {
             get {
-                return ((string)(this["EnderecoServidorSQL"]));
+                return ((string)(this["DataBaseLocal"]));
             }
             set {
-                this["EnderecoServidorSQL"] = value;
+                this["DataBaseLocal"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Cany")]
-        public string NomeBaseDeDados {
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string StringConexao {
             get {
-                return ((string)(this["NomeBaseDeDados"]));
+                return ((string)(this["StringConexao"]));
             }
             set {
-                this["NomeBaseDeDados"] = value;
+                this["StringConexao"] = value;
             }
         }
         
@@ -125,6 +125,30 @@ namespace DesktopCany.Propriedades {
             }
             set {
                 this["DockOrientation"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("SQLITE")]
+        public string TipoServidor {
+            get {
+                return ((string)(this["TipoServidor"]));
+            }
+            set {
+                this["TipoServidor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string PastaLocal {
+            get {
+                return ((string)(this["PastaLocal"]));
+            }
+            set {
+                this["PastaLocal"] = value;
             }
         }
     }

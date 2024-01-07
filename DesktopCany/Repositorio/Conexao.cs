@@ -14,58 +14,25 @@ namespace DesktopCany.Repositorio
 {
     class Conexao
     {
-        //Declarar uma variavel de conexao com o SQL.
-        SqlConnection con;
-
-        //Metodo construtor (que é execultado sempre que um objeto desta classe é instanciado).
-        public Conexao()
-        {
-            //Instanciar o objeto sqlconection.
-            con = new SqlConnection();
-            con.ConnectionString = "Data Source = ";
-            con.ConnectionString += Propriedades.Configuracoes.Default.EnderecoServidorSQL;
-            
-        }
-
-        public SqlConnection Conectar()
-        {
-            if (con.State == ConnectionState.Closed)
-            {
-                con.Open();
-            }
-            return con;
-        }
-
-        public void Desconectar()
-        {
-            if (con.State == ConnectionState.Open)
-            {
-                con.Close();
-            }
-        }
-
         public static bool TestarConexao()
         {
             bool configurado;
-            string servidor = Propriedades.Configuracoes.Default.EnderecoServidorSQL;
+            string respostaDB = String.Empty;
 
-            if (CanyContext.genesis || servidor != "*Nome ou endereço do servidor*")
+            using (var db = new CanyContext())
             {
-                using (var db = new CanyContext())
+                try
                 {
-                    try
-                    {
-                        servidor = db.TB_Linguagens?.Find("TestarConexao()")?.ID_Linguagem ?? String.Empty;
-                        configurado = true;
-                    }
-                    catch (Exception ex)
-                    {
-                        configurado = false;
-                    }
+                    respostaDB = db.TB_Linguagens?.Find("TestarConexao()")?.ID_Linguagem ?? String.Empty;
+                    configurado = true;
                 }
-                return configurado;
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                    configurado = false;
+                }
             }
-            else return false;
+            return configurado;
         }
     }
 }

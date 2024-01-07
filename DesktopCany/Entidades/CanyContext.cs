@@ -26,16 +26,18 @@ namespace DesktopCany.Entidades
 
     internal class CanyContext : DbContext
     {
-        public const bool genesis = true;//Seletor Desenvolvimento|Produção
-        public const string switch_on = "USE_SQLITE";
-        //const string switch_on = "USE_SQLSERVER";
+        public const bool genesis = false;//Seletor Desenvolvimento|Produção
+        public string switchDb = Propriedades.Configuracoes.Default.TipoServidor;//Produção
+        //const string switchDb = "SQLITE";
+        //const string switchDb = "SQLSERVER";
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             
-            switch (switch_on)//Seletor Base de Dados
+            switch (switchDb)//Seletor Base de Dados
             {
-                case "USE_SQLITE":
+                case "SQLITE":
                     if (genesis)
                     {
                         //Uso em Desenvolvimento
@@ -44,11 +46,13 @@ namespace DesktopCany.Entidades
                     else
                     {
                         //Uso em Produção
-                        optionsBuilder.UseSqlite($@"Data Source={Propriedades.Configuracoes.Default.EnderecoServidorSQL}");
+                        string urlDataBaseLocal = Propriedades.Configuracoes.Default.PastaLocal;
+                        urlDataBaseLocal = $@"{urlDataBaseLocal}\{Propriedades.Configuracoes.Default.DataBaseLocal}";
+                        optionsBuilder.UseSqlite($@"Data Source={urlDataBaseLocal}");
                     }
                     break;
 
-                case "USE_SQLSERVER":
+                case "SQLSERVER":
                     if (genesis)
                     {
                         //Uso em Desenvolvimento
@@ -62,14 +66,14 @@ namespace DesktopCany.Entidades
                     {
                         //Uso em Produção
                         optionsBuilder.UseSqlServer($@"
-                                                Server={Propriedades.Configuracoes.Default.EnderecoServidorSQL};
-                                                Database={Propriedades.Configuracoes.Default.NomeBaseDeDados};
+                                                Server={Propriedades.Configuracoes.Default.StringConexao};
+                                                Database=Cany;
                                                 Integrated Security=true;
                                                 Trust Server Certificate=true");
                     }
                     break;
 
-                default:
+                //default:
             }
 
         }

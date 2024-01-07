@@ -2,11 +2,11 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="DesktopCany.Propriedades" GeneratedClassName="Configuracoes">
   <Profiles />
   <Settings>
-    <Setting Name="EnderecoServidorSQL" Type="System.String" Scope="User">
-      <Value Profile="(Default)">*Nome ou endereço do servidor*</Value>
+    <Setting Name="DataBaseLocal" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="NomeBaseDeDados" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Cany</Value>
+    <Setting Name="StringConexao" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="BackColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">Control</Value>
@@ -33,6 +33,12 @@
     </Setting>
     <Setting Name="DockOrientation" Type="System.String" Scope="User">
       <Value Profile="(Default)">DockUp</Value>
+    </Setting>
+    <Setting Name="TipoServidor" Type="System.String" Scope="User">
+      <Value Profile="(Default)">SQLITE</Value>
+    </Setting>
+    <Setting Name="PastaLocal" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>

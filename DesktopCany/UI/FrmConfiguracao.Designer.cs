@@ -34,10 +34,7 @@ namespace DesktopCany.UI
             txtCorTexto = new TextBox();
             txtCorFundo = new TextBox();
             lblCor = new Label();
-            txtEndereco = new TextBox();
-            lblEndereco = new Label();
-            txtNomeBase = new TextBox();
-            lblNomeBase = new Label();
+            txtConexao = new TextBox();
             btnRestaurar = new Button();
             btnSalvar = new Button();
             colorDialog1 = new ColorDialog();
@@ -45,6 +42,13 @@ namespace DesktopCany.UI
             btnCorText = new Button();
             colorDialog2 = new ColorDialog();
             chkBoxBorder = new CheckBox();
+            rbtnLocal = new RadioButton();
+            rbtnServidor = new RadioButton();
+            cBoxLite = new ComboBox();
+            folderBrowserDialog1 = new FolderBrowserDialog();
+            btnLocal = new Button();
+            groupBox1 = new GroupBox();
+            groupBox2 = new GroupBox();
             SuspendLayout();
             // 
             // lblTitulo
@@ -83,41 +87,13 @@ namespace DesktopCany.UI
             lblCor.TabIndex = 2;
             lblCor.Text = "Cor de Fundo";
             // 
-            // txtEndereco
-            // 
-            txtEndereco.Location = new Point(41, 219);
-            txtEndereco.Margin = new Padding(4, 3, 4, 3);
-            txtEndereco.Name = "txtEndereco";
-            txtEndereco.Size = new Size(195, 23);
-            txtEndereco.TabIndex = 6;
-            // 
-            // lblEndereco
-            // 
-            lblEndereco.AutoSize = true;
-            lblEndereco.Location = new Point(41, 201);
-            lblEndereco.Margin = new Padding(4, 0, 4, 0);
-            lblEndereco.Name = "lblEndereco";
-            lblEndereco.Size = new Size(142, 15);
-            lblEndereco.TabIndex = 4;
-            lblEndereco.Text = "Endereço do servidor SQL";
-            // 
             // txtNomeBase
             // 
-            txtNomeBase.Location = new Point(41, 284);
-            txtNomeBase.Margin = new Padding(4, 3, 4, 3);
-            txtNomeBase.Name = "txtNomeBase";
-            txtNomeBase.Size = new Size(195, 23);
-            txtNomeBase.TabIndex = 7;
-            // 
-            // lblNomeBase
-            // 
-            lblNomeBase.AutoSize = true;
-            lblNomeBase.Location = new Point(41, 266);
-            lblNomeBase.Margin = new Padding(4, 0, 4, 0);
-            lblNomeBase.Name = "lblNomeBase";
-            lblNomeBase.Size = new Size(135, 15);
-            lblNomeBase.TabIndex = 6;
-            lblNomeBase.Text = "Nome da Base de Dados";
+            txtConexao.Location = new Point(41, 300);
+            txtConexao.Margin = new Padding(4, 3, 4, 3);
+            txtConexao.Name = "txtNomeBase";
+            txtConexao.Size = new Size(195, 23);
+            txtConexao.TabIndex = 7;
             // 
             // btnRestaurar
             // 
@@ -170,31 +146,96 @@ namespace DesktopCany.UI
             // chkBoxBorder
             // 
             chkBoxBorder.AutoSize = true;
-            chkBoxBorder.Location = new Point(41, 29);
+            chkBoxBorder.Location = new Point(41, 37);
             chkBoxBorder.Name = "chkBoxBorder";
             chkBoxBorder.Size = new Size(108, 19);
             chkBoxBorder.TabIndex = 1;
             chkBoxBorder.Text = "Borda da Janela";
             chkBoxBorder.UseVisualStyleBackColor = true;
             // 
+            // rbtnLocal
+            // 
+            rbtnLocal.AutoSize = true;
+            rbtnLocal.Location = new Point(29, 16);
+            rbtnLocal.Name = "rbtnLocal";
+            rbtnLocal.Size = new Size(53, 19);
+            rbtnLocal.TabIndex = 10;
+            rbtnLocal.TabStop = true;
+            rbtnLocal.Text = "Local";
+            rbtnLocal.UseVisualStyleBackColor = true;
+            rbtnLocal.CheckedChanged += rbtnLocal_CheckedChanged;
+            // 
+            // rbtnServidor
+            // 
+            rbtnServidor.AutoSize = true;
+            rbtnServidor.Location = new Point(29, 81);
+            rbtnServidor.Name = "rbtnServidor";
+            rbtnServidor.Size = new Size(68, 19);
+            rbtnServidor.TabIndex = 11;
+            rbtnServidor.TabStop = true;
+            rbtnServidor.Text = "Servidor";
+            rbtnServidor.UseVisualStyleBackColor = true;
+            rbtnServidor.CheckedChanged += rbtnServidor_CheckedChanged;
+            // 
+            // cBoxLite
+            // 
+            cBoxLite.FormattingEnabled = true;
+            cBoxLite.Location = new Point(41, 235);
+            cBoxLite.Name = "cBoxLite";
+            cBoxLite.Size = new Size(143, 23);
+            cBoxLite.TabIndex = 12;
+            // 
+            // btnLocal
+            // 
+            btnLocal.ForeColor = Color.Black;
+            btnLocal.Location = new Point(190, 41);
+            btnLocal.Margin = new Padding(4, 3, 4, 3);
+            btnLocal.Name = "btnLocal";
+            btnLocal.Size = new Size(34, 23);
+            btnLocal.TabIndex = 13;
+            btnLocal.Text = "...";
+            btnLocal.UseVisualStyleBackColor = true;
+            btnLocal.Click += btnLocal_Click;
+            // 
+            // groupBox1
+            // 
+            groupBox1.Location = new Point(12, 12);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(253, 176);
+            groupBox1.TabIndex = 14;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Customização";
+            // 
+            // groupBox2
+            // 
+            groupBox2.Controls.Add(btnLocal);
+            groupBox2.Controls.Add(rbtnServidor);
+            groupBox2.Controls.Add(rbtnLocal);
+            groupBox2.Location = new Point(12, 194);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(253, 140);
+            groupBox2.TabIndex = 15;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Conexão";
+            // 
             // FrmConfiguracao
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(277, 377);
+            Controls.Add(cBoxLite);
             Controls.Add(chkBoxBorder);
             Controls.Add(btnCorText);
             Controls.Add(btnCorFundo);
             Controls.Add(btnSalvar);
             Controls.Add(btnRestaurar);
-            Controls.Add(txtNomeBase);
-            Controls.Add(lblNomeBase);
-            Controls.Add(txtEndereco);
-            Controls.Add(lblEndereco);
+            Controls.Add(txtConexao);
             Controls.Add(txtCorFundo);
             Controls.Add(lblCor);
             Controls.Add(txtCorTexto);
             Controls.Add(lblTitulo);
+            Controls.Add(groupBox1);
+            Controls.Add(groupBox2);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(4, 3, 4, 3);
             MaximizeBox = false;
@@ -203,6 +244,8 @@ namespace DesktopCany.UI
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Configurações";
             Load += frmConfiguracao_Load;
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -213,10 +256,7 @@ namespace DesktopCany.UI
         private System.Windows.Forms.TextBox txtCorTexto;
         private System.Windows.Forms.TextBox txtCorFundo;
         private System.Windows.Forms.Label lblCor;
-        private System.Windows.Forms.TextBox txtEndereco;
-        private System.Windows.Forms.Label lblEndereco;
-        private System.Windows.Forms.TextBox txtNomeBase;
-        private System.Windows.Forms.Label lblNomeBase;
+        private System.Windows.Forms.TextBox txtConexao;
         private System.Windows.Forms.Button btnRestaurar;
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.ColorDialog colorDialog1;
@@ -224,5 +264,12 @@ namespace DesktopCany.UI
         private Button btnCorText;
         private ColorDialog colorDialog2;
         private CheckBox chkBoxBorder;
+        private RadioButton rbtnLocal;
+        private RadioButton rbtnServidor;
+        private ComboBox cBoxLite;
+        private FolderBrowserDialog folderBrowserDialog1;
+        private Button btnLocal;
+        private GroupBox groupBox1;
+        private GroupBox groupBox2;
     }
 }
