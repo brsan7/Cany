@@ -26,9 +26,8 @@ namespace DesktopCany.Repositorio
                     respostaDB = db.TB_Linguagens?.Find("TestarConexao()")?.ID_Linguagem ?? String.Empty;
                     configurado = true;
                 }
-                catch (Exception ex)
+                catch
                 {
-                    MessageBox.Show(ex.ToString());
                     configurado = false;
                 }
             }
