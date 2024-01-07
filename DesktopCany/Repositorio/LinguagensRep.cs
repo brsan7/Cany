@@ -80,7 +80,7 @@ namespace DesktopCany.Repositorio
                 try
                 {
                     resultado = (from linguagem in db.TB_Linguagens
-                                 where linguagem.ID_Linguagem.Contains(busca)
+                                 where linguagem.ID_Linguagem.ToUpper().Contains(busca.ToUpper())
                                  select linguagem).ToList();
                 }
                 catch (Exception ex)

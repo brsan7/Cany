@@ -88,7 +88,7 @@ namespace DesktopCany.Repositorio
                 try
                 {
                     resultado = (from biblioteca in db.TB_Bibliotecas
-                                 where biblioteca.Biblioteca.Contains(busca)
+                                 where biblioteca.Biblioteca.ToUpper().Contains(busca.ToUpper())
                                  select biblioteca).ToList();
                 }
                 catch (Exception ex)

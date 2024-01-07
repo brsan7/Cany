@@ -214,7 +214,7 @@ namespace DesktopCany.Repositorio
                 try
                 {
                     resultado = (from funcoes in db.TB_Funcoes
-                                 where funcoes.Funcao.Contains(busca)
+                                 where funcoes.Funcao.ToUpper().Contains(busca.ToUpper())
                                  select funcoes).ToList();
                 }
                 catch (Exception ex)
@@ -239,7 +239,7 @@ namespace DesktopCany.Repositorio
                 try
                 {
                     resultado = (from funcoes in db.TB_Funcoes
-                                 where funcoes.ID_FcnModData.Contains(busca)
+                                 where funcoes.ID_FcnModData.ToUpper().Contains(busca.ToUpper())
                                  select funcoes).ToList();
                 }
                 catch (Exception ex)
@@ -264,7 +264,7 @@ namespace DesktopCany.Repositorio
                 try
                 {
                     resultado = (from funcoes in db.TB_Funcoes
-                                 where funcoes.ModProgramador.Contains(busca)
+                                 where funcoes.ModProgramador.ToUpper().Contains(busca.ToUpper())
                                  select funcoes).ToList();
                 }
                 catch (Exception ex)
