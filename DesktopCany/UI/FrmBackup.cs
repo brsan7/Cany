@@ -37,6 +37,7 @@ namespace DesktopCany.UI
             labelFeedBack.Text = "";
             this.BackColor = Configuracoes.Default.BackColor;
             this.ForeColor = Configuracoes.Default.ForeColor;
+            groupBox1.ForeColor = Configuracoes.Default.ForeColor;
             btnExportarTxt.ForeColor = Color.Black;
             btnImportarTxt.ForeColor = Color.Black;
         }

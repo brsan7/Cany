@@ -37,6 +37,7 @@ namespace DesktopCany.UI
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             progressBar1 = new ProgressBar();
             labelFeedBack = new Label();
+            groupBox1 = new GroupBox();
             SuspendLayout();
             // 
             // btnExportarTxt
@@ -54,7 +55,7 @@ namespace DesktopCany.UI
             // btnImportarTxt
             // 
             btnImportarTxt.ForeColor = Color.Black;
-            btnImportarTxt.Location = new Point(85, 145);
+            btnImportarTxt.Location = new Point(85, 150);
             btnImportarTxt.Margin = new Padding(4, 3, 4, 3);
             btnImportarTxt.Name = "btnImportarTxt";
             btnImportarTxt.Size = new Size(107, 55);
@@ -98,6 +99,15 @@ namespace DesktopCany.UI
             labelFeedBack.Text = "FeedBack User";
             labelFeedBack.Visible = false;
             // 
+            // groupBox1
+            // 
+            groupBox1.Location = new Point(12, 50);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(253, 177);
+            groupBox1.TabIndex = 4;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "BackUp/Restore";
+            // 
             // FrmBackup
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -107,6 +117,7 @@ namespace DesktopCany.UI
             Controls.Add(progressBar1);
             Controls.Add(btnImportarTxt);
             Controls.Add(btnExportarTxt);
+            Controls.Add(groupBox1);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(4, 3, 4, 3);
             Name = "FrmBackup";
@@ -126,5 +137,6 @@ namespace DesktopCany.UI
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private ProgressBar progressBar1;
         private Label labelFeedBack;
+        private GroupBox groupBox1;
     }
 }
