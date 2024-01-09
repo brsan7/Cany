@@ -36,8 +36,12 @@ namespace DesktopCany.UI
             rtbDescricaoFcn.BackColor = Configuracoes.Default.BackColor;
             rtbSnippet.ForeColor = Configuracoes.Default.ForeColor;
             rtbSnippet.BackColor = Configuracoes.Default.BackColor;
-            chkBoxModEstavel.ForeColor = Configuracoes.Default.BackColor;
-            chkBoxModEstavel.BackColor = Configuracoes.Default.ForeColor;
+
+            if (!Configuracoes.Default.BackColor.Name.Equals("Control"))
+            {
+                chkBoxModEstavel.ForeColor = Configuracoes.Default.BackColor;
+                chkBoxModEstavel.BackColor = Configuracoes.Default.ForeColor;
+            }
 
             biblitotecaEnt.FK_ID_FcnModData = new FuncaoEnt();
 
