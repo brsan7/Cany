@@ -1,16 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using DesktopCany.Repositorio;
+﻿using DesktopCany.Repositorio;
 using DesktopCany.Entidades;
-using Microsoft.EntityFrameworkCore;
-using System.Runtime.CompilerServices;
 using DesktopCany.Propriedades;
 
 namespace DesktopCany.UI

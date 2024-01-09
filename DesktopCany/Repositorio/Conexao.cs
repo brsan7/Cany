@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using System.Data; //Trabalhar com dados.
-using System.Data.SqlClient; //Cliente do servidor SQLServer.
-using Microsoft.IdentityModel.Tokens;
-using static System.Net.Mime.MediaTypeNames;
-using DesktopCany.Entidades;
+﻿using DesktopCany.Entidades;
 
 namespace DesktopCany.Repositorio
 {

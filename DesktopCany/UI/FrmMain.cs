@@ -1,7 +1,4 @@
 ﻿using DesktopCany.Entidades;
-using Microsoft.IdentityModel.Tokens;
-using System.Reflection;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace DesktopCany.UI
 {
